@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+
+    <div id="body">
+        <h1>ASCII art web</h1>
+        <form action="/save/{{.Font}}" method="POST">
+            <!-- input -->
+            <div id="input">
+                <textarea name="body" rows="1" cols="40">{{printf "%s" .Body}}</textarea>
+            </div>
+            <div id="input">
+                <select name="banners" {{.Font}}>
+                    <option value="standard">standard</option>
+                    <option value="shadow">shadow</option>
+                    <option value="thinkertoy">thinkertoy</option>
+                </select>
+            </div>
+            <div>
+                <input type="submit" value="Save">
+            </div>
+        </form>
+        <!-- output -->
+        <br><br>
+        <pre>{{printf "%s" .Output}}</pre>
+    </div>
+</body>
+
+</html>
