@@ -1,13 +1,22 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
-	"os"
+	"net/http"
 )
 
 func main() {
-	fmt.Println("Template")
+	http.HandleFunc("/", helloWorld)
+	http.ListenAndServe(":8081", nil)
+}
+
+func helloWorld(w http.ResponseWriter, r *http.Request) {
+	name := Name{"Mindorks", "Cheenah"}
 	template, _ := template.ParseFiles("hello.html")
-	template.Execute(os.Stdout, "Boruto")
+	template.Execute(w, name)
+}
+
+// Name ...
+type Name struct {
+	FName, LName string
 }
