@@ -24,6 +24,7 @@ func Start(config *Config) error {
 }
 
 func newDB(database string) (*sql.DB, error) {
+
 	db, err := sql.Open("postgres", database)
 	if err != nil {
 		return nil, err
