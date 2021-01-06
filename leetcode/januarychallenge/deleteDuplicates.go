@@ -1,3 +1,5 @@
+package januarychallenge
+
 import "fmt"
 
 /**
@@ -7,14 +9,14 @@ import "fmt"
  *     Next *ListNode
  * }
  */
-// func PrintList(l *ListNode) {
-// 	it := l
-// 	for it != nil {
-// 		fmt.Print(it.Val, " -> ")
-// 		it = it.Next
-// 	}
-// 	fmt.Print(nil, "\n")
-// }
+func PrintList(l *ListNode) {
+	it := l
+	for it != nil {
+		fmt.Print(it.Val, " -> ")
+		it = it.Next
+	}
+	fmt.Print(nil, "\n")
+}
 
 // func deleteDuplicates(n1 *ListNode) *ListNode {
 // 	iterator := n1
@@ -138,4 +140,3 @@ func deleteDuplicates(head *ListNode) *ListNode {
 	}
 	return nilNode.Next
 }
-

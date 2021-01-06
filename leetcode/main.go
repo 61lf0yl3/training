@@ -7,5 +7,5 @@ import (
 )
 
 func main() {
-	fmt.Println(januarychallenge.CountArrangement(8))
+	fmt.Println(januarychallenge.FindKthPositive([]int{2, 3, 4, 7, 11}, 5))
 }

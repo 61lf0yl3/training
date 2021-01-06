@@ -6,7 +6,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func mergeTwoLists(n1 *ListNode, n2 *ListNode) *ListNode {
+func A(n1 *ListNode, n2 *ListNode) *ListNode {
 	iterator2 := n1
 	if n2 == nil {
 		return n1
