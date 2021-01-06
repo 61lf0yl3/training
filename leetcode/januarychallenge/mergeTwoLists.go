@@ -1,10 +1,11 @@
-/**
- * Definition for singly-linked list.
- * type ListNode struct {
- *     Val int
- *     Next *ListNode
- * }
- */
+package januarychallenge
+
+//Definition for singly-linked list.
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
 func mergeTwoLists(n1 *ListNode, n2 *ListNode) *ListNode {
 	iterator2 := n1
 	if n2 == nil {
