@@ -1,3 +1,5 @@
+import "fmt"
+
 /**
  * Definition for singly-linked list.
  * type ListNode struct {
@@ -68,23 +70,71 @@
 // }
 
 func deleteDuplicates(head *ListNode) *ListNode {
-	if head == nil {
+	if head == nil || head.Next == nil {
 		return head
 	}
 
 	nilNode := &ListNode{Val: 0, Next: head}
+
+	lastIsDel := false
+
+	//     fmt.Printf("before head: ")
+	//     PrintList(head)
+
+	//     fmt.Printf("before nilNode: ")
+	//     PrintList(nilNode)
+
 	head = nilNode
 
-	lastVal := 0
+	//     fmt.Printf("after head: ")
+	//     PrintList(head)
+
+	//     fmt.Printf("after nilNode: ")
+	//     PrintList(nilNode)
+
+	pre, back := head.Next, head.Next.Next
+
 	for head.Next != nil && head.Next.Next != nil {
-		if head.Next.Val == head.Next.Next.Val {
-			lastVal = head.Next.Val
-			for head.Next != nil && lastVal == head.Next.Val {
-				head.Next = head.Next.Next
-			}
-		} else {
-			head = head.Next
+		fmt.Printf("enter head: ")
+		PrintList(head)
+
+		fmt.Println("head.Val:", head.Val)
+		fmt.Println("pre.Val:", pre.Val)
+		fmt.Println("back.Val:", back.Val)
+
+		if pre.Val != back.Val && lastIsDel {
+			fmt.Println("first condition")
+			fmt.Println()
+			head.Next = head.Next.Next
+			pre, back = head.Next, head.Next.Next
+			lastIsDel = false
+			continue
 		}
+
+		if pre.Val == back.Val {
+			fmt.Println("second condition")
+			fmt.Println()
+			// fmt.Printf("before head: ")
+			// PrintList(head)
+
+			head.Next = head.Next.Next
+
+			// fmt.Printf("after head: ")
+			// PrintList(head)
+
+			pre, back = head.Next, head.Next.Next
+			lastIsDel = true
+		} else {
+			fmt.Println("third condition")
+			fmt.Println()
+			head = head.Next
+			pre, back = head.Next, head.Next.Next
+			lastIsDel = false
+		}
+	}
+
+	if lastIsDel && head.Next != nil {
+		head.Next = nil
 	}
 	return nilNode.Next
 }
