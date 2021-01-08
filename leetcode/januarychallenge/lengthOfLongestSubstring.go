@@ -1,22 +1,22 @@
 package januarychallenge
 
-//my own sollution
-// func LengthOfLongestSubstring(s string) int {
-// 	ascii := make([]int, 127)
-// 	counter1 := 0
-// 	for i := 0; i < len(s); i++ {
-// 		if ascii[int(rune(s[i]))] == 1 {
+//my own solution
+func LengthOfLongestSubstring1(s string) int {
+	ascii := make([]int, 127)
+	counter1 := 0
+	for i := 0; i < len(s); i++ {
+		if ascii[int(rune(s[i]))] == 1 {
 
-// 		} else if ascii[int(rune(s[i]))] == 0 {
-// 			ascii[int(rune(s[i]))] = 1
-// 			counter1++
-// 		}
+		} else if ascii[int(rune(s[i]))] == 0 {
+			ascii[int(rune(s[i]))] = 1
+			counter1++
+		}
 
-// 	}
-// 	return counter1
-// }
+	}
+	return counter1
+}
 
-// LengthOfLongestSubstring my own sollution from leetcode
+// LengthOfLongestSubstring my own solution2
 func LengthOfLongestSubstring(s string) int {
 	start := 0
 	res := 0
@@ -38,4 +38,27 @@ func LengthOfLongestSubstring(s string) int {
 
 	}
 	return res
+}
+
+// leetcode solution
+func lengthOfLongestSubstring3(s string) int {
+	data := make(map[byte]int)
+	var ret, i, j int
+	for j < len(s) {
+		if v, ok := data[s[j]]; ok {
+			ret = max(ret, len(s[i:j]))
+			i = max(i, v+1)
+		}
+		data[s[j]] = j
+		j += 1
+	}
+	return max(ret, len(s[i:j]))
+
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
