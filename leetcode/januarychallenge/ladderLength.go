@@ -1,4 +1,6 @@
-func ladderLength(beginWord string, endWord string, wordList []string) int {
+package januarychallenge
+
+func LadderLength(beginWord string, endWord string, wordList []string) int {
 	wordListHashSet := make(map[string]bool)
 
 	for _, v := range wordList {
