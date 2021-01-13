@@ -1,5 +1,6 @@
 package januarychallenge
 
+//LadderLength ...
 func LadderLength(beginWord string, endWord string, wordList []string) int {
 	wordListHashSet := make(map[string]bool)
 
