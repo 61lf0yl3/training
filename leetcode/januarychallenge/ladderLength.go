@@ -12,7 +12,7 @@ func LadderLength(beginWord string, endWord string, wordList []string) int {
 
 	for len(queue) > 0 {
 		levelsize := len(queue)
-		ladder += 1
+		ladder++
 
 		for k := 0; k < levelsize; k++ {
 			word := queue[0]
