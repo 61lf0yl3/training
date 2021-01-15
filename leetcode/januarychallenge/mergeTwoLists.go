@@ -22,8 +22,9 @@ func A(n1 *ListNode, n2 *ListNode) *ListNode {
 	return n2
 }
 
-func SortListInsert(l *ListNode, data_ref int) *ListNode {
-	n := &ListNode{Val: data_ref}
+// SortListInsert ...
+func SortListInsert(l *ListNode, dataref int) *ListNode {
+	n := &ListNode{Val: dataref}
 	if l == nil {
 		return n
 	}
