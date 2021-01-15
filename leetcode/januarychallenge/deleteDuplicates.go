@@ -9,6 +9,7 @@ import "fmt"
  *     Next *ListNode
  * }
  */
+
 // PrintList ...
 func PrintList(l *ListNode) {
 	it := l
