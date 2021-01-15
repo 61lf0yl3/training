@@ -6,6 +6,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
+//A ..
 func A(n1 *ListNode, n2 *ListNode) *ListNode {
 	iterator2 := n1
 	if n2 == nil {
