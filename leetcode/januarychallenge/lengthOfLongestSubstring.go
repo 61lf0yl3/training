@@ -1,6 +1,6 @@
 package januarychallenge
 
-//my own solution
+// LengthOfLongestSubstring1 my own solution
 func LengthOfLongestSubstring1(s string) int {
 	ascii := make([]int, 127)
 	counter1 := 0
