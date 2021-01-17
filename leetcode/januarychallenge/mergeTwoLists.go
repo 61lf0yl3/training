@@ -1,6 +1,8 @@
 package januarychallenge
 
-//Definition for singly-linked list.
+// Definition for singly-linked list.
+
+// ListNode ..
 type ListNode struct {
 	Val  int
 	Next *ListNode
