@@ -50,7 +50,7 @@ func lengthOfLongestSubstring3(s string) int {
 			i = max(i, v+1)
 		}
 		data[s[j]] = j
-		j += 1
+		j++
 	}
 	return max(ret, len(s[i:j]))
 
