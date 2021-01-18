@@ -13,6 +13,7 @@ func CountArrangement(n int) int {
 	return count
 }
 
+//Check ...
 func Check(arr []int, j int) {
 	if j == len(arr) {
 		count++
