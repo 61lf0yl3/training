@@ -1,7 +1,7 @@
 package januarychallenge
 
-// CountArrangement ..
-func CountArrangement(N int) int {
+// CountArrangement1 ..
+func CountArrangement1(N int) int {
 	//res := []int{1, 2, 3, 8, 10, 36, 41, 132, 250, 700, 750, 4010, 4237, 10680, 24679}
 	// return res[n-1]
 
