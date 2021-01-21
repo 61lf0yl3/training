@@ -1,5 +1,6 @@
 package decemberchallenge
 
+//CanPlaceFlowers ..
 func CanPlaceFlowers(flowerbed []int, n int) bool {
 	for i := 0; i < len(flowerbed); i++ {
 		if len(flowerbed) > 2 {
