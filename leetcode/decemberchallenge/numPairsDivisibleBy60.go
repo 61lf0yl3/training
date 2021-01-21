@@ -16,7 +16,7 @@ func NumPairsDivisibleBy60(time []int) int {
 	fmt.Println(m)
 	// for val1, rep1 := range m {
 	for key2, val2 := range m {
-		fmt.Println(m[key2], val2, "\n")
+		fmt.Println(m[key2], val2)
 		// if val1+val2 == 60 {
 		// 	res += rep1 * rep2
 	}
