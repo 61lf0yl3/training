@@ -35,6 +35,7 @@ func helper(n, i, chosen int, memo [][]int) int {
 	return ans
 }
 
+// Factorial ...
 func Factorial(n int) int {
 	res := 1
 	for i := n; i > 1; i-- {
