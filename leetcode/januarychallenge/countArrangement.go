@@ -15,25 +15,25 @@ func CountArrangement1(N int) int {
 	return helper(N, 0, 0, memo)
 }
 
-// func helper(n, i, chosen int, memo [][]int) int {
-// 	if i == n {
-// 		return 1
-// 	}
-// 	if memo[i][chosen] != -1 {
-// 		return memo[i][chosen]
-// 	}
-// 	ans := 0
-// 	for d := 0; d < n; d++ {
-// 		if chosen&(1<<d) != 0 {
-// 			continue
-// 		}
-// 		if (d+1)%(i+1) == 0 || (i+1)%(d+1) == 0 {
-// 			ans += helper(n, i+1, chosen|(1<<d), memo)
-// 		}
-// 	}
-// 	memo[i][chosen] = ans
-// 	return ans
-// }
+func helper(n, i, chosen int, memo [][]int) int {
+	if i == n {
+		return 1
+	}
+	if memo[i][chosen] != -1 {
+		return memo[i][chosen]
+	}
+	ans := 0
+	for d := 0; d < n; d++ {
+		if chosen&(1<<d) != 0 {
+			continue
+		}
+		if (d+1)%(i+1) == 0 || (i+1)%(d+1) == 0 {
+			ans += helper(n, i+1, chosen|(1<<d), memo)
+		}
+	}
+	memo[i][chosen] = ans
+	return ans
+}
 
 // func Factorial(n int) int {
 // 	res := 1
