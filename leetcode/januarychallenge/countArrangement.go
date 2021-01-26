@@ -35,10 +35,10 @@ func helper(n, i, chosen int, memo [][]int) int {
 	return ans
 }
 
-// func Factorial(n int) int {
-// 	res := 1
-// 	for i := n; i > 1; i-- {
-// 		res *= i
-// 	}
-// 	return res
-// }
+func Factorial(n int) int {
+	res := 1
+	for i := n; i > 1; i-- {
+		res *= i
+	}
+	return res
+}
