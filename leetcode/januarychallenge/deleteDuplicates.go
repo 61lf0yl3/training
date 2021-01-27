@@ -20,58 +20,58 @@ func PrintList(l *ListNode) {
 	fmt.Print(nil, "\n")
 }
 
-// func deleteDuplicates(n1 *ListNode) *ListNode {
-// 	iterator := n1
-// 	if iterator == nil {
-// 		return n1
-// 	}
-//     copy := FindCopy(iterator)
-// 	for iterator != nil {
-//         fmt.Println("iterator.Val:", iterator.Val)
-//         fmt.Println("iterator.Next.Val:", iterator.Next.Val)
-//         fmt.Println("before copy:", copy)
+func deleteDuplicates(n1 *ListNode) *ListNode {
+	iterator := n1
+	if iterator == nil {
+		return n1
+	}
+	copy := FindCopy(iterator)
+	for iterator != nil {
+		fmt.Println("iterator.Val:", iterator.Val)
+		fmt.Println("iterator.Next.Val:", iterator.Next.Val)
+		fmt.Println("before copy:", copy)
 
-//         if iterator.Next != nil && copy == iterator.Next.Val {
-//             Remove(n1, iterator.Next.Val)
-//             //copy = iterator.Next.Val
-//         } else if iterator.Next != nil && copy != iterator.Next.Val {
-//             Remove(n1, copy)
-//             copy = iterator.Next.Val
-//         }
+		if iterator.Next != nil && copy == iterator.Next.Val {
+			Remove(n1, iterator.Next.Val)
+			//copy = iterator.Next.Val
+		} else if iterator.Next != nil && copy != iterator.Next.Val {
+			Remove(n1, copy)
+			copy = iterator.Next.Val
+		}
 
-//         fmt.Println("after copy:", copy)
-//         fmt.Printf("list:")
-//         PrintList(n1)
-//         fmt.Println()
+		fmt.Println("after copy:", copy)
+		fmt.Printf("list:")
+		PrintList(n1)
+		fmt.Println()
 
-// 		iterator = iterator.Next
-// 	}
-// 	return n1
-// }
+		iterator = iterator.Next
+	}
+	return n1
+}
 
-// func FindCopy(n *ListNode) int {
-//     copy := -1
-//     head := n
-// 	for head != nil {
-//         if head.Next != nil && head.Val == head.Next.Val  {
-// 		    copy = head.Next.Val
-// 		}
-// 		head = head.Next
-// 	}
-// 	return copy
-// }
+func FindCopy(n *ListNode) int {
+	copy := -1
+	head := n
+	for head != nil {
+		if head.Next != nil && head.Val == head.Next.Val {
+			copy = head.Next.Val
+		}
+		head = head.Next
+	}
+	return copy
+}
 
-// func Remove(n *ListNode, val int) *ListNode {
-// 	head := n
-// 	for head.Next != nil {
-// 		if head.Next.Val == val {
-// 			head.Next = head.Next.Next
-// 			return head
-// 		}
-// 		head = head.Next
-// 	}
-// 	return head
-// }
+func Remove(n *ListNode, val int) *ListNode {
+	head := n
+	for head.Next != nil {
+		if head.Next.Val == val {
+			head.Next = head.Next.Next
+			return head
+		}
+		head = head.Next
+	}
+	return head
+}
 
 func deleteDuplicates(head *ListNode) *ListNode {
 	if head == nil || head.Next == nil {
