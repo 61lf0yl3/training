@@ -2,6 +2,7 @@ package januarychallenge
 
 import "fmt"
 
+// FindKthPositive ..
 func FindKthPositive(arr []int, k int) int {
 	res := []int{}
 	AppendNum(&res, 1, arr[0])
