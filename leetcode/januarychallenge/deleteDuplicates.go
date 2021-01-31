@@ -62,6 +62,7 @@ func FindCopy(n *ListNode) int {
 	return copy
 }
 
+// Remove ...
 func Remove(n *ListNode, val int) *ListNode {
 	head := n
 	for head.Next != nil {
