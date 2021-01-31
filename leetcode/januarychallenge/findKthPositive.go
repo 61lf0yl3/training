@@ -24,11 +24,11 @@ func FindKthPositive(arr []int, k int) int {
 	return res[k-1]
 }
 
-// func AppendNum(res *[]int, n1 int, n2 int) {
-// 	for i := n1; i < n2; i++ {
-// 		*res = append(*res, i)
-// 	}
-// }
+func AppendNum(res *[]int, n1 int, n2 int) {
+	for i := n1; i < n2; i++ {
+		*res = append(*res, i)
+	}
+}
 
 func findKthPositive(arr []int, k int) int {
 	p := 0
