@@ -49,6 +49,7 @@ func deleteDuplicates(n1 *ListNode) *ListNode {
 	return n1
 }
 
+// FindCopy ...
 func FindCopy(n *ListNode) int {
 	copy := -1
 	head := n
