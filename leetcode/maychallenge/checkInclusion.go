@@ -5,14 +5,14 @@ import (
 	"reflect"
 )
 
-func main() {
-	var s1, s2 string
-	// s1 = "ab"
-	// s2 = "eidbaooo"
-	s1 = "adc"
-	s2 = "dcda"
-	fmt.Println("res:", checkInclusion(s1, s2))
-}
+// func main() {
+// 	var s1, s2 string
+// 	// s1 = "ab"
+// 	// s2 = "eidbaooo"
+// 	s1 = "adc"
+// 	s2 = "dcda"
+// 	fmt.Println("res:", checkInclusion(s1, s2))
+// }
 
 func checkInclusion(s1 string, s2 string) bool {
 	// slice1 := strings.Split(s1, "")
