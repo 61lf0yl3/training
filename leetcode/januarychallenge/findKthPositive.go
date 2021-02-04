@@ -24,6 +24,7 @@ func FindKthPositive(arr []int, k int) int {
 	return res[k-1]
 }
 
+//AppendNum ...
 func AppendNum(res *[]int, n1 int, n2 int) {
 	for i := n1; i < n2; i++ {
 		*res = append(*res, i)
