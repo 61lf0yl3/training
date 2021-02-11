@@ -5,9 +5,9 @@ import (
 	"math"
 )
 
-func main() {
-	fmt.Println(findComplement(5))
-}
+// func main() {
+// 	fmt.Println(findComplement(5))
+// }
 
 func findComplement(num int) int {
 	s := fmt.Sprintf("%b", num)
