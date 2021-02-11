@@ -2,15 +2,15 @@ package main
 
 import "fmt"
 
-func main() {
-	// N := 4
-	// trust := [][]int{{1, 3}, {1, 4}, {2, 3}, {2, 4}, {4, 3}}
-	// N := 3
-	// trust := [][]int{{1, 2}, {2, 3}}
-	N := 2
-	trust := [][]int{{1, 2}}
-	fmt.Println("res:", findJudge(N, trust))
-}
+// func main() {
+// 	// N := 4
+// 	// trust := [][]int{{1, 3}, {1, 4}, {2, 3}, {2, 4}, {4, 3}}
+// 	// N := 3
+// 	// trust := [][]int{{1, 2}, {2, 3}}
+// 	N := 2
+// 	trust := [][]int{{1, 2}}
+// 	fmt.Println("res:", findJudge(N, trust))
+// }
 
 func findJudge(N int, trust [][]int) int {
 	a := make([]int, N+1)
