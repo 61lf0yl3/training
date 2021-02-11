@@ -1,15 +1,11 @@
 package main
 
-import (
-	"fmt"
-)
-
-func main() {
-	arr := []int{1, 2, 3}
-	//arr := []int{1, 3, 2, 3, 5, 0}
-	//arr := []int{1, 1, 2, 2}
-	fmt.Println(countElements(arr))
-}
+// func main() {
+// 	arr := []int{1, 2, 3}
+// 	//arr := []int{1, 3, 2, 3, 5, 0}
+// 	//arr := []int{1, 1, 2, 2}
+// 	fmt.Println(countElements(arr))
+// }
 func countElements(arr []int) int {
 	m := make(map[int]bool)
 	//sort.Ints(arr)
