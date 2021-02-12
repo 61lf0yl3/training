@@ -2,11 +2,11 @@ package main
 
 import "fmt"
 
-func main() {
-	s := "leetcode"
-	//s := "aaa"
-	fmt.Println(firstUniqChar(s))
-}
+// func main() {
+// 	s := "leetcode"
+// 	//s := "aaa"
+// 	fmt.Println(firstUniqChar(s))
+// }
 
 // func firstUniqChar(s string) int {
 // 	m := make(map[rune]int, len(s))
