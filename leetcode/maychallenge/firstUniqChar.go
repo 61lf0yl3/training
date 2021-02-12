@@ -8,18 +8,18 @@ import "fmt"
 // 	fmt.Println(firstUniqChar(s))
 // }
 
-// func firstUniqChar(s string) int {
-// 	m := make(map[rune]int, len(s))
-// 	for _, l := range s {
-// 		m[l]++
-// 	}
-// 	for key, value := range s {
-// 		if m[value] == 1 {
-// 			return key
-// 		}
-// 	}
-// 	return -1
-// }
+func firstUniqChar1(s string) int {
+	m := make(map[rune]int, len(s))
+	for _, l := range s {
+		m[l]++
+	}
+	for key, value := range s {
+		if m[value] == 1 {
+			return key
+		}
+	}
+	return -1
+}
 
 func firstUniqChar(s string) int {
 	chars := make([]int, 26)
