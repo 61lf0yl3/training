@@ -1,12 +1,14 @@
 package main
 
-// func main() {
-// 	//S, T := "ab#c", "ad#c"
-// 	//S, T := "ab##", "c#d#"
-// 	S, T := "a##c", "#a#c"
-// 	//S, T := "a#c", "b"
-// 	fmt.Println(backspaceCompare(S, T))
-// }
+import "fmt"
+
+func main() {
+	//S, T := "ab#c", "ad#c"
+	//S, T := "ab##", "c#d#"
+	S, T := "a##c", "#a#c"
+	//S, T := "a#c", "b"
+	fmt.Println(backspaceCompare(S, T))
+}
 
 func backspaceCompare(S string, T string) bool {
 	S1 := Helper(S)
