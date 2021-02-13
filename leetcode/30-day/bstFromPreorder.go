@@ -6,10 +6,10 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func main() {
-	preorder := []int{8, 5, 1, 7, 10, 12}
-	bstFromPreorder(preorder)
-}
+// func main() {
+// 	preorder := []int{8, 5, 1, 7, 10, 12}
+// 	bstFromPreorder(preorder)
+// }
 func bstFromPreorder(preorder []int) *TreeNode {
 	root := &TreeNode{Val: preorder[0]}
 	for i, l := range preorder {
