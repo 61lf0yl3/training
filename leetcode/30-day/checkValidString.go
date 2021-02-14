@@ -1,13 +1,11 @@
 package main
 
-import "fmt"
-
-func main() {
-	s := "(())()"
-	//s :=  "(*)"
-	//s := "()"
-	fmt.Println(checkValidString(s))
-}
+// func main() {
+// 	s := "(())()"
+// 	//s :=  "(*)"
+// 	//s := "()"
+// 	fmt.Println(checkValidString(s))
+// }
 
 func checkValidString(s string) bool {
 	left := 0
