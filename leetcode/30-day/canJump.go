@@ -1,13 +1,11 @@
 package main
 
-import "fmt"
-
-func main() {
-	// nums := []int{2, 3, 1, 1, 4}
-	nums := []int{3, 2, 1, 0, 4}
-	// nums := []int{0, 1}
-	fmt.Println(canJump(nums))
-}
+// func main() {
+// 	// nums := []int{2, 3, 1, 1, 4}
+// 	nums := []int{3, 2, 1, 0, 4}
+// 	// nums := []int{0, 1}
+// 	fmt.Println(canJump(nums))
+// }
 
 func canJump(nums []int) bool {
 	jump := len(nums) - 1
