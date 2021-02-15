@@ -64,12 +64,12 @@ func groupAnagrams2(strs []string) [][]string {
 	return res
 }
 
-// func Sort(str []rune) {
-// 	for i1 := range str {
-// 		for i2 := range str {
-// 			if str[i1] > str[i2] {
-// 				str[i1], str[i2] = str[i2], str[i1]
-// 			}
-// 		}
-// 	}
-// }
+func Sort(str []rune) {
+	for i1 := range str {
+		for i2 := range str {
+			if str[i1] > str[i2] {
+				str[i1], str[i2] = str[i2], str[i1]
+			}
+		}
+	}
+}
