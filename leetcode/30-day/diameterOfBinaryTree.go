@@ -53,22 +53,22 @@ func max(nb1, nb2 int) int {
 	return nb2
 }
 
-// func dfs(v *TreeNode, res *int) int {
-//     if v == nil {
-//         return -1
-//     }
+func dfs(v *TreeNode, res *int) int {
+	if v == nil {
+		return -1
+	}
 
-//     lh := 1 + dfs(v.Left, res)
-//     rh := 1 + dfs(v.Right, res)
-//     if *res < lh + rh {
-//         *res = lh + rh
-//     }
+	lh := 1 + dfs(v.Left, res)
+	rh := 1 + dfs(v.Right, res)
+	if *res < lh+rh {
+		*res = lh + rh
+	}
 
-//     if lh < rh {
-//         lh = rh
-//     }
-//     return lh
-// }
+	if lh < rh {
+		lh = rh
+	}
+	return lh
+}
 
 // func diameterOfBinaryTree(root *TreeNode) int {
 //     res := 0
