@@ -4,15 +4,15 @@ import (
 	"fmt"
 )
 
-func main() {
-	//nums := []int{0, 1}
-	//nums := []int{0, 1, 0}
-	//nums := []int{0, 1, 1, 0, 1, 1, 1, 0}
-	nums := []int{0, 0, 0, 1, 1, 1, 0}
-	//nums := []int{0, 0, 1, 0, 0, 0, 1, 1}
-	fmt.Println(findMaxLength(nums))
+// func main() {
+// 	//nums := []int{0, 1}
+// 	//nums := []int{0, 1, 0}
+// 	//nums := []int{0, 1, 1, 0, 1, 1, 1, 0}
+// 	nums := []int{0, 0, 0, 1, 1, 1, 0}
+// 	//nums := []int{0, 0, 1, 0, 0, 0, 1, 1}
+// 	fmt.Println(findMaxLength(nums))
 
-}
+// }
 
 func findMaxLength(nums []int) int {
 	m := make(map[int]int)
