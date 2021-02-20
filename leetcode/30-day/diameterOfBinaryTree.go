@@ -4,17 +4,17 @@ import (
 	"fmt"
 )
 
-// func main() {
-// 	//s := os.Args[1]
-// 	root := &TreeNode{Val: 1}
-// 	BTreeInsertData(root, 3)
-// 	BTreeInsertData(root, 5)
-// 	BTreeInsertData(root, 4)
-// 	BTreeInsertData(root, 2)
-// 	//BTreeApplyInorder(root, fmt.Println)
-// 	//fmt.Println(BTreeLevelCount(root))
-// 	fmt.Println("longlengh:", diameterOfBinaryTree(root))
-// }
+func main() {
+	//s := os.Args[1]
+	root := &TreeNode{Val: 1}
+	BTreeInsertData(root, 3)
+	BTreeInsertData(root, 5)
+	BTreeInsertData(root, 4)
+	BTreeInsertData(root, 2)
+	//BTreeApplyInorder(root, fmt.Println)
+	//fmt.Println(BTreeLevelCount(root))
+	fmt.Println("longlengh:", diameterOfBinaryTree(root))
+}
 
 type TreeNode struct {
 	Val   int
@@ -53,22 +53,22 @@ func max(nb1, nb2 int) int {
 	return nb2
 }
 
-// func dfs(v *TreeNode, res *int) int {
-//     if v == nil {
-//         return -1
-//     }
+func dfs(v *TreeNode, res *int) int {
+	if v == nil {
+		return -1
+	}
 
-//     lh := 1 + dfs(v.Left, res)
-//     rh := 1 + dfs(v.Right, res)
-//     if *res < lh + rh {
-//         *res = lh + rh
-//     }
+	lh := 1 + dfs(v.Left, res)
+	rh := 1 + dfs(v.Right, res)
+	if *res < lh+rh {
+		*res = lh + rh
+	}
 
-//     if lh < rh {
-//         lh = rh
-//     }
-//     return lh
-// }
+	if lh < rh {
+		lh = rh
+	}
+	return lh
+}
 
 // func diameterOfBinaryTree(root *TreeNode) int {
 //     res := 0
