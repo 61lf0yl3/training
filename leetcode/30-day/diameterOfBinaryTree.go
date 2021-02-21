@@ -4,6 +4,12 @@ import (
 	"fmt"
 )
 
+// type TreeNode struct {
+// 	Val   int
+// 	Left  *TreeNode
+// 	Right *TreeNode
+// }
+
 // func main() {
 // 	//s := os.Args[1]
 // 	root := &TreeNode{Val: 1}
@@ -15,12 +21,6 @@ import (
 // 	//fmt.Println(BTreeLevelCount(root))
 // 	fmt.Println("longlengh:", diameterOfBinaryTree(root))
 // }
-
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
 
 func diameterOfBinaryTree(root *TreeNode) int {
 	var height = 0
