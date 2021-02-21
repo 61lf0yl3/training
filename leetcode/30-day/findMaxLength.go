@@ -50,12 +50,12 @@ func findMaxLength(nums []int) int {
 	return res
 }
 
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
+// func max(a, b int) int {
+// 	if a > b {
+// 		return a
+// 	}
+// 	return b
+// }
 
 func findMaxLength2(nums []int) int {
 	m := make(map[int]int)
