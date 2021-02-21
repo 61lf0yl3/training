@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 
 // func main() {
@@ -56,28 +57,28 @@ func max(a, b int) int {
 	return b
 }
 
-// func findMaxLength(nums []int) int {
-// 	m := make(map[int]int)
-// 	sum := 0
-// 	res := []int{}
-// 	for i := 0; i < len(nums); i++ {
-// 		fmt.Println("m before:", m)
-// 		if nums[i] == 0 {
-// 			sum += -1
-// 		}
-// 		if nums[i] == 1 {
-// 			sum += 1
-// 		}
-// 		m[sum]++
-// 		fmt.Println("m after:", m)
-// 		fmt.Println()
-// 	}
-// 	for _, val := range m {
-// 		if val*2 <= len(nums) {
-// 			res = append(res, val)
-// 		}
-// 	}
-// 	sort.Ints(res)
-// 	fmt.Println("res after:", res)
-// 	return res[len(res)-1] * 2
-// }
+func findMaxLength2(nums []int) int {
+	m := make(map[int]int)
+	sum := 0
+	res := []int{}
+	for i := 0; i < len(nums); i++ {
+		fmt.Println("m before:", m)
+		if nums[i] == 0 {
+			sum += -1
+		}
+		if nums[i] == 1 {
+			sum += 1
+		}
+		m[sum]++
+		fmt.Println("m after:", m)
+		fmt.Println()
+	}
+	for _, val := range m {
+		if val*2 <= len(nums) {
+			res = append(res, val)
+		}
+	}
+	sort.Ints(res)
+	fmt.Println("res after:", res)
+	return res[len(res)-1] * 2
+}
