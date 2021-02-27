@@ -6,12 +6,12 @@ import (
 	"strings"
 )
 
-func main() {
-	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
-	//strs := []string{"abc", "cab", "bca"}
-	fmt.Println(groupAnagrams(strs), "\n")
-	//fmt.Println(groupAnagrams(strs1))
-}
+// func main() {
+// 	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+// 	//strs := []string{"abc", "cab", "bca"}
+// 	fmt.Println(groupAnagrams(strs), "\n")
+// 	//fmt.Println(groupAnagrams(strs1))
+// }
 
 func groupAnagrams(strs []string) [][]string {
 	m := make(map[string][]string)
