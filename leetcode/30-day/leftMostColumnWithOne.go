@@ -12,7 +12,6 @@ type BinaryMatrix struct {
 // }
 
 func leftMostColumnWithOne(binaryMatrix BinaryMatrix) int {
-	func leftMostColumnWithOne(binaryMatrix BinaryMatrix) int {
 		mat := binaryMatrix.Dimensions()
 		row := mat[0]
 		colunm := mat[1]
@@ -41,6 +40,6 @@ func leftMostColumnWithOne(binaryMatrix BinaryMatrix) int {
 		if flag == true {
 			return res 
 		}
-		return -1
-		}	
-
+	return -1
+}	
+	
