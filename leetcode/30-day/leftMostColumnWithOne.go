@@ -7,9 +7,9 @@ type BinaryMatrix struct {
 	Dimensions() []int
 }
 
-func main() {
+// func main() {
 	
-}
+// }
 
 func leftMostColumnWithOne(binaryMatrix BinaryMatrix) int {
 	func leftMostColumnWithOne(binaryMatrix BinaryMatrix) int {
