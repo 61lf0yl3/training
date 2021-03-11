@@ -2,14 +2,14 @@ package main
 
 import "fmt"
 
-func main() {
-	//matrix := [][]byte{{1, 0, 1, 0, 0}, {1, 0, 1, 1, 1}, {1, 1, 1, 1, 1}, {1, 0, 0, 1, 0}}
-	//matrix := [][]byte{}
-	matrix := [][]byte{{1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 0, 0, 0}, {0, 1, 1, 1, 1, 0, 0, 0}}
-	fmt.Println(matrix)
-	fmt.Println("min test:", Min(2, 0, 1))
-	//fmt.Println(maximalSquare(matrix))
-}
+// func main() {
+// 	//matrix := [][]byte{{1, 0, 1, 0, 0}, {1, 0, 1, 1, 1}, {1, 1, 1, 1, 1}, {1, 0, 0, 1, 0}}
+// 	//matrix := [][]byte{}
+// 	matrix := [][]byte{{1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 0, 0, 0}, {0, 1, 1, 1, 1, 0, 0, 0}}
+// 	fmt.Println(matrix)
+// 	fmt.Println("min test:", Min(2, 0, 1))
+// 	//fmt.Println(maximalSquare(matrix))
+// }
 
 func maximalSquare(matrix [][]byte) int {
 	if matrix == nil || len(matrix) == 0 {
