@@ -36,7 +36,7 @@ func maximalSquare(matrix [][]byte) int {
 	return max * max
 }
 
-func Min(nb1, nb2, nb3 int) int {
+func Min2(nb1, nb2, nb3 int) int {
 	if nb1 <= nb2 && nb1 <= nb3 {
 		return nb1
 	}
