@@ -2,14 +2,14 @@ package main
 
 import "math"
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+// type TreeNode struct {
+// 	Val   int
+// 	Left  *TreeNode
+// 	Right *TreeNode
+// }
 
-TreeNode(item int)  {
-}
+// TreeNode(item int)  {
+// }
 
 func maxPathSum(root *TreeNode) int {
 	var res int = math.MinInt32
