@@ -10,17 +10,17 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func main() {
-	//s := os.Args[1]
-	root := &TreeNode{Val: 1}
-	BTreeInsertData(root, 3)
-	BTreeInsertData(root, 5)
-	BTreeInsertData(root, 4)
-	BTreeInsertData(root, 2)
-	//BTreeApplyInorder(root, fmt.Println)
-	//fmt.Println(BTreeLevelCount(root))
-	fmt.Println("longlengh:", diameterOfBinaryTree(root))
-}
+// func main() {
+// 	//s := os.Args[1]
+// 	root := &TreeNode{Val: 1}
+// 	BTreeInsertData(root, 3)
+// 	BTreeInsertData(root, 5)
+// 	BTreeInsertData(root, 4)
+// 	BTreeInsertData(root, 2)
+// 	//BTreeApplyInorder(root, fmt.Println)
+// 	//fmt.Println(BTreeLevelCount(root))
+// 	fmt.Println("longlengh:", diameterOfBinaryTree(root))
+// }
 
 func diameterOfBinaryTree(root *TreeNode) int {
 	var height = 0
