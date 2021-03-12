@@ -2,15 +2,15 @@ package main
 
 import "fmt"
 
-func main() {
-	// text1 := "abcde"
-	// text2 := "ace"
-	text1 := "abc"
-	text2 := "def"
-	// text1 := "ezupkr"
-	// text2 := "ubmrapg"
-	fmt.Println(longestCommonSubsequence(text1, text2))
-}
+// func main() {
+// 	// text1 := "abcde"
+// 	// text2 := "ace"
+// 	text1 := "abc"
+// 	text2 := "def"
+// 	// text1 := "ezupkr"
+// 	// text2 := "ubmrapg"
+// 	fmt.Println(longestCommonSubsequence(text1, text2))
+// }
 
 func longestCommonSubsequence(text1 string, text2 string) int {
 	// m := make(map[rune]int)
