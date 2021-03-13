@@ -1,13 +1,11 @@
 package main
 
-import "fmt"
-
-func main() {
-	//nums := []int{0, 1, 0, 3, 12}
-	nums := []int{4, 2, 4, 0, 0, 3, 0, 5, 1, 0}
-	moveZeroes(nums)
-	fmt.Println(nums)
-}
+// func main() {
+// 	//nums := []int{0, 1, 0, 3, 12}
+// 	nums := []int{4, 2, 4, 0, 0, 3, 0, 5, 1, 0}
+// 	moveZeroes(nums)
+// 	fmt.Println(nums)
+// }
 
 func moveZeroes(nums []int) {
 	// for i1, i2 := 0, 0; i1 < len(nums); i1++ {
