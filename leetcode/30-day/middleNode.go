@@ -7,19 +7,19 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func main() {
-	num1 := &ListNode{Val: 1}
-	num1 = PushBack(num1, 2)
-	num1 = PushBack(num1, 3)
-	num1 = PushBack(num1, 4)
-	num1 = PushBack(num1, 5)
-	num1 = PushBack(num1, 6)
+// func main() {
+// 	num1 := &ListNode{Val: 1}
+// 	num1 = PushBack(num1, 2)
+// 	num1 = PushBack(num1, 3)
+// 	num1 = PushBack(num1, 4)
+// 	num1 = PushBack(num1, 5)
+// 	num1 = PushBack(num1, 6)
 
-	for tmp := middleNode(num1); tmp != nil; tmp = tmp.Next {
-		fmt.Print(tmp.Val)
-	}
-	fmt.Println()
-}
+// 	for tmp := middleNode(num1); tmp != nil; tmp = tmp.Next {
+// 		fmt.Print(tmp.Val)
+// 	}
+// 	fmt.Println()
+// }
 
 func PushBack(num1 *ListNode, num int) {
 	n := &ListNode{Val: num}
