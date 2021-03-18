@@ -2,11 +2,11 @@ package main
 
 import "fmt"
 
-func main() {
-	J := "aA"
-	S := "aAAbbbb"
-	fmt.Println(numJewelsInStones(J, S))
-}
+// func main() {
+// 	J := "aA"
+// 	S := "aAAbbbb"
+// 	fmt.Println(numJewelsInStones(J, S))
+// }
 
 func numJewelsInStones(J string, S string) int {
 	m := make(map[rune]int)
