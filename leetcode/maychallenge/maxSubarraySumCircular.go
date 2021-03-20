@@ -1,11 +1,9 @@
 package main
 
-import "fmt"
-
-func main() {
-	A := []int{5, -3, 5}
-	fmt.Println("res:", maxSubarraySumCircular(A))
-}
+// func main() {
+// 	A := []int{5, -3, 5}
+// 	fmt.Println("res:", maxSubarraySumCircular(A))
+// }
 
 func maxSubarraySumCircular(A []int) int {
 	const MaxInt = int(^uint(0) >> 1)
