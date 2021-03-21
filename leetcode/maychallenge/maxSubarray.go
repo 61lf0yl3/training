@@ -2,12 +2,12 @@ package main
 
 import "fmt"
 
-func main() {
-	nums := []int{-1}
-	//nums := []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}
-	//nums := []int{2, -10, 11, 3, 4, -5, 1}
-	fmt.Println(maxSubArray(nums))
-}
+// func main() {
+// 	nums := []int{-1}
+// 	//nums := []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}
+// 	//nums := []int{2, -10, 11, 3, 4, -5, 1}
+// 	fmt.Println(maxSubArray(nums))
+// }
 func maxSubArray(nums []int) int {
 	var currsum int
 	var maxsum = nums[0]
