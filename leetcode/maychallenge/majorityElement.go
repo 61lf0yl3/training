@@ -4,10 +4,10 @@ import (
 	"fmt"
 )
 
-func main() {
-	arr := []int{2, 2, 1, 1, 1, 2, 2}
-	fmt.Println(majorityElement(arr))
-}
+// func main() {
+// 	arr := []int{2, 2, 1, 1, 1, 2, 2}
+// 	fmt.Println(majorityElement(arr))
+// }
 
 func majorityElement(nums []int) int {
 	m := make(map[int]int)
