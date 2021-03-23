@@ -2,13 +2,13 @@ package main
 
 import "fmt"
 
-func main() {
-	// m := 5
-	// n := 7
-	m := 4
-	n := 8
-	fmt.Println(rangeBitwiseAnd(m, n))
-}
+// func main() {
+// 	// m := 5
+// 	// n := 7
+// 	m := 4
+// 	n := 8
+// 	fmt.Println(rangeBitwiseAnd(m, n))
+// }
 
 func rangeBitwiseAnd(m int, n int) int {
 	fmt.Println("m:", m)
