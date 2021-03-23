@@ -2,10 +2,10 @@ package main
 
 import "fmt"
 
-func main() {
-	nums := []int{2, 5, 5, 2, 8}
-	fmt.Println(singleNumber(nums))
-}
+// func main() {
+// 	nums := []int{2, 5, 5, 2, 8}
+// 	fmt.Println(singleNumber(nums))
+// }
 
 func singleNumber(nums []int) int {
 	// 	nums2 := []int{}
