@@ -2,11 +2,11 @@ package main
 
 import "fmt"
 
-func main() {
-	nums := []int{1, 2, 3, 4}
-	//nums := []int{1, 0}
-	fmt.Println(productExceptSelf(nums))
-}
+// func main() {
+// 	nums := []int{1, 2, 3, 4}
+// 	//nums := []int{1, 0}
+// 	fmt.Println(productExceptSelf(nums))
+// }
 func productExceptSelf(nums []int) []int {
 	size := len(nums)
 

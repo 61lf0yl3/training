@@ -1,8 +1,8 @@
 package main
 
-func main() {
+// func main() {
 
-}
+// }
 
 type MinStack struct {
 	stack []Item

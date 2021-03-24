@@ -1,13 +1,9 @@
 package main
 
-import (
-	"fmt"
-)
-
-func main() {
-	grid := [][]int{{1, 3, 1}, {1, 5, 1}, {4, 2, 1}}
-	fmt.Println(minPathSum(grid))
-}
+// func main() {
+// 	grid := [][]int{{1, 3, 1}, {1, 5, 1}, {4, 2, 1}}
+// 	fmt.Println(minPathSum(grid))
+// }
 
 func minPathSum(grid [][]int) int {
 	if grid == nil || len(grid) == 0 {

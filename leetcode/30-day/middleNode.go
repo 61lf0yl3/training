@@ -7,19 +7,19 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func main() {
-	num1 := &ListNode{Val: 1}
-	num1 = PushBack(num1, 2)
-	num1 = PushBack(num1, 3)
-	num1 = PushBack(num1, 4)
-	num1 = PushBack(num1, 5)
-	num1 = PushBack(num1, 6)
+// func main() {
+// 	num1 := &ListNode{Val: 1}
+// 	num1 = PushBack(num1, 2)
+// 	num1 = PushBack(num1, 3)
+// 	num1 = PushBack(num1, 4)
+// 	num1 = PushBack(num1, 5)
+// 	num1 = PushBack(num1, 6)
 
-	for tmp := middleNode(num1); tmp != nil; tmp = tmp.Next {
-		fmt.Print(tmp.Val)
-	}
-	fmt.Println()
-}
+// 	for tmp := middleNode(num1); tmp != nil; tmp = tmp.Next {
+// 		fmt.Print(tmp.Val)
+// 	}
+// 	fmt.Println()
+// }
 
 func PushBack(num1 *ListNode, num int) {
 	n := &ListNode{Val: num}
@@ -50,8 +50,9 @@ func middleNode(head *ListNode) *ListNode {
 	}
 	return newnode
 }
+
 //second way
-//func middleNode(head *ListNode) *ListNode {
+func middleNode2(head *ListNode) *ListNode {
 	fastPtr := head
 	slowPtr := fastPtr
 
@@ -69,35 +70,35 @@ func middleNode(head *ListNode) *ListNode {
 }
 
 func middleNode2(head *ListNode) *ListNode {
-    fastPtr := head
-    slowPtr := fastPtr
-    
-    for fastPtr.Next != nil {
-        fmt.Print("fastPtr before:")
-        Print(fastPtr)
+	fastPtr := head
+	slowPtr := fastPtr
+
+	for fastPtr.Next != nil {
+		fmt.Print("fastPtr before:")
+		Print(fastPtr)
 		fmt.Print("slowPrt before ")
 		Print(slowPtr)
-        slowPtr = slowPtr.Next
+		slowPtr = slowPtr.Next
 		fmt.Print("slowPrt after:")
 		Print(slowPtr)
 
-        if fastPtr.Next.Next == nil {
-            fastPtr = fastPtr.Next
-			 fmt.Print("fastPtr after if1:")
-			 Print(fastPtr)
-        } else {
-            fastPtr = fastPtr.Next.Next
+		if fastPtr.Next.Next == nil {
+			fastPtr = fastPtr.Next
+			fmt.Print("fastPtr after if1:")
+			Print(fastPtr)
+		} else {
+			fastPtr = fastPtr.Next.Next
 			fmt.Print("fastPtr ter if2:")
 			Print(fastPtr)
-        }
-    }
-    
-    return slowPtr
+		}
+	}
+
+	return slowPtr
 }
 
-func Print(num1 *ListNode)  {
-    for tmp := num1; tmp != nil; tmp = tmp.Next {
+func Print(num1 *ListNode) {
+	for tmp := num1; tmp != nil; tmp = tmp.Next {
 		fmt.Print(tmp.Val)
 	}
-    fmt.Println()
+	fmt.Println()
 }
