@@ -2,13 +2,13 @@ package main
 
 import "fmt"
 
-func main() {
-	// s := "abc"
-	// shift := [][]int{{0, 1}, {1, 2}}
-	s = "abcdefg"
-	shift = [][]int{{1, 1}, {1, 1}, {0, 2}, {1, 3}}
-	fmt.Println(stringShift(s, shift))
-}
+// func main() {
+// 	// s := "abc"
+// 	// shift := [][]int{{0, 1}, {1, 2}}
+// 	s = "abcdefg"
+// 	shift = [][]int{{1, 1}, {1, 1}, {0, 2}, {1, 3}}
+// 	fmt.Println(stringShift(s, shift))
+// }
 
 func stringShift(s string, shift [][]int) string {
 	for _, arr := range shift {

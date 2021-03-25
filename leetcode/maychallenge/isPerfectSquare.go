@@ -1,10 +1,8 @@
 package main
 
-import "fmt"
-
-func main() {
-	fmt.Println(isPerfectSquare(16))
-}
+// func main() {
+// 	fmt.Println(isPerfectSquare(16))
+// }
 
 func isPerfectSquare(num int) bool {
 	for i := 1; i <= num; i++ {

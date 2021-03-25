@@ -4,15 +4,15 @@ import (
 	"fmt"
 )
 
-func main() {
-	// num := "1432219"
-	// k := 3
-	num := "10200"
-	k := 1
-	// num := "10"
-	// k := 1
-	fmt.Println(removeKdigits(num, k))
-}
+// func main() {
+// 	// num := "1432219"
+// 	// k := 3
+// 	num := "10200"
+// 	k := 1
+// 	// num := "10"
+// 	// k := 1
+// 	fmt.Println(removeKdigits(num, k))
+// }
 
 func removeKdigits(num string, k int) string {
 	var res string

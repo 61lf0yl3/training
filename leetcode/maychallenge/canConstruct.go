@@ -1,12 +1,10 @@
 package main
 
-import "fmt"
-
-func main() {
-	ransomNote := "aaa"
-	magazine := "aaab"
-	fmt.Println(canConstruct(ransomNote, magazine))
-}
+// func main() {
+// 	ransomNote := "aaa"
+// 	magazine := "aaab"
+// 	fmt.Println(canConstruct(ransomNote, magazine))
+// }
 
 func canConstruct(ransomNote string, magazine string) bool {
 	if len(ransomNote) == 0 {

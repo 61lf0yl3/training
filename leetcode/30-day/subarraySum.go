@@ -1,16 +1,14 @@
 package main
 
-import "fmt"
-
-func main() {
-	nums := []int{3, 4, 7, 2, -3, 1, 4, 2}
-	k := 7
-	// nums := []int{-1, -1, 1}
-	// k := 0
-	// nums := []int{-1, -1, 1}
-	// k := 2
-	fmt.Println(subarraySum(nums, k))
-}
+// func main() {
+// 	nums := []int{3, 4, 7, 2, -3, 1, 4, 2}
+// 	k := 7
+// 	// nums := []int{-1, -1, 1}
+// 	// k := 0
+// 	// nums := []int{-1, -1, 1}
+// 	// k := 2
+// 	fmt.Println(subarraySum(nums, k))
+// }
 
 func subarraySum(nums []int, k int) int {
 	if nums == nil || len(nums) == 0 {
