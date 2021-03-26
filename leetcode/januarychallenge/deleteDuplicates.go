@@ -20,7 +20,7 @@ func PrintList(l *ListNode) {
 	fmt.Print(nil, "\n")
 }
 
-func deleteDuplicates(n1 *ListNode) *ListNode {
+func deleteDuplicates2(n1 *ListNode) *ListNode {
 	iterator := n1
 	if iterator == nil {
 		return n1
