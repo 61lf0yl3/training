@@ -74,11 +74,11 @@ func checkInclusion1(s1 string, s2 string) bool {
 	return false
 }
 
-// func deepEqual(a, b []int) bool {
-// 	for i := 0; i < 26; i++ {
-// 		if a[i] != b[i] {
-// 			return false
-// 		}
-// 	}
-// 	return true
-// }
+func deepEqual(a, b []int) bool {
+	for i := 0; i < 26; i++ {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
+}
