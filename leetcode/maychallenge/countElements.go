@@ -6,6 +6,7 @@ package main
 // 	//arr := []int{1, 1, 2, 2}
 // 	fmt.Println(countElements(arr))
 // }
+
 func countElements(arr []int) int {
 	m := make(map[int]bool)
 	//sort.Ints(arr)
