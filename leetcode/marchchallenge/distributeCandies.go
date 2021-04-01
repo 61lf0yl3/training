@@ -1,11 +1,9 @@
 package main
 
-import "fmt"
-
-func main() {
-	candyType := []int{1, 1, 2, 2, 3, 3}
-	fmt.Println(distributeCandies(candyType))
-}
+// func main() {
+// 	candyType := []int{1, 1, 2, 2, 3, 3}
+// 	fmt.Println(distributeCandies(candyType))
+// }
 
 func distributeCandies(candyType []int) int {
 	recomendedNb := len(candyType) / 2
