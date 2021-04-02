@@ -1,11 +1,9 @@
 package main
 
-import "fmt"
-
-func main() {
-	nums := []int{1, 2, 3, 3, 5}
-	fmt.Println(findErrorNums(nums))
-}
+// func main() {
+// 	nums := []int{1, 2, 3, 3, 5}
+// 	fmt.Println(findErrorNums(nums))
+// }
 func findErrorNums(nums []int) []int {
 	if len(nums) == 2 {
 		nums[1]++
