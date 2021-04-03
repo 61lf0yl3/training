@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/61lf0yl3/training/leetcode/januarychallenge"
 )
 
 func main() {
-	fmt.Println(januarychallenge.LengthOfLongestSubstring("abc"))
+	for i := 33; i < 127; i++ {
+		fmt.Println(string(i))
+	}
 }
