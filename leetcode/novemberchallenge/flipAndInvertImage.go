@@ -1,5 +1,7 @@
 package novemberchallenge
 
+import "fmt"
+
 func flipAndInvertImage(A [][]int) [][]int {
 	//make double slice
 	res := make([][]int, len(A))
@@ -9,7 +11,7 @@ func flipAndInvertImage(A [][]int) [][]int {
 
 	for i, v := range A {
 		for j := len(v) - 1; j >= 0; j-- {
-			//fmt.Println(A[i][j])
+			fmt.Println(A[i][j])
 			if A[i][j] == 0 {
 				res[i][len(v)-1-j] = 1
 			} else if A[i][j] == 1 {
