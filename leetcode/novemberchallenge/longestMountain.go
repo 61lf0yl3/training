@@ -2,6 +2,7 @@ package novemberchallenge
 
 import "fmt"
 
+//longestMountain ...
 func longestMountain(arr []int) int {
 	var res int
 	var peakindex int
