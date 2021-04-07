@@ -1,5 +1,6 @@
 package novemberchallenge
 
+// maxPower ...
 func maxPower(s string) int {
 	res := 0
 	temp := 0
