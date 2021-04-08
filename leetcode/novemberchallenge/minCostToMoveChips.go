@@ -4,6 +4,7 @@ import (
 	"sort"
 )
 
+//minCostToMoveChips
 func minCostToMoveChips(position []int) int {
 	nbeven := 0
 	nbodd := 0
