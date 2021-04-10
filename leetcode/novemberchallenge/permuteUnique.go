@@ -27,6 +27,7 @@ func permuteUnique(nums []int) [][]int {
 	return rst
 }
 
+// findLast ...
 func findLast(elem int, arr []int) int {
 	for i := len(arr) - 1; i >= 0; i-- {
 		if arr[i] == elem {
