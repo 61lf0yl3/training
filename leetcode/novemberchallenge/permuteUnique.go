@@ -37,6 +37,7 @@ func findLast(elem int, arr []int) int {
 	return -1
 }
 
+// insertAt ...
 func insertAt(at int, elem int, arr []int) [][]int {
 	n := len(arr)
 	rst := make([][]int, n-at+1)
