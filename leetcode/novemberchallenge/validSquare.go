@@ -34,6 +34,7 @@ func validSquare(p1 []int, p2 []int, p3 []int, p4 []int) bool {
 	return false
 }
 
+// distance ...
 func distance(p1 []int, p2 []int) int {
 	dis := poweroftwo(p1[0]-p2[0]) + poweroftwo(p1[1]-p2[1])
 	return dis
