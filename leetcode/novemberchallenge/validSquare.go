@@ -40,6 +40,7 @@ func distance(p1 []int, p2 []int) int {
 	return dis
 }
 
+// poweroftwo ...
 func poweroftwo(nb int) int {
 	return nb * nb
 }
