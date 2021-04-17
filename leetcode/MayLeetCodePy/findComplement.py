@@ -26,8 +26,8 @@ class Solution2:
             result += str(1-int(s))
         return int(result,2)
 
-# class Solution:
-#     def findComplement(self, num: int) -> int:
-#         b_str = bin(num).replace('0b', '')
-#         mask_str = ''.join(['1'] * len(b_str))
-#         return num ^ int(mask_str, 2)
+class Solution3:
+    def findComplement(self, num: int) -> int:
+        b_str = bin(num).replace('0b', '')
+        mask_str = ''.join(['1'] * len(b_str))
+        return num ^ int(mask_str, 2)
