@@ -1,3 +1,4 @@
+# findJudge
 def findJudge( N: int, trust: [[int]]) -> int:
         l = [0] * int(N+1)
         # for arr in trust:
