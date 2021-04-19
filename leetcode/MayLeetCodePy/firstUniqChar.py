@@ -12,12 +12,12 @@ class Solution:
 
 print(Solution.firstUniqChar("loveleetcode"))   
     #print(firstUniqChar( ,'loveleetcode'))
-
-    # def firstUniqChar(self, s: str) -> int:
-    #     l = list(s)
-    #     count = Counter(l)
-    #     for i in count:
-    #         if count[i]==1:
-    #             return(s.find(i))
-    #     else:
-    #         return(-1)
+class Solution2:
+    def firstUniqChar2(self, s: str) -> int:
+        l = list(s)
+        count = Counter(l)
+        for i in count:
+            if count[i]==1:
+                return(s.find(i))
+        else:
+            return(-1)
