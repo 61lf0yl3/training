@@ -1,4 +1,5 @@
 class Solution:  
+# firstBadVersion
   def firstBadVersion(self, n):
         """
         :type n: int
