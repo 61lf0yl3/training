@@ -1,4 +1,5 @@
 class Solution:
+    # numJewelsInStones
     def numJewelsInStones(self, J: str, S: str) -> int:
         res = 0
         for jewel in J:
