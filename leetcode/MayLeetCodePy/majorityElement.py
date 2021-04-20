@@ -1,3 +1,4 @@
+# majorityElement
 def majorityElement(nums: [int]) -> int:
     # res = 0
     # counter = 0
