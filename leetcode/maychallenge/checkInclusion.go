@@ -14,6 +14,7 @@ import (
 // 	fmt.Println("res:", checkInclusion(s1, s2))
 // }
 
+// checkInclusion
 func checkInclusion(s1 string, s2 string) bool {
 	// slice1 := strings.Split(s1, "")
 	// sort.Strings(slice1)
