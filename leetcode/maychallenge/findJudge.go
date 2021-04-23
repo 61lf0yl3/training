@@ -12,6 +12,7 @@ import "fmt"
 // 	fmt.Println("res:", findJudge(N, trust))
 // }
 
+// findJudge
 func findJudge(N int, trust [][]int) int {
 	a := make([]int, N+1)
 
