@@ -1,5 +1,6 @@
 package main
 
+// firstBadVersion
 func firstBadVersion(n int) int {
 	start := 1
 	end := n
