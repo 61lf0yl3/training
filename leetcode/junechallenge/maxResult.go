@@ -4,12 +4,12 @@ import (
 	"fmt"
 )
 
-func main() {
-	nums := []int{1, -5, -20, 4, -1, 3, -6, -3}
-	k := 2
-	fmt.Println(maxResult(nums, k))
-}
-func maxResult(nums []int, k int) int {
+// func main() {
+// 	nums := []int{1, -5, -20, 4, -1, 3, -6, -3}
+// 	k := 2
+// 	fmt.Println(maxResult(nums, k))
+// }
+func (nums []int, k int) int {
 	var res = nums[0]
 	fmt.Println("nums:", nums)
 	fmt.Println()
