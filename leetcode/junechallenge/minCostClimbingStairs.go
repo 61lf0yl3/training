@@ -1,11 +1,9 @@
 package main
 
-import "fmt"
-
-func main() {
-	cost := []int{1, 100, 1, 1, 1, 100, 1, 1, 100, 1}
-	fmt.Println(minCostClimbingStairs(cost))
-}
+// func main() {
+// 	cost := []int{1, 100, 1, 1, 1, 100, 1, 1, 100, 1}
+// 	fmt.Println(minCostClimbingStairs(cost))
+// }
 
 func minCostClimbingStairs(cost []int) int {
 	for i := 2; i < len(cost); i++ {
