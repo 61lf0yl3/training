@@ -30,3 +30,22 @@ func sortSlice(boxTypes [][]int) {
 		}
 	}
 }
+
+func maximumUnits2(boxTypes [][]int, truckSize int) int {
+	counters := [1001]int{0}
+
+	for _, v := range boxTypes {
+		counters[v[1]] += v[0]
+	}
+	result := 0
+	for i := 1000; i >= 0; i-- {
+		if truckSize == 0 {
+			return result
+		}
+		boxes := min(counters[i], truckSize)
+		result += (boxes * i)
+		truckSize -= boxes
+	}
+
+	return result
+}
