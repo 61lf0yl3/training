@@ -9,7 +9,37 @@ import (
 // 	k := 2
 // 	fmt.Println(maxResult(nums, k))
 // }
-func (nums []int, k int) int {
+func maxResult(nums []int, k int) int {
+	Min := func(a, b int) int {
+		if a < b {
+			return a
+		}
+		return b
+	}
+	Max := func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+	sums := make([]int, len(nums))
+	sums[len(nums)-1] = nums[len(nums)-1]
+	for i := len(nums) - 2; i > -1; i-- {
+		sums[i] = nums[i]
+		max := sums[i+1]
+		for j := i + 1; j <= Min(len(nums)-1, i+k); j++ {
+			max = Max(max, sums[j])
+			if nums[j] > 0 {
+				break
+			}
+		}
+		sums[i] += max
+	}
+	return sums[0]
+}
+
+//
+func maxResult2(nums []int, k int) int {
 	var res = nums[0]
 	fmt.Println("nums:", nums)
 	fmt.Println()
