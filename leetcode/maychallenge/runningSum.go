@@ -1,13 +1,11 @@
 package main
 
-import "fmt"
-
-func main() {
-	nums := []int{1, 2, 3, 4}
-	nums = []int{1, 1, 1, 1, 1}
-	nums = []int{3, 1, 2, 10, 1}
-	fmt.Println(runningSum(nums))
-}
+// func main() {
+// 	nums := []int{1, 2, 3, 4}
+// 	nums = []int{1, 1, 1, 1, 1}
+// 	nums = []int{3, 1, 2, 10, 1}
+// 	fmt.Println(runningSum(nums))
+// }
 
 func runningSum(nums []int) []int {
 	res := []int{}
