@@ -4,13 +4,13 @@ import (
 	"fmt"
 )
 
-func main() {
-	nums := []int{4, 2, 1}
-	//nums = []int{1, 3, 2}
-	//nums = []int{3, 4, 2, 3}
-	//nums = []int{5, 7, 1, 8}
-	fmt.Println(checkPossibility(nums))
-}
+// func main() {
+// 	nums := []int{4, 2, 1}
+// 	//nums = []int{1, 3, 2}
+// 	//nums = []int{3, 4, 2, 3}
+// 	//nums = []int{5, 7, 1, 8}
+// 	fmt.Println(checkPossibility(nums))
+// }
 
 func checkPossibility(nums []int) bool {
 	error1 := 0
