@@ -23,6 +23,20 @@ func jump(nums []int) int {
 	return res
 }
 
+func jump2(nums []int) int {
+	var jumps, end, longest int
+	for i := 0; i < len(nums)-1; i++ {
+		if i+nums[i] > longest {
+			longest = i + nums[i]
+		}
+		if i == end {
+			end = longest
+			jumps++
+		}
+	}
+	return jumps
+}
+
 func max(num1, num2 int) int {
 	if num1 > num2 {
 		return num1
