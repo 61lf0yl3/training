@@ -35,6 +35,27 @@ func checkPossibility(nums []int) bool {
 	return error1 == 0
 }
 
+func checkPossibility2(nums []int) bool {
+	c, p := 0, 0
+	for i := 0; i < len(nums)-1; i++ {
+		if nums[i] > nums[i+1] {
+			c += 1
+			p = i + 1
+		}
+	}
+	if c == 0 {
+		return true
+	} else if c > 1 {
+		return false
+	} else {
+		if p == 1 || p == len(nums)-1 {
+			return true
+		} else {
+			return ((nums[p-1] <= nums[p+1]) || (nums[p-2] <= nums[p]))
+		}
+	}
+}
+
 // func Recursive(nums, i1, i2 int) bool {
 // 	if nums[i1] > nums[i2] {
 // 		Recursive(nums, i1-1, )
