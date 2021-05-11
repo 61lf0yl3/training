@@ -12,12 +12,12 @@ func minCostClimbingStairs(cost []int) int {
 	return min(cost[len(cost)-1], cost[len(cost)-2])
 }
 
-func min(nb1, nb2 int) int {
-	if nb1 > nb2 {
-		return nb2
-	}
-	return nb1
-}
+// func min2(nb1, nb2int) int {
+// 	if nb1 > nb2 {
+// 		return nb2
+// 	}
+// 	return nb1
+// }
 
 func minCostClimbingStairs2(cost []int) int {
 	length := len(cost)
