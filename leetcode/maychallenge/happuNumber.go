@@ -7,6 +7,7 @@ package main
 
 //var counter = 0
 
+//isHappy
 func isHappy(n int) bool {
 	counter := 0
 	for n != 1 {

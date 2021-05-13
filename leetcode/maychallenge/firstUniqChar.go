@@ -21,6 +21,7 @@ func firstUniqChar1(s string) int {
 	return -1
 }
 
+// firstUniqChar
 func firstUniqChar(s string) int {
 	chars := make([]int, 26)
 	for i := range s {

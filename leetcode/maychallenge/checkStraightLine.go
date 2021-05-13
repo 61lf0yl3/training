@@ -5,6 +5,7 @@ package main
 // 	fmt.Println(checkStraightLine(coordinates))
 // }
 
+// checkStraightLine
 func checkStraightLine(coordinates [][]int) bool {
 	if len(coordinates) == 2 {
 		return true

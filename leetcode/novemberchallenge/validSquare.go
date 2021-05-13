@@ -1,5 +1,6 @@
 package novemberchallenge
 
+// validSquare ...
 func validSquare(p1 []int, p2 []int, p3 []int, p4 []int) bool {
 	if p1[0] == p2[0] && p1[1] == p2[1] || p1[0] == p3[0] && p1[1] == p3[1] || p1[0] == p4[0] && p1[1] == p4[1] {
 		return false
@@ -33,11 +34,13 @@ func validSquare(p1 []int, p2 []int, p3 []int, p4 []int) bool {
 	return false
 }
 
+// distance ...
 func distance(p1 []int, p2 []int) int {
 	dis := poweroftwo(p1[0]-p2[0]) + poweroftwo(p1[1]-p2[1])
 	return dis
 }
 
+// poweroftwo ...
 func poweroftwo(nb int) int {
 	return nb * nb
 }

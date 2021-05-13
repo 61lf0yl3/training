@@ -1,3 +1,4 @@
+# checkStraightLine
 def checkStraightLine(self, coordinates: [[int]]) -> bool:
     if len(coordinates)==2: return True
     

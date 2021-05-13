@@ -6,6 +6,7 @@ package main
 // 	fmt.Println(canConstruct(ransomNote, magazine))
 // }
 
+//canConstruct
 func canConstruct(ransomNote string, magazine string) bool {
 	if len(ransomNote) == 0 {
 		return true

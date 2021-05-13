@@ -1,3 +1,4 @@
+# isPerfectSquare
 def isPerfectSquare(num: int) -> bool:
     # for i in range(num+1):
     #      if i > 0:  

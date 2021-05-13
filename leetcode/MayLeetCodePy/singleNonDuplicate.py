@@ -1,3 +1,4 @@
+# singleNonDuplicate
 def singleNonDuplicate(nums: [int]) -> int:
     # print(nums)
     start = 0

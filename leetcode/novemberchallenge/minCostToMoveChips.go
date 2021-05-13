@@ -1,9 +1,11 @@
 package novemberchallenge
 
 import (
+	"fmt"
 	"sort"
 )
 
+//minCostToMoveChips
 func minCostToMoveChips(position []int) int {
 	nbeven := 0
 	nbodd := 0
@@ -16,7 +18,7 @@ func minCostToMoveChips(position []int) int {
 		}
 	}
 	sort.Ints(position)
-	//fmt.Println(position)
+	fmt.Println(position)
 	for _, v := range position {
 		if v%2 == 0 {
 			nbeven++

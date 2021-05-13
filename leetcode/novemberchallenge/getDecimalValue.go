@@ -15,12 +15,12 @@ func getDecimalValue(head *ListNode) int {
 	return res
 }
 
-// func getDecimalValue(head *ListNode) int {
-//     ret := 0
-//     for head != nil {
-//         ret = ret << 1
-//         ret |= head.Val
-//         head = head.Next
-//     }
-//     return ret
-// }
+func getDecimalValue2(head *ListNode) int {
+	ret := 0
+	for head != nil {
+		ret = ret << 1
+		ret |= head.Val
+		head = head.Next
+	}
+	return ret
+}

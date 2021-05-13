@@ -18,16 +18,16 @@ def findComplement(num: int) -> int:
 print(findComplement(2))
 
 
-# class Solution:
-#     def findComplement(self, num: int) -> int:
-#         temp = bin(num)[2:]
-#         result = ""
-#         for s in temp:
-#             result += str(1-int(s))
-#         return int(result,2)
+class Solution2:
+    def findComplement(self, num: int) -> int:
+        temp = bin(num)[2:]
+        result = ""
+        for s in temp:
+            result += str(1-int(s))
+        return int(result,2)
 
-# class Solution:
-#     def findComplement(self, num: int) -> int:
-#         b_str = bin(num).replace('0b', '')
-#         mask_str = ''.join(['1'] * len(b_str))
-#         return num ^ int(mask_str, 2)
+class Solution3:
+    def findComplement(self, num: int) -> int:
+        b_str = bin(num).replace('0b', '')
+        mask_str = ''.join(['1'] * len(b_str))
+        return num ^ int(mask_str, 2)
