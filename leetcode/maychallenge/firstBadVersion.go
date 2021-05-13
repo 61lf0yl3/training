@@ -8,7 +8,7 @@ func firstBadVersion(n int) int {
 			return start
 		}
 		mid := (start + end) / 2
-		if mid {
+		if mid > 0 { //?
 			end = mid
 		} else if !isBadVersion(mid) {
 			start = mid + 1

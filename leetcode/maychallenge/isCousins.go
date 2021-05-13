@@ -1,10 +1,10 @@
 package main
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+// type TreeNode struct {
+// 	Val   int
+// 	Left  *TreeNode
+// 	Right *TreeNode
+// }
 
 func isCousins(root *TreeNode, x int, y int) bool {
 	return ((BtreeLevel(root, x, 1) == BtreeLevel(root, y, 1)) && !Sibling(root, x, y))
