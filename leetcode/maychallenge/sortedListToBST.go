@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 //Definition for singly-linked list.
 type ListNode struct {
 	Val  int
@@ -14,28 +16,21 @@ type TreeNode struct {
 }
 
 func sortedListToBST(head *ListNode) *TreeNode {
+	if head == nil {
+		return nil
+	}
 	var rootVal int
-	var rootindex int
 	headarr := []int{}
 	for e := head; e != nil; e = e.Next {
 		headarr = append(headarr, e.Val)
 	}
-	if len(headarr)%2 == 0 {
-		rootindex = (len(headarr) / 2) - 1
-		rootVal = headarr[(len(headarr)/2)-1]
-	} else {
-		rootindex = len(headarr) / 2
-		rootVal = headarr[len(headarr)/2]
-	}
+	rootVal = headarr[len(headarr)/2]
+	fmt.Println(rootVal)
 	root := &TreeNode{Val: rootVal}
-	//arr1 := headarr[0:rootindex]
-	arr2 := headarr[rootindex+1 : len(headarr)]
-	//fmt.Println(arr1, arr2)
-	for i := rootindex - 1; i >= 0; i-- {
-		BTreeInsertData(root, headarr[i])
-	}
-	for _, val := range arr2 {
-		BTreeInsertData(root, val)
+	for i := len(headarr) - 1; i >= 0; i-- {
+		if rootVal != headarr[i] {
+			BTreeInsertData(root, headarr[i])
+		}
 	}
 	return root
 }
