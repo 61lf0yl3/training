@@ -1,11 +1,9 @@
 package main
 
-import "fmt"
-
-func main() {
-	nums := []int{2, 3, 1, 1, 4}
-	fmt.Println(jump(nums))
-}
+// func main() {
+// 	nums := []int{2, 3, 1, 1, 4}
+// 	fmt.Println(jump(nums))
+// }
 
 func jump(nums []int) int {
 	res := 0
