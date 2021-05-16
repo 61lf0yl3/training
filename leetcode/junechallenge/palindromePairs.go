@@ -64,18 +64,6 @@ func palindromePairs2(words []string) [][]int {
 	return res
 }
 
-//   func isPalindrome(s string) bool {
-// 	i, j := 0, len(s)-1
-// 	for i < j {
-// 	  if s[i] != s[j] {
-// 		return false
-// 	  }
-// 	  i++
-// 	  j--
-// 	}
-// 	return true
-//   }
-
 func reverse(s string) string {
 	bs := []byte(s)
 	for i, j := 0, len(bs)-1; i < j; i, j = i+1, j-1 {
