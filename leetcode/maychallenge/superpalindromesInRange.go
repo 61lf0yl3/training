@@ -1,16 +1,15 @@
 package main
 
 import (
-	"fmt"
 	"math"
 	"strconv"
 )
 
-func main() {
-	left := "4"
-	right := "1000"
-	fmt.Println(superpalindromesInRange(left, right))
-}
+// func main() {
+// 	left := "4"
+// 	right := "1000"
+// 	fmt.Println(superpalindromesInRange(left, right))
+// }
 
 func superpalindromesInRange(left string, right string) int {
 	rightint, _ := strconv.Atoi(right)
@@ -67,15 +66,15 @@ func superpalindromesInRange2(left string, right string) int {
 	return result
 }
 
-func isPalindrome(x int) bool {
-	y := 0
-	for ; x > y; x /= 10 {
-		y *= 10
-		y += x % 10
-	}
+// func isPalindrome(x int) bool {
+// 	y := 0
+// 	for ; x > y; x /= 10 {
+// 		y *= 10
+// 		y += x % 10
+// 	}
 
-	return x == y || x == y/10
-}
+// 	return x == y || x == y/10
+// }
 
 func sqrt(s string, roundFunc func(float64) float64) int {
 	f, _ := strconv.ParseFloat(s, 64)
