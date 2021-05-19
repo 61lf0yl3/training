@@ -1,29 +1,45 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
-	n := 10
+	n := 2
 	fmt.Println(countPrimes(n))
 }
 func countPrimes(n int) int {
 	res := 0
-	for i := 2; i <= n; i++ {
+	for i := 0; i <= n; i++ {
+		if i == 2 || i == 3 || i == 5 {
+			res++
+			continue
+		}
 		if isPrime(i) {
 			res++
 		}
 	}
 	return res
 }
-
 func isPrime(nb int) bool {
-	if nb == 0 || nb == 1 {
-		return false
-	}
-	for i := 2; i < nb; i++ {
+	for i := 7; i < int(math.Floor(math.Sqrt(float64(nb)))); i++ {
 		if nb%i == 0 {
 			return false
 		}
 	}
-	return true
+	return nb > 1
 }
+
+// slow isPrime
+// func isPrime(nb int) bool {
+// 	if nb == 0 || nb == 1 {
+// 		return false
+// 	}
+// 	for i := 2; i < nb; i++ {
+// 		if nb%i == 0 {
+// 			return false
+// 		}
+// 	}
+// 	return true
+// }
