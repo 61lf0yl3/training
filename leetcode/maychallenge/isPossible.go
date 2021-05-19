@@ -5,10 +5,10 @@ import (
 	"sort"
 )
 
-func main() {
-	target := []int{9, 3, 5}
-	fmt.Println(isPossible2(target))
-}
+// func main() {
+// 	target := []int{9, 3, 5}
+// 	fmt.Println(isPossible2(target))
+// }
 
 func isPossible(target []int) bool {
 	sort.Ints(target)
