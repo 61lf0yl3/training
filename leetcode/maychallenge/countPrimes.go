@@ -23,7 +23,7 @@ func countPrimes(n int) int {
 	return res
 }
 func isPrime(nb int) bool {
-	for i := 7; i < int(math.Floor(math.Sqrt(float64(nb)))); i++ {
+	for i := 2; i <= int(math.Floor(math.Sqrt(float64(nb)))); i++ {
 		if nb%i == 0 {
 			return false
 		}
@@ -43,3 +43,26 @@ func isPrime(nb int) bool {
 // 	}
 // 	return true
 // }
+
+func countPrimes2(n int) int {
+	if n <= 2 {
+		return 0
+	}
+	nums := make([]bool, n)
+	primes := 1
+
+	for i := 0; i < n; i++ {
+		nums[i] = true
+	}
+
+	for i := 3; i < n; i += 2 {
+		if nums[i] {
+			primes++
+			for j := i * i; j < n; j += 2 * i {
+				nums[j] = false
+			}
+		}
+	}
+
+	return primes
+}
