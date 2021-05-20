@@ -25,3 +25,29 @@ func maxScore(cardPoints []int, k int) int {
 	}
 	return res
 }
+
+func maxScore2(cardPoints []int, k int) int {
+	//sliding window approach
+	//essentially, find the sum of first K elements,
+	//and then start adding the last k elements by removing one elem from the right of the first k elements
+	//if the sum is higher than previously found max, update it
+	//return the max
+
+	maxSum := 0
+	//find first k sum
+	for i := 0; i < k; i++ {
+		maxSum += cardPoints[i]
+	}
+
+	//start from the back and end of the start from the start
+	gMaxSum := maxSum
+	for i := 0; i < k; i++ {
+		maxSum += cardPoints[len(cardPoints)-1-i] - cardPoints[k-1-i]
+		//fmt.Printf("MaxSum: %d\n", maxSum)
+		if maxSum > gMaxSum {
+			gMaxSum = maxSum
+		}
+	}
+
+	return gMaxSum
+}
