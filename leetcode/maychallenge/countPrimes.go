@@ -1,14 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"math"
 )
 
-func main() {
-	n := 2
-	fmt.Println(countPrimes(n))
-}
+// func main() {
+// 	n := 2
+// 	fmt.Println(countPrimes(n))
+// }
 func countPrimes(n int) int {
 	res := 0
 	for i := 0; i <= n; i++ {
