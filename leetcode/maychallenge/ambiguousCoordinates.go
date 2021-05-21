@@ -44,3 +44,40 @@ func valid(s string) []string {
 
 	return res
 }
+
+func dec(str string) []string {
+	size := len(str)
+	if size == 0 {
+		return []string{}
+	}
+	if size == 1 {
+		return []string{str}
+	}
+	if str[0] == '0' && str[size-1] == '0' {
+		return []string{}
+	}
+	if str[size-1] == '0' {
+		return []string{str}
+	}
+	if str[0] == '0' {
+		return []string{string(str[0]) + "." + string(str[1:])}
+	}
+	res := []string{str}
+	for i := 1; i < size; i++ {
+		res = append(res, string(str[0:i])+"."+string(str[i:]))
+	}
+	return res
+}
+
+func ambiguousCoordinates2(s string) []string {
+	str := s[1 : len(s)-1]
+	ans := []string{}
+	for i := 1; i < len(str); i++ {
+		for _, a := range dec(str[0:i]) {
+			for _, b := range dec(str[i:]) {
+				ans = append(ans, "("+a+", "+b+")")
+			}
+		}
+	}
+	return ans
+}
