@@ -1,12 +1,10 @@
 package main
 
-import "fmt"
-
-func main() {
-	cardPoints := []int{1, 2, 3, 4, 5, 6, 1}
-	k := 3
-	fmt.Println(maxScore(cardPoints, k))
-}
+// func main() {
+// 	cardPoints := []int{1, 2, 3, 4, 5, 6, 1}
+// 	k := 3
+// 	fmt.Println(maxScore(cardPoints, k))
+// }
 
 func maxScore(cardPoints []int, k int) int {
 	left_sum := []int{0}
