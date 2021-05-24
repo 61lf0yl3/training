@@ -8,6 +8,25 @@ package main
 // 	fmt.Println(a, len(a), cap(a))
 // }
 
+func numSubarrayBoundedMax(nums []int, left int, right int) int {
+	start := -1
+	end := -1
+	res := 0
+	for i := 0; i < len(nums); i++ {
+		if nums[i] > right {
+			start = i
+			end = i
+			continue
+		}
+		if nums[i] >= left {
+			end = i
+		}
+		res += end - start
+		//fmt.Println("res:", res)
+	}
+	return res
+}
+
 func numSubarrayBoundedMax2(nums []int, left int, right int) int {
 	return getAnswerPerBound(nums, right) - getAnswerPerBound(nums, left-1)
 }
