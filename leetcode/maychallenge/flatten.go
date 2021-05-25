@@ -21,3 +21,22 @@ func flatten(root *TreeNode) {
 		node = node.Right
 	}
 }
+func flatten2(root *TreeNode) {
+	if root == nil {
+		return
+	}
+
+	tmpL := root.Left
+	tmpR := root.Right
+
+	flatten(tmpL)
+	flatten(tmpR)
+
+	root.Left = nil
+	root.Right = tmpL
+	cur := root
+	for cur.Right != nil {
+		cur = cur.Right
+	}
+	cur.Right = tmpR
+}
