@@ -1,8 +1,8 @@
 package main
 
-func main() {
-	s := "(123)"
-}
+// func main() {
+// 	s := "(123)"
+// }
 
 func ambiguousCoordinates(s string) []string {
 	var res []string
