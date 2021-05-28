@@ -20,3 +20,12 @@ func min(nb1, nb2 int) int {
 	}
 	return nb1
 }
+
+func minCostClimbingStairs2(cost []int) int {
+	length := len(cost)
+	min_cost0, min_cost1 := cost[0], cost[1]
+	for i := 2; i < length; i++ {
+		min_cost0, min_cost1 = min_cost1, min(min_cost0, min_cost1)+cost[i]
+	}
+	return min(min_cost0, min_cost1)
+}
