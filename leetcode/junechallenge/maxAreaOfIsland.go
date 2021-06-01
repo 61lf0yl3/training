@@ -44,9 +44,39 @@ func BFS(grid [][]int, y, x int, curr *int) {
 func PrintGrid(grid [][]int) {
 	for y := range grid {
 		for x := range grid[y] {
-			a
 			fmt.Print(grid[y][x])
 		}
 		fmt.Println()
 	}
+}
+
+type Island struct {
+	grid [][]int
+	seen [][]bool
+}
+
+func (i *Island) getArea(x int, y int) int {
+	if 0 <= x && x < len(i.grid) && 0 <= y && y < len(i.grid[0]) && i.grid[x][y] == 1 && i.seen[x][y] == false {
+		i.seen[x][y] = true
+		return 1 + i.getArea(x-1, y) + i.getArea(x+1, y) + i.getArea(x, y-1) + i.getArea(x, y+1)
+	}
+	return 0
+}
+
+func maxAreaOfIsland2(grid [][]int) int {
+	island := Island{grid: grid, seen: make([][]bool, len(grid))}
+	for i := range island.seen {
+		island.seen[i] = make([]bool, len(grid[0]))
+	}
+
+	max := 0
+	for x, row := range island.grid {
+		for y := range row {
+			area := island.getArea(x, y)
+			if area > max {
+				max = area
+			}
+		}
+	}
+	return max
 }
