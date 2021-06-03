@@ -2,15 +2,15 @@ package main
 
 import "fmt"
 
-func main() {
-	// s1 := "aabcc"
-	// s2 := "dbbca"
-	// s3 := "aadbbcbcac"
-	s1 := "abx"
-	s2 := "mbn"
-	s3 := "ambbnx"
-	fmt.Println(isInterleave(s1, s2, s3))
-}
+// func main() {
+// 	// s1 := "aabcc"
+// 	// s2 := "dbbca"
+// 	// s3 := "aadbbcbcac"
+// 	s1 := "abx"
+// 	s2 := "mbn"
+// 	s3 := "ambbnx"
+// 	fmt.Println(isInterleave(s1, s2, s3))
+// }
 
 func isInterleave(s1 string, s2 string, s3 string) bool {
 	matrix := make([][]bool, len(s1)+1)
