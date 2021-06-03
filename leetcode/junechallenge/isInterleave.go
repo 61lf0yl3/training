@@ -62,3 +62,44 @@ func isInterleave2(s1 string, s2 string, s3 string) bool {
 	}
 	return true
 }
+
+func isInterleave3(s1 string, s2 string, s3 string) bool {
+	if len(s1)+len(s2) != len(s3) {
+		return false
+	}
+	weaveMap := make([][]*bool, len(s1)+1)
+	for i := 0; i < len(s1)+1; i++ {
+		weaveMap[i] = make([]*bool, len(s2)+1)
+	}
+	return isInterleaveInt([]byte(s1), []byte(s2), []byte(s3), 0, 0, weaveMap)
+}
+
+func isInterleaveInt(s1, s2, s3 []byte, i, j int, weaveMap [][]*bool) bool {
+	if i+j == len(s3) {
+		return true
+	}
+
+	if weaveMap[i][j] != nil {
+		return *weaveMap[i][j]
+	}
+
+	k := i + j
+	if i < len(s1) && s1[i] == s3[k] {
+		result := isInterleaveInt(s1, s2, s3, i+1, j, weaveMap)
+		weaveMap[i][j] = &result
+		if result == true {
+			return true
+		}
+	}
+
+	if j < len(s2) && s2[j] == s3[k] {
+		result := isInterleaveInt(s1, s2, s3, i, j+1, weaveMap)
+		weaveMap[i][j] = &result
+		if result == true {
+			return true
+		}
+	}
+	result := false
+	weaveMap[i][j] = &result
+	return false
+}
