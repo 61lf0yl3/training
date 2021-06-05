@@ -1,3 +1,11 @@
+package main
+
+// func main() {
+// 	deadends := []string{"0201", "0101", "0102", "1212", "2002"}
+// 	target := "0202"
+// 	fmt.Println(openLock(deadends, target))
+// }
+
 func openLock(deadends []string, target string) int {
 	start := "0000"
 	dead := make(map[string]struct{})
