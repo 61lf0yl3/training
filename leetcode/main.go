@@ -5,10 +5,10 @@ import (
 	"sort"
 )
 
-func main() {
-	nums := []int{0, 3, 7, 2, 5, 8, 4, 6, 0, 1}
-	fmt.Println(longestConsecutive(nums))
-}
+// func main() {
+// 	nums := []int{0, 3, 7, 2, 5, 8, 4, 6, 0, 1}
+// 	fmt.Println(longestConsecutive(nums))
+// }
 func longestConsecutive(nums []int) int {
 	if len(nums) == 0 {
 		return 0
