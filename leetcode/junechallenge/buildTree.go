@@ -8,10 +8,6 @@
  * }
  */
 
-func main() {
-	preorder := []int{3, 9, 20, 15, 7} //root, left, right
-	inorder := []int{9, 3, 15, 20, 7}  //left, root, right
-}
 func buildTree(inorder []int, postorder []int) *TreeNode {
 	inPos := make(map[int]int)
 	for i := 0; i < len(inorder); i++ {
