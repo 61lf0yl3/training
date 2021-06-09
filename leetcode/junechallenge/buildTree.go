@@ -8,22 +8,28 @@
  * }
  */
 
-func buildTree(inorder []int, postorder []int) *TreeNode {
-	inPos := make(map[int]int)
-	for i := 0; i < len(inorder); i++ {
-		inPos[inorder[i]] = i
-	}
-	return buildInPos2TreeDFS(postorder, 0, len(postorder)-1, 0, inPos)
-}
-
-func buildInPos2TreeDFS(post []int, postStart int, postEnd int, inStart int, inPos map[int]int) *TreeNode {
-	if postStart > postEnd {
+func buildTree(preorder []int, inorder []int) *TreeNode {
+	if len(preorder) == 0 {
 		return nil
 	}
-	root := &TreeNode{Val: post[postEnd]}
-	rootIdx := inPos[post[postEnd]]
-	leftLen := rootIdx - inStart
-	root.Left = buildInPos2TreeDFS(post, postStart, postStart+leftLen-1, inStart, inPos)
-	root.Right = buildInPos2TreeDFS(post, postStart+leftLen, postEnd-1, rootIdx+1, inPos)
-	return root
+	res := &TreeNode{
+		Val: preorder[0],
+	}
+	if len(preorder) == 1 {
+		return res
+	}
+	idx := func(val int, nums []int) int {
+		for i, v := range nums {
+			if v == val {
+				return i
+			}
+		}
+		return -1
+	}(res.Val, inorder)
+	if idx == -1 {
+		return nil
+	}
+	res.Left = buildTree(preorder[1:idx+1], inorder[:idx])
+	res.Right = buildTree(preorder[idx+1:], inorder[idx+1:])
+	return res
 }
