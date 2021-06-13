@@ -36,3 +36,21 @@ func minRefuelStops(target int, startFuel int, stations [][]int) int {
 	}
 	return res
 }
+
+func minRefuelStops2(target int, startFuel int, stations [][]int) int {
+	dp := make([]int, len(stations)+1)
+	dp[0] = startFuel
+	for i := 0; i < len(stations); i++ {
+		for t := i; t >= 0; t-- {
+			if dp[t] >= stations[i][0] {
+				dp[t+1] = max(dp[t+1], dp[t]+stations[i][1])
+			}
+		}
+	}
+	for t := 0; t <= len(stations); t++ {
+		if dp[t] >= target {
+			return t
+		}
+	}
+	return -1
+}
