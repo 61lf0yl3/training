@@ -1,11 +1,9 @@
 package main
 
-import "fmt"
-
-func main() {
-	words := []string{"abcd", "dcba", "lls", "s", "sssll"}
-	fmt.Println(palindromePairs(words))
-}
+// func main() {
+// 	words := []string{"abcd", "dcba", "lls", "s", "sssll"}
+// 	fmt.Println(palindromePairs(words))
+// }
 
 func palindromePairs(words []string) [][]int {
 	res := [][]int{}
