@@ -1,14 +1,10 @@
 package main
 
-import (
-	"fmt"
-)
-
-func main() {
-	boxTypes := [][]int{{5, 10}, {2, 5}, {4, 7}, {3, 9}}
-	truckSize := 4
-	fmt.Println(maximumUnits(boxTypes, truckSize))
-}
+// func main() {
+// 	boxTypes := [][]int{{5, 10}, {2, 5}, {4, 7}, {3, 9}}
+// 	truckSize := 4
+// 	fmt.Println(maximumUnits(boxTypes, truckSize))
+// }
 
 func maximumUnits(boxTypes [][]int, truckSize int) int {
 	res := 0
