@@ -1,14 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"sort"
 )
 
-func main() {
-	matchsticks := []int{1, 1, 2, 2, 2}
-	fmt.Println(makesquare(matchsticks))
-}
+// func main() {
+// 	matchsticks := []int{1, 1, 2, 2, 2}
+// 	fmt.Println(makesquare(matchsticks))
+// }
 func makesquare(nums []int) bool {
 	if len(nums) < 4 {
 		return false
