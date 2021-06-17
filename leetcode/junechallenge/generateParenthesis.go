@@ -23,3 +23,13 @@ func backTrack(openParenthesis, closeParenthesis, n int, output string, res *[]s
 	}
 	return
 }
+
+func backTrack2(left, right, n int, s string, res *[]string) {
+	if left == right && left == n {
+		*res = append(*res, s)
+	} else if left >= right && left <= n && right <= n {
+		new := s
+		backTrack(left+1, right, n, new+"(", res)
+		backTrack(left, right+1, n, new+")", res)
+	}
+}
