@@ -2,15 +2,15 @@ package main
 
 import "fmt"
 
-func main() {
-	//s := "abcde"
-	words := []string{"a", "bb", "acd", "ace"}
-	//fmt.Println(numMatchingSubseq(s, words))
-	words[0] = words[0][1:]
-	fmt.Println(words)
-	words[0] = words[0][1:]
-	fmt.Println(len(words[0]))
-}
+// func main() {
+// 	//s := "abcde"
+// 	words := []string{"a", "bb", "acd", "ace"}
+// 	//fmt.Println(numMatchingSubseq(s, words))
+// 	words[0] = words[0][1:]
+// 	fmt.Println(words)
+// 	words[0] = words[0][1:]
+// 	fmt.Println(len(words[0]))
+// }
 
 func numMatchingSubseq(s string, words []string) int {
 	res := 0
