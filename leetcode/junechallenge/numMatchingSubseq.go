@@ -34,3 +34,32 @@ func numMatchingSubseq(s string, words []string) int {
 	fmt.Println(words)
 	return res
 }
+
+func numMatchingSubseq2(s string, words []string) int {
+	table := make([]uint16, 26*(len(s)+1))
+	prev := [26]uint16{}
+	pprev := prev[:]
+	for i := 0; i < 26; i++ {
+		prev[i] = 0xffff
+	}
+
+	copy(table[26*len(s):], pprev)
+	for i := uint16(len(s) - 1); i != 0xffff; i-- {
+		prev[s[i]-'a'] = i + 1
+		copy(table[26*i:], pprev)
+	}
+
+	result := 0
+Loop:
+	for _, word := range words {
+		var next uint16
+		for i := 0; i < len(word); i++ {
+			next = table[next*26+uint16(word[i]-'a')]
+			if next == 0xffff {
+				continue Loop
+			}
+		}
+		result++
+	}
+	return result
+}
