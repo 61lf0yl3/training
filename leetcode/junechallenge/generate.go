@@ -20,3 +20,18 @@ func generate(numRows int) [][]int {
 	}
 	return rows
 }
+
+func generate2(numRows int) [][]int {
+	ans := [][]int{}
+	for i := 0; i < numRows; i++ {
+		ans = append(ans, []int{})
+		for j := 0; j < i+1; j++ {
+			if j == 0 || j == i {
+				ans[i] = append(ans[i], 1)
+			} else {
+				ans[i] = append(ans[i], ans[i-1][j-1]+ans[i-1][j])
+			}
+		}
+	}
+	return ans
+}
