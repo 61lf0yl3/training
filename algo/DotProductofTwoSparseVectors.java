@@ -39,6 +39,29 @@ class SparseVector {
     }
 }
 
+// Approach 2: Non-efficient Array Approach
+// Time complexity : O(N) for both constructing the sparse vector and
+// calculating the dot product.
+// Space complexity : O(1) for constructing the sparse vector as we simply save
+// a reference to the input array and O(1)for calculating the dot product.
+class SparseVector2 {
+
+    private int[] array;
+
+    SparseVector2(int[] nums) {
+        array = nums;
+    }
+
+    public int dotProduct(SparseVector2 vec) {
+        int result = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            result += array[i] * vec.array[i];
+        }
+        return result;
+    }
+}
+
 // Your SparseVector object will be instantiated and called as such:
 // SparseVector v1 = new SparseVector(nums1);
 // SparseVector v2 = new SparseVector(nums2);
