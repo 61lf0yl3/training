@@ -17,7 +17,7 @@ class Powxn {
         return res;
     }
 
-    // Approach 1: Recursion
+    // Approach 2: Recursion
     // Time complexity : O(N)
     // Space complexity : O(1)
     public double myPow2(double x, int n) {
@@ -40,4 +40,23 @@ class Powxn {
         }
     }
 
+    // Approach 3: Iterative
+    // Time complexity : O(N)
+    // Space complexity : O(1)
+    public double myPow3(double x, int n) {
+        long N = n;
+        if (N < 0) {
+            x = 1 / x;
+            N = -N;
+        }
+        double res = 1;
+        double curr_prod = x;
+        for (long i = N; i > 0; i /= 2) {
+            if (i % 2 == 1) {
+                res = res * curr_prod;
+            }
+            curr_prod = curr_prod * curr_prod;
+        }
+        return res;
+    }
 }
