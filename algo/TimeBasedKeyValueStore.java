@@ -42,6 +42,49 @@ class TimeMap {
             }
         }
     }
+
+    // Approach 1: Using Hash
+    // Time complexity : O(N) for set; O(logN) for get
+    // Space complexity : O(N) for set; O(N) for get
+    public String get2(String key, int timestamp) {
+        Map<String, ArrayList<Pair<Integer, String>>> temp = m;
+        if (!m.containsKey(key)) {
+            return "";
+        }
+        return binaryGet(key, timestamp);
+    }
+
+    public String binaryGet(String key, int timestamp) {
+        Map<String, ArrayList<Pair<Integer, String>>> temp = m;
+        ArrayList<Pair<Integer, String>> list = m.get(key);
+        int low = 0;
+        int high = list.size() - 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            Pair<Integer, String> p = list.get(mid);
+            if (p.getKey() > timestamp) {
+                if (mid - 1 < 0) {
+                    return "";
+                }
+                if (list.get(mid - 1).getKey() <= timestamp) {
+                    return list.get(mid - 1).getValue();
+                }
+                high = mid - 1;
+            } else if (p.getKey() < timestamp) {
+                if (mid + 1 >= list.size()) {
+                    return p.getValue();
+                }
+                if (list.get(mid + 1).getKey() == timestamp) {
+                    return list.get(mid + 1).getValue();
+                }
+                low = mid + 1;
+            } else {
+                return p.getValue();
+            }
+        }
+        return "";
+    }
+
 }
 
 /**
