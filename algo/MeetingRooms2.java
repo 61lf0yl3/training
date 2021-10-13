@@ -40,4 +40,39 @@ class MeetingRooms2 {
         // meetings.
         return q.size();
     }
+
+    // Approach 2: Chronological Ordering
+    // Time Complexity: O(NlogN)
+    // Space Complexity: O(N)
+    public int minMeetingRooms2(int[][] intervals) {
+        int[] start = new int[intervals.length];
+        int[] end = new int[intervals.length];
+
+        for (int i = 0; i < intervals.length; i++) {
+            start[i] = intervals[i][0];
+            end[i] = intervals[i][1];
+        }
+        // Sort the intervals by end time
+        Arrays.sort(start);
+
+        // Sort the intervals by start time
+        Arrays.sort(end);
+
+        // The pointers to end array
+        int endPointer = 0;
+
+        // Variables to keep track of maximum number of rooms used.
+        int busyRoom = 0;
+        // Iterate over start
+        for (int i = 0; i < start.length; i++) {
+            // If there is NO free room that has ended by this time
+            if (end[endPointer] > start[i]) {
+                busyRoom++;
+            } else {
+                // If there is a free room that has ended by this time
+                endPointer++;
+            }
+        }
+        return busyRoom;
+    }
 }
