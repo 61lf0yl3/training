@@ -10,7 +10,7 @@ public class Permutations
     {
         System.out.println(s);
     } 
-}
+    }
     /**
     Gets all permutations of a given word. @param word the string to permute @return a list of all permutations
     */
