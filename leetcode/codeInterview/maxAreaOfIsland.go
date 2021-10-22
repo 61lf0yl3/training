@@ -33,5 +33,23 @@ class Solution {
         return;
     }
 
-    
+	// leetcode neat same method
+	public int maxAreaOfIsland2(int[][] grid) {
+        int max=0;
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[0].length;j++){
+                if(grid[i][j] == 1){
+                    max = Math.max(util(grid,i,j),max);
+                }
+            }
+        }
+        return max;
+    }
+    public static int util(int[][] grid,int i,int j){
+        if(i>=0 && j>=0 && i<grid.length && j< grid[0].length && grid[i][j] == 1){
+            grid[i][j] = 0;
+            return 1 + util(grid,i-1,j) + util(grid,i,j-1) + util(grid,i+1,j) + util(grid,i,j+1);
+        }
+        return 0;
+    }
 }
