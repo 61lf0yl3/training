@@ -1,5 +1,5 @@
 class Solution {
-    //Using Recursion o(m) m min number of nodes from two trees
+    //Using Recursion O(m) m min number of nodes from two trees
     public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
         if (root1 == null) {
             return root2;
@@ -13,7 +13,7 @@ class Solution {
         return root1;
     }
 
-    //  Iterative Method O(n)
+    //  Iterative Method O(m) m min number of nodes from two trees
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
         if (t1 == null)
             return t2;
