@@ -1,4 +1,4 @@
-class Solution {
+class reverseWords {
     public String reverseWords(String s) {
         String res = "";
         // for (int i=s.length()-1;i>=0; i--) {

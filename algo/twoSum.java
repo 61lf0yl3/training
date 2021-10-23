@@ -1,4 +1,4 @@
-class Solution {
+class twoSum {
     //O(n^2)
     public int[] twoSum(int[] numbers, int target) {
         int[] res = new int[2];
