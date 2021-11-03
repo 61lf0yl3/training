@@ -7,7 +7,7 @@ class updateMatrix {
         if (mat.length == 0) {
             return mat;
         }        
-        Queue<int[]> q = new LinkedList<>();
+        Queue<Integer> q = new LinkedList<>();
         for (int r= 0; r< mat.length; r++) {
             for (int c = 0; c < mat[0].length; c++) {
                 if ( mat[r][c] == 0 ) {
