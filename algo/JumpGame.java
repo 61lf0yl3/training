@@ -76,3 +76,15 @@ class JumpGame3 {
         return memo[0] == GOOD;
     }
 }
+
+class JumpGame4 {
+    public boolean canJump(int[] nums) {
+        int lastGoodPos = nums.length-1;
+        for (int i = nums.length-2; i >=0; i--) {
+            if (i+nums[i]>= lastGoodPos) {
+                lastGoodPos = i;
+            }
+        }
+        return lastGoodPos==0;
+    }
+}
