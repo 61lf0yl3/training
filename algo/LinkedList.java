@@ -1,4 +1,3 @@
-import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -176,30 +175,6 @@ public class LinkedList
          if (!isAfterNext) { throw new IllegalStateException(); }
          position.data = element;
       }
-
-    @Override
-    public boolean hasPrevious() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public Object previous() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public int nextIndex() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public int previousIndex() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
    }
 }
 
