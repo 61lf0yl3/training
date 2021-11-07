@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
@@ -6,7 +7,7 @@ import java.util.NoSuchElementException;
    contains a subset of the methods of the standard
    java.util.LinkedList class.
 */
-public class LinkedList
+public class LinkedList implements List<List<Integer>>
 {  
    private Node first;
    
