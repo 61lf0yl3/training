@@ -23,4 +23,9 @@ class ReverseList {
         }
         return prev;
     }
+
+    // Approach #1 (Recursive)
+    // Time complexity : O(n)
+    // Space complexity : O(n)
+
 }
