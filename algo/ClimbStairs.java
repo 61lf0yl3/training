@@ -35,4 +35,17 @@ class ClimbStairs {
         memory[i] = climbStairsR2(n, i-1, memory) + climbStairsR2(n, i-2, memory);
         return memory[i];
     }
+
+    //Approach 3: Dynamic Programming
+    //Time complexity : O(n)
+    //Space complexity : O(n)
+    public int climbStairs3(int n) {
+        int[] dp = new int[n+1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for (int i = 2; i<=n; i++) {
+            dp[i] = dp[i-1] + dp[i-2];
+        }
+        return dp[n];
+    }
 }
