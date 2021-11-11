@@ -1,4 +1,6 @@
-class Solution {
+import java.util.Arrays;
+
+class Rob {
     // Approach 1: Recursion with Memoization;
     // Time complexity: O(N)
     // Space complexity : O(N)
@@ -31,4 +33,21 @@ class Solution {
         }
         return memory[nums.length];
     }
+    
+    //Approach 3:  Optimized Dynamic Programming
+    // Time complexity: O(N)
+    // Space complexity : O(1)
+    public int rob3(int[] nums) {
+        //int[] memory = new int[nums.length + 1];
+        int oldest = 0;
+        int old = nums[0];
+        for (int i = 2; i < nums.length + 1; i++) {
+            int curr = Math.max(oldest + nums[i - 1], old);
+            oldest = old;
+            old = curr;
+        }
+        return old;
+    }
+
+
 }
