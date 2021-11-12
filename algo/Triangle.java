@@ -30,9 +30,9 @@ class Triangle {
         return min;
     }
 
-    //Approach 1: Dynamic Programming (Bottom-up)
+    //Approach 2: Dynamic Programming (Bottom-up)
     //Time Complexity:O(n^2)
-    //Space Complexity: O(n)
+    //Space Complexity: O(1)
     public int minimumTotal2(List<List<Integer>> triangle) {
         for (int r = 1; r < triangle.size(); r++) {
             for (int c = 0; c <= r; c++) {
