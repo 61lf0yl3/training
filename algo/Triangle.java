@@ -48,4 +48,18 @@ class Triangle {
         
         return Collections.min(triangle.get(triangle.size() - 1));
     }
+
+
+    //Approach 3: Dynamic Programming (Bottom-up: Flip Triangle Upside Down)
+    //Time Complexity:O(n^2)
+    //Space Complexity: O(1)    
+    public int minimumTotal3(List<List<Integer>> triangle) {
+        for (int r = triangle.size()-2; r >=0; r--) {
+            for (int c = 0; c <= r; c++) {
+                triangle.get(r).set(c, triangle.get(r).get(c) + Math.min(triangle.get(r+1).get(c), triangle.get(r+1).get(c+1)));
+            }
+        }
+        
+        return triangle.get(0).get(0);
+    }
 }
