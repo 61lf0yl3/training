@@ -1,4 +1,5 @@
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -83,7 +84,7 @@ class Triangle {
         return path;
     }
     
-    public int minimumTotal(List<List<Integer>> triangle) {
+    public int minimumTotal4(List<List<Integer>> triangle) {
         this.triangle = triangle;
         memoTable = new HashMap<>();
         return minPath(0, 0);
