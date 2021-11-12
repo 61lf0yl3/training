@@ -1,7 +1,8 @@
+import java.util.Collections;
 import java.util.List;
 
 class Triangle {
-    //Approach 1: Dynamic Programming (my verison)
+    //Approach 1: Dynamic Programming (Bottom-up, my verison)
     //Time Complexity:O(n^2)
     //Space Complexity: O(n)
     public int minimumTotal(List<List<Integer>> triangle) {
@@ -27,5 +28,24 @@ class Triangle {
         }
         
         return min;
+    }
+
+    //Approach 1: Dynamic Programming (Bottom-up)
+    //Time Complexity:O(n^2)
+    //Space Complexity: O(n)
+    public int minimumTotal2(List<List<Integer>> triangle) {
+        for (int r = 1; r < triangle.size(); r++) {
+            for (int c = 0; c <= r; c++) {
+                if (c == 0 ) {
+                    triangle.get(r).set(c, triangle.get(r).get(c) + triangle.get(r-1).get(c));
+                } else if (c == r) {
+                    triangle.get(r).set(c, triangle.get(r).get(c) + triangle.get(r-1).get(c-1));
+                } else {
+                    triangle.get(r).set(c, triangle.get(r).get(c) + Math.min(triangle.get(r-1).get(c), triangle.get(r-1).get(c-1)));
+                }
+            }
+        }
+        
+        return Collections.min(triangle.get(triangle.size() - 1));
     }
 }
