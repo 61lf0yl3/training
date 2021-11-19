@@ -1,6 +1,7 @@
 import java.util.Stack;
 
 class BackspaceStringCompare {
+    //844. Backspace String Compare
 
     //Approach #1: Build String [Accepted]
     //Time Complexity: O(N+M)
@@ -21,7 +22,10 @@ class BackspaceStringCompare {
         }
         return sStack.toString();
     }
-
+    
+    //Approach #2: Two Pointer [Accepted]
+    //Time Complexity: O(N+M)
+    //Space Complexity: O(1)
     public boolean backspaceCompare2(String S, String T) {
         int i = S.length() - 1, j = T.length() - 1;
         int skipS = 0, skipT = 0;
