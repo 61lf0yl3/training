@@ -1,4 +1,6 @@
-class Solution {
+class RemoveNthFromEndofList {
+    //19. Remove Nth Node From End of List
+
     // Two pass algorithm
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode dummy = new ListNode(0);
@@ -21,7 +23,7 @@ class Solution {
     }
 
     // One pass algorithm
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    public ListNode removeNthFromEnd2(ListNode head, int n) {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode first = dummy;
