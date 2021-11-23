@@ -1,7 +1,7 @@
 class MinimumSizeSubarraySum {
     //209. Minimum Size Subarray Sum
     
-    //Approach #1: Sliding Window (my version)
+    //Approach #1: Sliding Window (my version) Two pointer
     //Time Complexity: O(N)
     //Space Complexity: O(1)
     public int minSubArrayLen(int target, int[] nums) {
