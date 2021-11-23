@@ -3,6 +3,10 @@ import java.util.LinkedList;
 
 
 class ShortestPathinBinaryMatrix {
+
+    //Approach 1: Breadth-first Search (BFS), Overwriting Input
+    //Time Complexity: O(N)
+    //Space Complexity: O(N)
     public int shortestPathBinaryMatrix(int[][] grid) {
         if (grid[0][0] != 0 ||  grid[grid.length-1][grid.length-1]!= 0) {
              return -1;
