@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.LinkedList;
 
@@ -6,7 +7,8 @@ import java.util.LinkedList;
 class Subsets2 {
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-
+        Arrays.sort(nums);
+        
         for (int len = 0; len <= nums.length; len++) {
             backtrack(nums, res, new LinkedList<Integer>(), len, 0);
         }
@@ -30,5 +32,28 @@ class Subsets2 {
                     comb.removeLast();
             }
         }
+    }
+
+    //Approach 2: Cascading (Iterative)
+    //Time Complexity: O(N*N^2)
+    //Space Complexity: O(logN)
+    public List<List<Integer>> subsetsWithDup2(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> subsets = new ArrayList<>();
+        subsets.add(new ArrayList<Integer>());
+
+        int subsetSize = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            int startingIndex = (i >= 1 && nums[i] == nums[i - 1]) ? subsetSize : 0;
+            // subsetSize refers to the size of the subset in the previous step. This value also indicates the starting index of the subsets generated in this step.
+            subsetSize = subsets.size();
+            for (int j = startingIndex; j < subsetSize; j++) {
+                List<Integer> currentSubset = new ArrayList<>(subsets.get(j));
+                currentSubset.add(nums[i]);
+                subsets.add(currentSubset);
+            }
+        }
+        return subsets;
     }
 }
