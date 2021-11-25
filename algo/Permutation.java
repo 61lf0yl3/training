@@ -29,7 +29,7 @@ public class Permutation
             String shorter = word.substring(0, i) + word.substring(i + 1);
             
             // Generate all permutations of the simpler word 
-            ArrayList<String> shorterPermutations = permutations(shorter)
+            ArrayList<String> shorterPermutations = permutations(shorter);
             
             // Add the removed character to the front of 
             // each permutation of the simpler word
