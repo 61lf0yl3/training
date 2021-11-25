@@ -2,7 +2,7 @@ import java.util.ArrayList;
 /**
 This class computes permutations of a string.
 */
-public class Permutations
+public class Permutation
 {
     public static void main(String[] args) {
 
