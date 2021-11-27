@@ -1,4 +1,5 @@
-class Solution {
+class MoveZeroes {
+    //283. Move Zeroes
     // O(n^2)
     public void moveZeroes(int[] nums) {
         int i = 0;
