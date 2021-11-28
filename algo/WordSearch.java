@@ -1,4 +1,8 @@
 class WordSearch {
+    //Approach 1: DFS
+    //Time Complexity: O(N*3^L)
+    //Space Complexity: O(L)
+    //L is the length of the word to be matched
     public boolean exist(char[][] board, String word) {
         boolean res = false;
         for (int r = 0; r < board.length; r++) {
