@@ -25,6 +25,9 @@ class Node {
 
 
 class PopulatingNextRightPointersinEachNode2 {
+
+    //Time Complexity: O(N)
+    //Space Complexity: O(1)
     public Node connect(Node root) {
         if (root == null ){
             return root;

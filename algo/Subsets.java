@@ -47,7 +47,9 @@ class Subsets {
         return res;
     }
 
-
+    //Appraoch #1: Lexicographic (Binary Sorted) Subsets
+    //Time Complexity: O(N*N^2)
+    //Space Complexity: O(N*N^2)
     public List<List<Integer>> subsets2(int[] nums) {
         List<List<Integer>> output = new ArrayList();
         int n = nums.length;

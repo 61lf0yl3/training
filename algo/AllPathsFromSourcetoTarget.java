@@ -3,6 +3,11 @@ import java.util.List;
 import java.util.LinkedList;
 
 class AllPathsFromSourcetoTarget {
+    //797. All Paths From Source to Target
+
+    //Approach #1: Backtracking
+    //Time Complexity: O(2^N*N)
+    //Space Complexity: O(2^N*N)
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
         List<List<Integer>> res = new ArrayList<>();
         backtrack(graph, res, new LinkedList<Integer>(), 0);

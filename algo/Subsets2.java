@@ -8,7 +8,7 @@ class Subsets2 {
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(nums);
-        
+
         for (int len = 0; len <= nums.length; len++) {
             backtrack(nums, res, new LinkedList<Integer>(), len, 0);
         }
@@ -24,7 +24,7 @@ class Subsets2 {
                 return;
         } else {
             for (int i = start; i < nums.length; i++) {
-                if (i != start && nums[i] == nums[i - 1]) {
+                if (i != start && nums[i] == nums[i - 1]) {  //??
                 continue;
                 }
                     comb.add(nums[i]);
