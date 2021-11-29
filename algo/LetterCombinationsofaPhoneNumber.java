@@ -4,6 +4,10 @@ import java.util.Map;
 
 class LetterCombinationsofaPhoneNumber   {
     
+
+    //Approach #1: Backtrack with hashmap;
+    //Time Complexity: O(4^N)
+    //Space Complexity: O(N)
     private Map<Character, String> letters = Map.of(
         '2', "abc", '3', "def", '4', "ghi", '5', "jkl", 
         '6', "mno", '7', "pqrs", '8', "tuv", '9', "wxyz");
