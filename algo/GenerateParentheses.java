@@ -32,28 +32,41 @@ class GenerateParentheses {
     
 }
 
-class GenerateParentheses2 {
+class GenerateParentheses3 {
+    //Approach 1: Brute Force
+    //Time Complexity: O(2^2N*N)
+    //Space Complexity: O(2^2N*N)
     public List<String> generateParenthesis(int n) {
-        List<String> ans = new ArrayList();
-        backtrack(ans, new StringBuilder(), 0, 0, n);
-        return ans;
+        List<String> res = new ArrayList<>();
+        generateParenthesisR(res, 0, new char[2*n]);
+        return res;
     }
-
-    public void backtrack(List<String> ans, StringBuilder cur, int open, int close, int max){
-        if (cur.length() == max * 2) {
-            ans.add(cur.toString());
-            return;
+    
+    public void generateParenthesisR(List<String> res, int index, char[] comb) {
+        if (index == comb.length) {
+            if (validParenthesis(comb)) {
+                res.add(new String(comb));   
+            }
+        } else {
+            comb[index] = '(';
+            generateParenthesisR(res, index+1, comb);
+            comb[index] = ')';
+            generateParenthesisR(res, index+1, comb);
         }
-
-        if (open < max) {
-            cur.append("(");
-            backtrack(ans, cur, open+1, close, max);
-            cur.deleteCharAt(cur.length() - 1);
+    }
+    
+    public boolean validParenthesis(char[] comb) {
+        int sum = 0;
+        for (int i = 0; i<comb.length; i++) {
+            if ( comb[i]=='(' ){
+                sum++;
+            } else {
+                sum--;
+            }
+            if (sum<0) {
+                return false;
+            }
         }
-        if (close < open) {
-            cur.append(")");
-            backtrack(ans, cur, open, close+1, max);
-            cur.deleteCharAt(cur.length() - 1);
-        }
+        return sum==0;
     }
 }
