@@ -1,6 +1,9 @@
 class HouseRobber2 {
     //213. House Robber II
 
+    //pproach 1: Dynamic Programming
+    //Time Complexity: O(N)
+    //Space Complexity: O(1)
     public int rob(int[] nums) {
         int oldest = 0;
         int old1 = nums[0];
