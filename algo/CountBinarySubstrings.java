@@ -59,4 +59,21 @@ class CountBinarySubstrings {
         }
         return ans;
     }
+
+    // Approach 1: Linear Scan
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public int countBinarySubstrings3(String s) {
+        int ans = 0, prev = 0, cur = 1;
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i - 1) != s.charAt(i)) {
+                ans += Math.min(prev, cur);
+                prev = cur;
+                cur = 1;
+            } else {
+                cur++;
+            }
+        }
+        return ans + Math.min(prev, cur);
+    }
 }
