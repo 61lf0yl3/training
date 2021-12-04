@@ -25,7 +25,7 @@ class JumpGame {
 // Approach 2: Backtracking with memororazation (DP Top-down)
 // Time Complexity: O(N^2)
 // Space Complexity: O(N)
-class JumpGame2 {
+class JumpGame1 {
     int[] memo;
     final int UNKNOWN = 0;
     final int GOOD = 1;
@@ -53,9 +53,9 @@ class JumpGame2 {
     }
 }
 
-    //Approach 3: Backtracking with memororazation (DP Bottom-up)
-    //Time Complexity: O(N^2)
-    //Space Complexity: O(N)
+// Approach 3: Backtracking with memororazation (DP Bottom-up)
+// Time Complexity: O(N^2)
+// Space Complexity: O(N)
 class JumpGame3 {
     final int UNKNOWN = 0;
     final int GOOD = 1;
@@ -77,6 +77,9 @@ class JumpGame3 {
     }
 }
 
+// Approach 4: Greedy
+// Time Complexity: O(N)
+// Space Complexity: O(1)
 class JumpGame4 {
     public boolean canJump(int[] nums) {
         int lastGoodPos = nums.length-1;
