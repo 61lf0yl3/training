@@ -1,5 +1,9 @@
 class JumpGame2 {
-    
+    //45. Jump Game II
+
+    // Approach 4: Greedy
+    // Time Complexity: O(N) 
+    // Space Complexity: O(1)
     public int jump(int[] nums) {
         int res = 0;
         int farthest = 0;
