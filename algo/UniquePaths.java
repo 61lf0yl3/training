@@ -32,7 +32,7 @@ class UniquePaths {
     // Approach 1: DP (leetcode version)
     // Time Complexity: O(M*N)
     // Space Complexity: O(M*N)
-    public int uniquePaths(int m, int n) {
+    public int uniquePaths3(int m, int n) {
         int[][] d = new int[m][n];
 
         for (int[] arr : d) {
