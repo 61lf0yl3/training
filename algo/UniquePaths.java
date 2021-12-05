@@ -1,6 +1,9 @@
 class UniquePaths {
     //62. Unique Paths
 
+    // Approach 1: DP
+    // Time Complexity: O(M*N) 
+    // Space Complexity: O(M*N)
     public int uniquePaths(int m, int n) {
         int[][] paths = new int[n+1][m+1];
         paths[n][m]=1;
