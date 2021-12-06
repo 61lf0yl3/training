@@ -31,4 +31,35 @@ class LongestPalindromicSubstring {
 
         return true;
     }
+
+    // Approach 3: DP
+    // Time Complexity: O(N^3)
+    // Space Complexity: O(1)
+    public String longestPalindrome2(String s) {
+        String res = ""+s.charAt(0);
+        boolean[][] isPalindrome = new boolean[s.length()][s.length()];
+        
+        for (int r = s.length()-1; r >=0; r--) {
+            for (int c = r; c < s.length(); c++) {
+                if (s.charAt(r)==s.charAt(c)) {
+                    if (r==c) {
+                        isPalindrome[r][c] = true;
+                    } else if (c-r+1==3 || c-r+1==2) {
+                        isPalindrome[r][c] = true;
+                        if (c-r+1>res.length()) {
+                            res = s.substring(r,c+1);
+                        }
+                    } else {
+                        if(isPalindrome[r+1][c-1]) {
+                            isPalindrome[r][c] = true;
+                            if (c-r+1>res.length()) {
+                                res = s.substring(r,c+1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return res;
+    }
 }
