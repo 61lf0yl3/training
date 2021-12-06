@@ -90,4 +90,9 @@ class LongestPalindromicSubstring {
         return R - L - 1;
     }
 
+    // Approach 5:  Manacher's Algorithm
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    // here is detaild :https://en.wikipedia.org/wiki/Longest_palindromic_substring#Manacher's_algorithm
+
 }
