@@ -26,6 +26,21 @@ class BestTimetoBuyandSellStock {
         return res;
     }
 
+    // Approach 1: One Pass (leetcode version)
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public int maxProfit3(int prices[]) {
+        int minprice = Integer.MAX_VALUE;
+        int maxprofit = 0;
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < minprice)
+                minprice = prices[i];
+            else if (prices[i] - minprice > maxprofit)
+                maxprofit = prices[i] - minprice;
+        }
+        return maxprofit;
+    }
+
     // Approach 2: Brute Force
     // Time Complexity: O(N)
     // Space Complexity: O(1)
