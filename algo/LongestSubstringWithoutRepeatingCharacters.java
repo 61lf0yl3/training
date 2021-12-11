@@ -2,7 +2,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 class LongestSubstringWithoutRepeatingCharacters {
-    // O(n^2*logn) bruteforce
+    // 3. Longest Substring Without Repeating Characters
+
+    // Approach 1: Brute Force
+    // Time Complexity: O(n^2)
+    // Space Complexity: O(N)
     public int lengthOfLongestSubstring(String s) {
         Map<Character, Boolean> map = new HashMap<>();
         int max = 0;
@@ -23,7 +27,9 @@ class LongestSubstringWithoutRepeatingCharacters {
         return max;
     }
 
-    // O(n) Sliding Window
+    // Approach 1: Sliding Window
+    // Time Complexity: O(N)
+    // Space Complexity: O(min(m))
     public int lengthOfLongestSubstring2(String s) {
         int[] chars = new int[128];
 
@@ -48,6 +54,9 @@ class LongestSubstringWithoutRepeatingCharacters {
         return res;
     }
 
+    // Approach 1: One Pass (leetcode version)
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
     public int lengthOfLongestSubstring3(String s) {
         int n = s.length(), ans = 0;
         Map<Character, Integer> map = new HashMap<>(); // current index of character
