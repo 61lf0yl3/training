@@ -62,7 +62,7 @@ class ArithmeticSlices {
     }
 
     // Approach 4: DP
-    // Time Complexity: O(N4
+    // Time Complexity: O(N)
     // Space Complexity: O(N)
     public int numberOfArithmeticSlices4(int[] A) {
         int[] dp = new int[A.length];
@@ -72,6 +72,22 @@ class ArithmeticSlices {
                 dp[i] = 1 + dp[i - 1];
                 sum += dp[i];
             }
+        }
+        return sum;
+    }
+
+    // Approach 4: Constant Space Dynamic Programming
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public int numberOfArithmeticSlices5(int[] A) {
+        int dp = 0;
+        int sum = 0;
+        for (int i = 2; i < A.length; i++) {
+            if (A[i] - A[i - 1] == A[i - 1] - A[i - 2]) {
+                dp = 1 + dp;
+                sum += dp;
+            } else
+                dp = 0;
         }
         return sum;
     }
