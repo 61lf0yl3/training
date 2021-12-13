@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 class CoinChange {
+    // 322.Coin Change
     int res;
 
     // Approach 1: Recursion
