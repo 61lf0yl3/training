@@ -6,7 +6,7 @@ class IntegerBreak {
     int[] memo;
 
     public int integerBreak(int n) {
-        int[] memo = new int[n + 1];
+        memo = new int[n + 1];
         memo[1] = 1;
         return integerBreakR(n, memo);
     }
@@ -27,4 +27,5 @@ class IntegerBreak {
         }
         return memo[n];
     }
+
 }
