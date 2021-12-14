@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class CoinChange {
     int res;
 
@@ -26,7 +28,7 @@ class CoinChange {
         }
     }
 
-    // Approach 2: DP
+    // Approach 2: Recursion with Memoization
     // Time Complexity: O(S*N)
     // Space Complexity: O(N)
     Integer[] memo;
@@ -61,5 +63,28 @@ class CoinChange {
             memo[amount] = -1;
         }
         return memo[amount];
+    }
+
+    // Approach 2: DP
+    // Time Complexity: O(S*N)
+    // Space Complexity: O(N)
+    public int coinChange3(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, amount + 1);
+        dp[0] = 0;
+        for (int m = 1; m < dp.length; m++) {
+            for (int c = 0; c < coins.length; c++) {
+                int index = m - coins[c];
+                if (index < 0) {
+                    continue;
+                } else {
+                    dp[m] = Math.min(dp[m], dp[index] + 1);
+                }
+            }
+        }
+        if (dp[amount] == amount + 1) {
+            dp[amount] = -1;
+        }
+        return dp[amount];
     }
 }

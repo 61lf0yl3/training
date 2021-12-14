@@ -1,4 +1,8 @@
 class EditDistance {
+
+    // Approach 3: Longest Common Subsequence - DP [Accepted]
+    // Time Complexity: O(N*M)
+    // Space Complexity: O(N*M)
     public int minDistance(String word1, String word2) {
         // if one of the strings is empty
         if (word1.length() * word2.length() == 0) {
