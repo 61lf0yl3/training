@@ -26,6 +26,9 @@ class CoinChange {
         }
     }
 
+    // Approach 2: DP
+    // Time Complexity: O(S*N)
+    // Space Complexity: O(N)
     Integer[] memo;
 
     public int coinChange2(int[] coins, int amount) {
