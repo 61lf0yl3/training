@@ -5,7 +5,7 @@ import java.util.Set;
 class WordBreak {
 
     // solves not all cases
-    public boolean wordBreak4(String s, List<String> wordDict) {
+    public boolean wordBreak5(String s, List<String> wordDict) {
         Set<String> wordDictSet = new HashSet<>();
         for (String word : wordDict) {
             wordDictSet.add(word);
@@ -33,29 +33,46 @@ class WordBreak {
     // Approach 1: Recursive with memorazation
     // Time Complexity: O(N^3)
     // Space Complexity: O(N)
-    class Solution {
-        public boolean wordBreak(String s, List<String> wordDict) {
-            Boolean[] memo = new Boolean[s.length()];
-            return wordBreakR(s, new HashSet<>(wordDict), 0, memo);
-        }
+    public boolean wordBreak(String s, List<String> wordDict) {
+        return wordBreakRecur(s, new HashSet<>(wordDict), 0);
+    }
 
-        public boolean wordBreakR(String s, Set<String> wordDict, int start, Boolean[] memo) {
-            if (start == s.length()) {
+    private boolean wordBreakRecur(String s, Set<String> wordDict, int start) {
+        if (start == s.length()) {
+            return true;
+        }
+        for (int end = start + 1; end <= s.length(); end++) {
+            if (wordDict.contains(s.substring(start, end)) && wordBreakRecur(s, wordDict, end)) {
                 return true;
             }
-            if (memo[start] != null) {
-                return memo[start];
-            }
-            for (int end = start + 1; end <= s.length(); end++) {
-                String temp = s.substring(start, end);
-                if (wordDict.contains(s.substring(start, end)) && wordBreakR(s, wordDict, end, memo)) {
-                    memo[start] = true;
-                    return true;
-                }
-            }
-            memo[start] = false;
-            return false;
         }
+        return false;
+    }
+
+    // Approach 2: Recursive with memorazation
+    // Time Complexity: O(N^3)
+    // Space Complexity: O(N)
+    public boolean wordBreak2(String s, List<String> wordDict) {
+        Boolean[] memo = new Boolean[s.length()];
+        return wordBreakR(s, new HashSet<>(wordDict), 0, memo);
+    }
+
+    public boolean wordBreakR(String s, Set<String> wordDict, int start, Boolean[] memo) {
+        if (start == s.length()) {
+            return true;
+        }
+        if (memo[start] != null) {
+            return memo[start];
+        }
+        for (int end = start + 1; end <= s.length(); end++) {
+            String temp = s.substring(start, end);
+            if (wordDict.contains(s.substring(start, end)) && wordBreakR(s, wordDict, end, memo)) {
+                memo[start] = true;
+                return true;
+            }
+        }
+        memo[start] = false;
+        return false;
     }
 
 }
