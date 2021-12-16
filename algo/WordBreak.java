@@ -29,4 +29,33 @@ class WordBreak {
         }
         return word.length() == 0;
     }
+
+    // Approach 1: Recursive with memorazation
+    // Time Complexity: O(N^3)
+    // Space Complexity: O(N)
+    class Solution {
+        public boolean wordBreak(String s, List<String> wordDict) {
+            Boolean[] memo = new Boolean[s.length()];
+            return wordBreakR(s, new HashSet<>(wordDict), 0, memo);
+        }
+
+        public boolean wordBreakR(String s, Set<String> wordDict, int start, Boolean[] memo) {
+            if (start == s.length()) {
+                return true;
+            }
+            if (memo[start] != null) {
+                return memo[start];
+            }
+            for (int end = start + 1; end <= s.length(); end++) {
+                String temp = s.substring(start, end);
+                if (wordDict.contains(s.substring(start, end)) && wordBreakR(s, wordDict, end, memo)) {
+                    memo[start] = true;
+                    return true;
+                }
+            }
+            memo[start] = false;
+            return false;
+        }
+    }
+
 }
