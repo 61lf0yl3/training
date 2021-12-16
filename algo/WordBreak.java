@@ -1,6 +1,8 @@
 import java.util.HashSet;
 import java.util.List;
+import java.util.Queue;
 import java.util.Set;
+import java.util.*;
 
 class WordBreak {
 
@@ -30,8 +32,8 @@ class WordBreak {
         return word.length() == 0;
     }
 
-    // Approach 1: Recursive with memorazation
-    // Time Complexity: O(N^3)
+    // Approach 1: Recursive
+    // Time Complexity: O(2^N)
     // Space Complexity: O(N)
     public boolean wordBreak(String s, List<String> wordDict) {
         return wordBreakRecur(s, new HashSet<>(wordDict), 0);
@@ -65,13 +67,40 @@ class WordBreak {
             return memo[start];
         }
         for (int end = start + 1; end <= s.length(); end++) {
-            String temp = s.substring(start, end);
+            // String temp = s.substring(start, end);
             if (wordDict.contains(s.substring(start, end)) && wordBreakR(s, wordDict, end, memo)) {
                 memo[start] = true;
                 return true;
             }
         }
         memo[start] = false;
+        return false;
+    }
+
+    // Approach 3: BFS with memorazation
+    // Time Complexity: O(N^3)
+    // Space Complexity: O(N)
+    public boolean wordBreak3(String s, List<String> wordDict) {
+        Set<String> dict = new HashSet<>(wordDict);
+        Queue<Integer> q = new LinkedList<>();
+        boolean[] seen = new boolean[s.length()];
+        q.add(0);
+        while (!q.isEmpty()) {
+            int start = q.remove();
+            if (start == s.length()) {
+                return true;
+            }
+            if (seen[start]) {
+                continue;
+            }
+            for (int end = start + 1; end <= s.length(); end++) {
+                String word = s.substring(start, end);
+                if (dict.contains(word)) {
+                    q.add(end);
+                }
+            }
+            seen[start] = true;
+        }
         return false;
     }
 
