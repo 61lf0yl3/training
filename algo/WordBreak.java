@@ -104,4 +104,23 @@ class WordBreak {
         return false;
     }
 
+    // Approach 4: DP
+    // Time Complexity: O(N^3)
+    // Space Complexity: O(N)
+    public boolean wordBreak(String s, List<String> wordDict) {
+        Set<String> wordDictSet = new HashSet<>(wordDict);
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true;
+        for (int end = 1; end <= s.length(); end++) {
+            for (int start = 0; start < end; start++) {
+                String word = s.substring(start, end);
+                if (dp[start] && wordDictSet.contains(word)) {
+                    dp[end] = true;
+                    break;
+                }
+            }
+        }
+        return dp[s.length()];
+    }
+
 }
