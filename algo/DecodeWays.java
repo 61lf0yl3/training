@@ -64,4 +64,31 @@ class DecodeWays {
         }
         return memo[s.length()];
     }
+
+    // Approach 4: Constant Space Dynamic Programming
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public int numDecodings3(String s) {
+        if (s.charAt(0) == '0') {
+            return 0;
+        }
+        int oldest = 1;
+        int old = 0;
+        if (s.charAt(0) != '0') {
+            old = 1;
+        }
+        for (int i = 1; i < s.length(); i++) {
+            int curr = 0;
+            if (s.charAt(i) != '0') {
+                curr = old;
+            }
+            int twoDigit = Integer.parseInt(s.substring(i - 1, i + 1));
+            if (twoDigit >= 10 && twoDigit <= 26) {
+                curr += oldest;
+            }
+            oldest = old;
+            old = curr;
+        }
+        return old;
+    }
 }
