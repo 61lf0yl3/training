@@ -3,6 +3,9 @@ import java.util.Map;
 
 class DecodeWays {
 
+    // Approach 1: Recursive
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
     Map<Integer, Integer> memo = new HashMap<>();
 
     public int numDecodings(String s) {
@@ -39,5 +42,26 @@ class DecodeWays {
         memo.put(index, ans);
 
         return ans;
+    }
+
+    // Approach 2: Dynamic Programming
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public int numDecodings2(String s) {
+        int[] memo = new int[s.length() + 1];
+        memo[0] = 1;
+        if (s.charAt(0) != '0') {
+            memo[1] = 1;
+        }
+        for (int i = 2; i < memo.length; i++) {
+            if (s.charAt(i - 1) != '0') {
+                memo[i] = memo[i - 1];
+            }
+            int twoDigit = Integer.parseInt(s.substring(i - 2, i));
+            if (twoDigit >= 10 && twoDigit <= 26) {
+                memo[i] += memo[i - 2];
+            }
+        }
+        return memo[s.length()];
     }
 }
