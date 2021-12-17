@@ -2,15 +2,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 class LongestIncreasingSubsequence {
-
-    public static void main(String[] args) {
-        ArrayList<Integer> nums = new ArrayList<>();
-        nums.add(0);
-        nums.add(2);
-        nums.add(3);
-        nums.add(4);
-        System.out.println(binarySearch(nums, 1));
-    }
     // 300. Longest Increasing Subsequence
 
     // Approach 1: DP
