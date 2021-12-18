@@ -2,7 +2,7 @@ class LongestCommonSubsequence {
     // 1143. Longest Common Subsequence
 
     // Approach 1: Recursive (Time limit exceeded)
-    // Time Complexity: O(N*M)
+    // Time Complexity: O(N^2*M)
     // Space Complexity: O(N*M)
     public int longestCommonSubsequence(String text1, String text2) {
         if (text1.length() == 0 || text2.length() == 0) {
@@ -18,7 +18,7 @@ class LongestCommonSubsequence {
     }
 
     // Approach 2: Recursive with Memoization
-    // Time Complexity: O(N*M)
+    // Time Complexity: O(N^2*M)
     // Space Complexity: O(N*M)
     int[][] memo;
     String text1;
@@ -65,6 +65,9 @@ class LongestCommonSubsequence {
         return memo[m1][m2];
     }
 
+    // Approach 3: Recursive with Improved Memoization
+    // Time Complexity: O(N*M)
+    // Space Complexity: O(N*M)
     public int longestCommonSubsequenceR3(int m1, int m2) {
         // Check whether or not we've already solved this subproblem.
         // This also covers the base cases where p1 == text1.length
@@ -84,5 +87,27 @@ class LongestCommonSubsequence {
         // Add the best answer to the memo before returning it.
         memo[m1][m2] = res;
         return memo[m1][m2];
+    }
+
+    // Approach 4: DP bottom-up
+    // Time Complexity: O(N*M)
+    // Space Complexity: O(N*M)
+    public int longestCommonSubsequence4(String text1, String text2) {
+        // Make the memo big enough to hold the cases where the pointers
+        // go over the edges of the strings.
+        int[][] memo = new int[text1.length() + 1][text2.length() + 1];
+
+        // We need to initialise the memo array to -1's so that we know
+        // whether or not a value has been filled in. Keep the base cases
+        for (int i = text1.length() - 1; i >= 0; i--) {
+            for (int j = text2.length() - 1; j >= 0; j--) {
+                if (text1.charAt(i) == text2.charAt(j)) {
+                    memo[i][j] = 1 + memo[i + 1][j + 1];
+                } else {
+                    memo[i][j] = Math.max(memo[i + 1][j], memo[i][j + 1]);
+                }
+            }
+        }
+        return memo[0][0];
     }
 }
