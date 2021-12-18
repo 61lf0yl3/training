@@ -97,17 +97,19 @@ class LongestCommonSubsequence {
         // go over the edges of the strings.
         int[][] memo = new int[text1.length() + 1][text2.length() + 1];
 
-        // We need to initialise the memo array to -1's so that we know
-        // whether or not a value has been filled in. Keep the base cases
+        // Iterate up each column, starting from the last one.
         for (int i = text1.length() - 1; i >= 0; i--) {
             for (int j = text2.length() - 1; j >= 0; j--) {
+                // If the corresponding characters for this cell are the same...
                 if (text1.charAt(i) == text2.charAt(j)) {
                     memo[i][j] = 1 + memo[i + 1][j + 1];
                 } else {
+                    // Otherwise they must be different...
                     memo[i][j] = Math.max(memo[i + 1][j], memo[i][j + 1]);
                 }
             }
         }
+        // The original problem's answer is in dp_grid[0][0]. Return it.
         return memo[0][0];
     }
 }
