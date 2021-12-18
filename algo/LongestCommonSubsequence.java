@@ -112,4 +112,35 @@ class LongestCommonSubsequence {
         // The original problem's answer is in dp_grid[0][0]. Return it.
         return memo[0][0];
     }
+
+    // Approach 5: DP bottom-up with Space Optimization
+    // Time Complexity: O(N*M)
+    // Space Complexity: O(min(N*M))
+    public int longestCommonSubsequence5(String text1, String text2) {
+
+        if (text1.length() < text2.length()) {
+            String temp = text1;
+            text1 = text2;
+            text2 = temp;
+        }
+
+        int[] prev = new int[text2.length() + 1];
+        int[] curr = new int[text2.length() + 1];
+
+        // Iterate up each column, starting from the last one.
+        for (int col = text1.length() - 1; col >= 0; col--) {
+            for (int row = text2.length() - 1; row >= 0; row--) {
+                // If the corresponding characters for this cell are the same...
+                if (text1.charAt(col) == text2.charAt(row)) {
+                    curr[row] = 1 + prev[row + 1];
+                } else {
+                    // Otherwise they must be different...
+                    curr[row] = Math.max(curr[row + 1], prev[row]);
+                }
+            }
+            prev = curr;
+        }
+        // The original problem's answer is in dp_grid[0][0]. Return it.
+        return prev[0];
+    }
 }
