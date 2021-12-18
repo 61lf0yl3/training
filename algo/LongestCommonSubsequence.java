@@ -64,4 +64,25 @@ class LongestCommonSubsequence {
         memo[m1][m2] = Math.max(case1, case2);
         return memo[m1][m2];
     }
+
+    public int longestCommonSubsequenceR3(int m1, int m2) {
+        // Check whether or not we've already solved this subproblem.
+        // This also covers the base cases where p1 == text1.length
+        // or p2 == text2.length.
+        if (memo[m1][m2] != -1) {
+            return memo[m1][m2];
+        }
+
+        int res = 0;
+        // Case 1: If the first character of each string is the same
+        if (text1.charAt(m1) == text2.charAt(m2)) {
+            res = 1 + longestCommonSubsequenceR(m1 + 1, m2 + 1);
+        } else {
+            // Case 1: If the first character of each string is not the same
+            res = Math.max(longestCommonSubsequenceR(m1 + 1, m2), longestCommonSubsequenceR(m1, m2 + 1));
+        }
+        // Add the best answer to the memo before returning it.
+        memo[m1][m2] = res;
+        return memo[m1][m2];
+    }
 }
