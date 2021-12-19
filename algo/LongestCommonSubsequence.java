@@ -125,10 +125,10 @@ class LongestCommonSubsequence {
         }
 
         int[] prev = new int[text2.length() + 1];
-        int[] curr = new int[text2.length() + 1];
 
         // Iterate up each column, starting from the last one.
         for (int col = text1.length() - 1; col >= 0; col--) {
+            int[] curr = new int[text2.length() + 1];
             for (int row = text2.length() - 1; row >= 0; row--) {
                 // If the corresponding characters for this cell are the same...
                 if (text1.charAt(col) == text2.charAt(row)) {
