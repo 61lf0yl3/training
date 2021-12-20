@@ -40,6 +40,10 @@ class ShuffleanArray {
     }
 }
 
+// Approach 2: Fisher-Yates Algorithm
+// swapping elements around within the array itself
+// Time Complexity: O(N^2)
+// Space Complexity: O(N)
 class ShuffleanArray2 {
 
     private int[] nums;
