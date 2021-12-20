@@ -22,7 +22,7 @@ class BitwiseANDofNumbersRange {
         return left;
     }
 
-    // Approach 1: Brian Kernighan's Algorithm
+    // Approach 2: Brian Kernighan's Algorithm
     // Time Complexity: O(1)
     // Space Complexity: O(1)
     public int rangeBitwiseAnd2(int left, int right) {
