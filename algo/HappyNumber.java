@@ -26,4 +26,19 @@ class HappyNumber {
         return total;
     }
 
+    // Approach 2: Floyd's Cycle-Finding Algorithm
+    // slow runner goes forward by 1 number in the chain,
+    // and the fast runner goes forward by 2 numbers
+    // Time Complexity: O(logN)
+    // Space Complexity: O(1)
+    public boolean isHappy2(int n) {
+        int slowRunner = n;
+        int fastRunner = getNext(n);
+        while (fastRunner != 1 && slowRunner != fastRunner) {
+            slowRunner = getNext(slowRunner);
+            fastRunner = getNext(getNext(fastRunner));
+        }
+        return fastRunner == 1;
+    }
+
 }
