@@ -1,4 +1,10 @@
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
+    // Approach 1: Hashmap
+    // Time Complexity: O(1)
+    // Space Complexity: O(1)
     public String originalDigits(String s) {
         // building hashmap letter -> its frequency
         char[] count = new char[26 + (int) 'a'];
@@ -34,6 +40,34 @@ class Solution {
         for (int i = 0; i < 10; i++)
             for (int j = 0; j < out[i]; j++)
                 output.append(i);
+        return output.toString();
+    }
+
+    // Approach 1: Hashmap
+    // Time Complexity: O(1)
+    // Space Complexity: O(1)
+    public String originalDigit2(String s) {
+        Map<Character, Integer> m = new HashMap<>();
+        for (int c = 0; c < s.length(); c++) {
+            if (!m.containsKey(s.charAt(c))) {
+                m.put(s.charAt(c), 1);
+            } else {
+                m.put(s.charAt(c), m.get(s.charAt(c)) + 1);
+            }
+        }
+        char[] chars = new char[] { 'z', 'w', 'u', 'x', 'g', 'h', 'f', 's', 'i', 'n' };
+        int[] nums = new int[] { 0, 2, 4, 6, 8, 3, 5, 7, 9, 1 };
+        String[] digits = new String[] { "zero", "two", "four", "six", "eight",
+                "three", "five", "seven", "nine", "one", };
+        StringBuilder output = new StringBuilder();
+        for (int c1 = 0; c1 < chars.length; c1++) {
+            if (m.containsKey(chars[c1])) {
+                output.append(nums[c1]);
+                for (int c2 = 0; c2 < digits[c1].length(); c2++) {
+                    m.put(digits[c1].charAt(c2), m.get(digits[c1].charAt(c2)) - 1);
+                }
+            }
+        }
         return output.toString();
     }
 }
