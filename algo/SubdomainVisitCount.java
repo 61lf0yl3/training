@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 class SubdomainVisitCount {
+    // 811. Subdomain Visit Count
+
+    // Approach #1: Hash Map
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
     public List<String> subdomainVisits(String[] cpdomains) {
         Map<String, Integer> m = new HashMap<>();
         for (String domain : cpdomains) {
