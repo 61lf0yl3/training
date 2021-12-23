@@ -1,6 +1,23 @@
 public class SubarraySumEqualsK {
     // 560. Subarray Sum Equals K
 
+    // Approach #2: Without Space
+    // Time Complexity: O(N^2)
+    // Space Complexity: O(N)
+    public int subarraySum1(int[] nums, int k) {
+        int res = 0;
+        for (int start = 0; start < nums.length; start++) {
+            int sum = 0;
+            for (int end = start; end < nums.length; end++) {
+                sum += nums[end];
+                if (sum == k) {
+                    res++;
+                }
+            }
+        }
+        return res;
+    }
+
     // Approach #2: Using Cumulative Sum
     // Time Complexity: O(N^2)
     // Space Complexity: O(N)
