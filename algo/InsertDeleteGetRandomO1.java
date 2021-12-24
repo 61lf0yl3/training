@@ -3,6 +3,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+// Approach 1: HashMap + ArrayList
+// Time Complexity: O(1)
+// Space Complexity: O(N)
 class InsertDeleteGetRandomO1 {
     Map<Integer, Integer> m;
     ArrayList<Integer> a;
