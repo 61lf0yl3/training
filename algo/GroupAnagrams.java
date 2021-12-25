@@ -11,11 +11,18 @@ class GroupAnagrams {
     // Time Complexity: O(M*NlogN)
     // Space Complexity: O(k)
     public List<List<String>> groupAnagrams(String[] strs) {
+        if (strs.length == 0) {
+            return new ArrayList();
+        }
+
         List<List<String>> res = new ArrayList<>();
         Map<String, List<String>> group = new HashMap<>();
         for (String word : strs) {
+            char[] chars = word.toCharArray();
+            Arrays.sort(chars);
+            String anagram = String.valueOf(chars);
+
             List<String> anagrams = new ArrayList<>();
-            String anagram = sortString(word);
             if (group.containsKey(anagram)) {
                 anagrams = group.get(anagram);
             } else {
@@ -28,11 +35,5 @@ class GroupAnagrams {
             res.add(anagrams);
         }
         return res;
-    }
-
-    public static String sortString(String inputString) {
-        char tempArray[] = inputString.toCharArray();
-        Arrays.sort(tempArray);
-        return new String(tempArray);
     }
 }
