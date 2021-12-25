@@ -18,4 +18,12 @@ class KthLargestElementinanArray {
         return qp.poll();
     }
 
+    // Approach 3: Sort
+    // Time Complexity: O(NlogN)
+    // Space Complexity: O(1)
+    public int findKthLargest2(int[] nums, int k) {
+        Arrays.sort(nums);
+        return nums[nums.length - k];
+    }
+
 }
