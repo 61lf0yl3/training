@@ -18,6 +18,21 @@ class KthLargestElementinanArray {
         return qp.poll();
     }
 
+    // Approach 1: PriorityQueue with 2 loops
+    // Time Complexity: O(N)
+    // Space Complexity: O(k)
+    public int findKthLargest1(int[] nums, int k) {
+        PriorityQueue<Integer> qp = new PriorityQueue<>();
+        for (int i = 0; i < nums.length; i++) {
+            qp.add(nums[i]);
+        }
+        int res = 0;
+        for (int i = 0; i <= nums.length - k; i++) {
+            res = qp.remove();
+        }
+        return res;
+    }
+
     // Approach 3: Sort
     // Time Complexity: O(NlogN)
     // Space Complexity: O(1)
