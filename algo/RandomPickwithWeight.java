@@ -43,6 +43,23 @@ class RandomPickwithWeight {
         return low;
     }
 
+    // Approach 2: Prefix Sums
+    // Time complexity : RandomPickwithWeight() O(N)
+    // pickIndex() O(N)
+    // Space complexity : RandomPickwithWeight() O(N)
+    // pickIndex() O(1)
+    public int pickIndex2() {
+        int generated = r.nextInt(prefixSum) + 1;
+        int index = 0;
+        for (int i = 0; i < prefixSums.length; i++) {
+            if (prefixSums[i] > generated) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
 }
 
 /**
