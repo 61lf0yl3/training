@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Random;
 
 class TopKFrequentElements {
     // Approach 1: Bucket sort (My version)
@@ -138,7 +139,7 @@ class TopKFrequentElements {
         }
     }
 
-    public int[] topKFrequent(int[] nums, int k) {
+    public int[] topKFrequent3(int[] nums, int k) {
         // build hash map : character and how often it appears
         count = new HashMap();
         for (int num : nums) {
