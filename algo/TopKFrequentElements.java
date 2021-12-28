@@ -40,40 +40,6 @@ class TopKFrequentElements {
         return res;
     }
 
-    // Approach 1: Bucket sort
-    // Time complexity : O(NLogK)
-    // Space complexity : O(N+K)
-    public int[] topKFrequent2(int[] nums, int k) {
-        // O(1) time
-        if (k == nums.length) {
-            return nums;
-        }
-
-        // 1. build hash map : character and how often it appears
-        // O(N) time
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
-        }
-        // init heap 'the less frequent element first'
-        Queue<Integer> heap = new PriorityQueue<>(
-                (n1, n2) -> map.get(n1) - map.get(n2));
-
-        // 2. keep k top frequent elements in the heap
-        // O(N log k) < O(N log N) time
-        for (int key : map.keySet()) {
-            heap.add(key);
-            if (heap.size() > k) {
-                heap.poll();
-            }
-        }
-
-        int[] res = new int[k];
-        for (int i = 0; i < k; i++) {
-            res[i] = heap.poll();
-        }
-        return res;
-    }
 }
 
 // public int[] topKFrequent(int[] nums, int k) {
