@@ -1,7 +1,7 @@
 class BeautifulArrangement {
     // 526. Beautiful Arrangement
 
-    // Approach 1: Backtracking
+    // Approach 1: Brute Force
     // Time complexity : O(k) where k refers to the number of valid permutations
     // Space complexity : O(n)
     int res;
@@ -35,4 +35,29 @@ class BeautifulArrangement {
         nums[i] = nums[start];
         nums[start] = temp;
     }
+
+    // Approach 1: Backtracking
+    // Time complexity : O(k) where k refers to the number of valid permutations
+    // Space complexity : O(n)
+
+    public int countArrangement2(int n) {
+        res = 0;
+        boolean[] seen = new boolean[n + 1];
+        backtrack(n, 1, seen);
+        return res;
+    }
+
+    public void backtrack(int n, int pos, boolean[] seen) {
+        if (pos > n) {
+            res++;
+        }
+        for (int i = 1; i <= n; i++) {
+            if (!seen[i] && (i % pos == 0 || pos % i == 0)) {
+                seen[i] = true;
+                backtrack(n, pos + 1, seen);
+                seen[i] = false;
+            }
+        }
+    }
+
 }
