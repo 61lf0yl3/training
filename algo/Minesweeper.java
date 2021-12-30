@@ -1,7 +1,10 @@
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-class Solution {
+class Minesweeper {
+    // Approach 1: BFS
+    // Time complexity : O(N*K)
+    // Space complexity : O(N*K)
     int[][] neighbor = new int[][] { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, -1 }, { 0, 1 }, { 1, -1 }, { 1, 0 },
             { 1, 1 } };
 
