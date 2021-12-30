@@ -41,7 +41,7 @@ class MinimumKnightMoves {
         return step;
     }
 
-    // Approach 1: DFS
+    // Approach 2: DFS
     // Time complexity : O(|x|*|y|)
     // Space complexity : O(|x|*|y|)
     private Map<String, Integer> memo = new HashMap<>();
