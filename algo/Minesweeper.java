@@ -2,6 +2,8 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 class Minesweeper {
+    // 529. Minesweeper
+
     // Approach 1: BFS
     // Time complexity : O(N*K)
     // Space complexity : O(N*K)
