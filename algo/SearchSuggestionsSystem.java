@@ -5,7 +5,7 @@ import java.util.List;
 class SearchSuggestionsSystem {
 
     // Approach 1: Binary Search
-    // Time complexity : O(NlogM + MlogN)s
+    // Time complexity : O(NlogM + MlogN)
     // Space complexity : O(N) because we use merge sort algo;
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
         Arrays.sort(products);
