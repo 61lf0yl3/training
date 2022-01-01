@@ -65,10 +65,12 @@ class TrieNode {
 class WordDictionary2 {
     TrieNode trie;
 
+    /** Initialize your data structure here. */
     public WordDictionary2() {
         trie = new TrieNode();
     }
 
+    /** Adds a word into the data structure. */
     public void addWord(String word) {
         TrieNode node = trie;
         for (char c : word.toCharArray()) {
@@ -80,14 +82,21 @@ class WordDictionary2 {
         node.word = true;
     }
 
+    /**
+     * Returns if the word is in the data structure. A word could contain the dot
+     * character '.' to represent any one letter.
+     */
     public boolean search(String word) {
         return searchR(word, trie);
     }
 
+    /** Returns if the word is in the node. */
     public boolean searchR(String word, TrieNode node) {
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
             if (!node.children.containsKey(c)) {
+                // if the current character is '.'
+                // check all possible nodes at this level
                 if (c == '.') {
                     for (char x : node.children.keySet()) {
                         if (searchR(word.substring(i + 1), node.children.get(x))) {
@@ -95,8 +104,12 @@ class WordDictionary2 {
                         }
                     }
                 }
+                // if no nodes lead to answer
+                // or the current character != '.'
                 return false;
             } else {
+                // if the character is found
+                // go down to the next level in trie
                 node = node.children.get(c);
             }
         }
