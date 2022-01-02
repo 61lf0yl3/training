@@ -1,10 +1,24 @@
+import java.util.Arrays;
+
 class MinimumMovestoEqualArrayElements {
     // 453. Minimum Moves to Equal Array Elements
 
-    // Approach 1: Brute Force (TLE)
-    // Time complexity : O(N^2)
+    // Approach 3: Using Sorting
+    // Time complexity : O(NlogN)
     // Space complexity : O(1)
     public int minMoves(int[] nums) {
+        Arrays.sort(nums);
+        int res = 0;
+        for (int i = nums.length - 1; i >= 1; i--) {
+            res += nums[i] - nums[0];
+        }
+        return res;
+    }
+
+    // Approach 3: Brute Force (TLE)
+    // Time complexity : O(N^2)
+    // Space complexity : O(1)
+    public int minMoves3(int[] nums) {
         int res = 0;
         int max = findMax(nums);
         int min = findMin(nums);
