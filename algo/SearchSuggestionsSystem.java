@@ -54,7 +54,6 @@ class SearchSuggestionsSystem {
 }
 
 class TrieNode {
-    // Map<Character, TrieNode> children = new HashMap<>();
     TrieNode[] children = new TrieNode[26];
     boolean word = false;
 
@@ -68,6 +67,7 @@ class SearchSuggestionsSystem2 {
 
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
         TrieNode temp = trie;
+        // Add all words to trie.
         for (String word : products) {
             addWord(word);
         }
@@ -80,7 +80,9 @@ class SearchSuggestionsSystem2 {
         return res;
     }
 
+    // Inserts the string in trie.
     private void addWord(String word) {
+        // Points node to the root of trie.
         TrieNode node = trie;
         for (char c : word.toCharArray()) {
             if (node.children[c - 'a'] == null) {
@@ -88,12 +90,15 @@ class SearchSuggestionsSystem2 {
             }
             node = node.children[c - 'a'];
         }
+
+        // Mark this node as a completed word.
         node.word = true;
     }
 
     private List<String> searchWord(String word) {
         TrieNode node = trie;
         List<String> result = new ArrayList<>();
+        // Move node to the end of prefix in its trie representation.
         for (char c : word.toCharArray()) {
             if (node.children[c - 'a'] == null) {
                 return result;
@@ -104,6 +109,8 @@ class SearchSuggestionsSystem2 {
         return result;
     }
 
+    // Runs a DFS on trie starting with given prefix and adds all the words in the
+    // resultBuffer, limiting result size to 3
     private void dfs(TrieNode node, String word, List<String> result) {
         if (result.size() == 3) {
             return;
@@ -111,6 +118,8 @@ class SearchSuggestionsSystem2 {
         if (node.word) {
             result.add(word);
         }
+
+        // Run DFS on all possible paths.
         for (char c = 'a'; c <= 'z'; c++) {
             if (node.children[c - 'a'] != null) {
                 dfs(node.children[c - 'a'], word + c, result);
