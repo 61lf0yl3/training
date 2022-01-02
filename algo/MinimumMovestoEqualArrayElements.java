@@ -15,6 +15,20 @@ class MinimumMovestoEqualArrayElements {
         return res;
     }
 
+    // Approach 2: DP
+    // Time complexity : O(NlogN)
+    // Space complexity : O(1)
+    public int minMoves2(int[] nums) {
+        Arrays.sort(nums);
+        int moves = 0;
+        for (int i = 1; i < nums.length; i++) {
+            int diff = moves + nums[i] - nums[i - 1];
+            nums[i] += moves;
+            moves += diff;
+        }
+        return moves;
+    }
+
     // Approach 3: Using Sorting
     // Time complexity : O(NlogN)
     // Space complexity : O(1)
