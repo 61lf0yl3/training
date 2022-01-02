@@ -56,7 +56,7 @@ class WordDictionary {
 // search;
 class TrieNode {
     Map<Character, TrieNode> children = new HashMap<>();
-    boolean word = false; // ?
+    boolean word = false;
 
     public TrieNode() {
     }
