@@ -31,4 +31,24 @@ class RemoveAllAdjacentDuplicatesinString2 {
         }
         return res.reverse().toString();
     }
+
+    // Approach 1: Memoise Count
+    // Time complexity : O(N)
+    // Space complexity : O(N)
+    public String removeDuplicates4(String s, int k) {
+        StringBuilder res = new StringBuilder(s);
+        int[] count = new int[s.length()];
+        for (int i = 0; i < res.length(); i++) {
+            if (i == 0 || res.charAt(i) != res.charAt(i - 1)) {
+                count[i] = 1;
+            } else {
+                count[i] = count[i - 1] + 1;
+                if (count[i] == k) {
+                    res.delete(i - k + 1, i + 1);
+                    i = i - k;
+                }
+            }
+        }
+        return res.toString();
+    }
 }
