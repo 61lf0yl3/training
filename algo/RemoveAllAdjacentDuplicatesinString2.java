@@ -32,7 +32,29 @@ class RemoveAllAdjacentDuplicatesinString2 {
         return res.reverse().toString();
     }
 
-    // Approach 1: Memoise Count
+    // Approach 3: Using Stack
+    // Time complexity : O(N)
+    // Space complexity : O(N)
+    public String removeDuplicates3(String s, int k) {
+        StringBuilder res = new StringBuilder(s);
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < res.length(); i++) {
+            if (i == 0 || res.charAt(i) != res.charAt(i - 1)) {
+                stack.add(1);
+            } else {
+                int incremented = stack.pop() + 1;
+                if (incremented == k) {
+                    res.delete(i - k + 1, i + 1);
+                    i = i - k;
+                } else {
+                    stack.add(incremented);
+                }
+            }
+        }
+        return res.toString();
+    }
+
+    // Approach 2: Memoise Count
     // Time complexity : O(N)
     // Space complexity : O(N)
     public String removeDuplicates4(String s, int k) {
