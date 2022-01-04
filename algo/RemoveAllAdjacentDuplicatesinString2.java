@@ -32,6 +32,29 @@ class RemoveAllAdjacentDuplicatesinString2 {
         return res.reverse().toString();
     }
 
+    // Approach 2: Two Pointers
+    // Time complexity : O(N)
+    // Space complexity : O(N)
+    public String removeDuplicates2(String s, int k) {
+        char[] sa = s.toCharArray();
+        Stack<Integer> stack = new Stack<>();
+        int j = 0;
+        for (int i = 0; i < s.length(); i++, j++) {
+            sa[j] = sa[i];
+            if (j == 0 || sa[j] != sa[j - 1]) {
+                stack.add(1);
+            } else {
+                int incremented = stack.pop() + 1;
+                if (incremented == k) {
+                    j = j - k;
+                } else {
+                    stack.add(incremented);
+                }
+            }
+        }
+        return new String(sa, 0, j);
+    }
+
     // Approach 3: Using Stack
     // Time complexity : O(N)
     // Space complexity : O(N)
