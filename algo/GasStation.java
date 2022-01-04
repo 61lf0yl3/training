@@ -22,7 +22,7 @@ class GasStation {
         return totalTank >= 0 ? startingStaton : -1;
     }
 
-    // Approach 2: Brute Force
+    // Approach 2: Brute Force (TLE)
     // Time complexity : O(N^2)
     // Space complexity : O(1)
     public int canCompleteCircuit2(int[] gas, int[] cost) {
