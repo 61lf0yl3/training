@@ -30,4 +30,27 @@ class SingleElementinaSortedArray {
         }
         return nums[low];
     }
+
+    // Approach 2: Binary Search on Evens Indexes Only
+    // Time complexity : O(logN)
+    // Space complexity : O(1)
+    public int singleNonDuplicate2(int[] nums) {
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        int low = 0;
+        int high = nums.length - 1;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (mid % 2 == 1) {
+                mid--;
+            }
+            if (nums[mid] == nums[mid + 1]) {
+                low = mid + 2;
+            } else {
+                high = mid;
+            }
+        }
+        return nums[low];
+    }
 }
