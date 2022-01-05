@@ -43,3 +43,48 @@ class GameofLife {
         }
     }
 }
+
+class GameofLife2 {
+    int[][] neighbors = new int[][] { { -1, -1 }, { 0, -1 }, { 1, -1 }, { -1, 0 }, { 1, 0 }, { -1, 1 }, { 0, 1 },
+            { 1, 1 } };
+
+    public void gameOfLife(int[][] board) {
+        int[][] copy = new int[board.length][board[0].length];
+        for (int r = 0; r < board.length; r++) {
+            for (int c = 0; c < board[0].length; c++) {
+                dfs(board, r, c);
+            }
+        }
+        for (int r = 0; r < board.length; r++) {
+            for (int c = 0; c < board[0].length; c++) {
+                if (board[r][c] == -1) {
+                    board[r][c] = 0;
+                } else if (board[r][c] == 2) {
+                    board[r][c] = 1;
+                }
+            }
+        }
+    }
+
+    public void dfs(int[][] board, int row, int col) {
+        int liveCell = 0;
+        for (int i = 0; i < neighbors.length; i++) {
+            int newRow = row + neighbors[i][0];
+            int newCol = col + neighbors[i][1];
+            if (newRow >= 0 && newRow < board.length && newCol >= 0 && newCol < board[0].length
+                    && Math.abs(board[newRow][newCol]) % 2 == 1) {
+                liveCell++;
+            }
+        }
+        if (Math.abs(board[row][col]) % 2 == 1) {
+            // lives on to the next generation
+            if (liveCell < 2 || liveCell > 3) {
+                board[row][col] = -1;
+            }
+        } else {
+            if (liveCell == 3) {
+                board[row][col] = 2;
+            }
+        }
+    }
+}
