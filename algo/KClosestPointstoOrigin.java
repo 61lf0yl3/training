@@ -57,6 +57,29 @@ class KClosestPointstoOrigin {
         return res;
     }
 
+    public int[][] kClosest3(int[][] points, int k) {
+        if (k == points.length) {
+            return points;
+        }
+
+        PriorityQueue<int[]> q = new PriorityQueue<>(new SortDistances2());
+
+        for (int[] point : points) {
+            q.add(point);
+            if (q.size() > k) {
+                q.poll();
+            }
+        }
+
+        int[][] res = new int[k][2];
+        int index = 0;
+        while (!q.isEmpty()) {
+            res[index] = q.poll();
+            index++;
+        }
+
+        return res;
+    }
 }
 
 class SortDistances implements Comparator<Pair<Integer, Double>> {
@@ -67,5 +90,13 @@ class SortDistances implements Comparator<Pair<Integer, Double>> {
             return 1;
         }
         return 0;
+    }
+}
+
+class SortDistances implements Comparator<int[]> {
+    public int compare(int[] a, int[] b) {
+        int distanceA = a[0] * a[0] + a[1] * a[1];
+        int distanceB = b[0] * b[0] + b[1] * b[1];
+        return distanceB - distanceA;
     }
 }
