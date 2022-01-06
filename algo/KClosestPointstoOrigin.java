@@ -1,7 +1,25 @@
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
 class KClosestPointstoOrigin {
+    // 973. K Closest Points to Origin
+
+    // Approach 1: Sort with Custom Comparator and Priority Queue
+    // Time Complexity: O(NlogN)
+    // Space Complexity: O(logN or N)
+    public int[][] kClosest2(int[][] points, int k) {
+        // Sort the array with a custom lambda comparator function
+        Arrays.sort(points, (a, b) -> squaredDistance(a) - squaredDistance(b));
+
+        // Return the first k elements of the sorted array
+        return Arrays.copyOf(points, k);
+    }
+
+    private int squaredDistance(int[] point) {
+        // Calculate and return the squared Euclidean distance
+        return point[0] * point[0] + point[1] * point[1];
+    }
 
     // Approach 1: Sort with Custom Comparator and Priority Queue
     // Time Complexity: O(NlogN)
@@ -38,6 +56,7 @@ class KClosestPointstoOrigin {
 
         return res;
     }
+
 }
 
 class SortDistances implements Comparator<Pair<Integer, Double>> {
