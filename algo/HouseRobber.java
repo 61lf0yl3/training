@@ -23,7 +23,7 @@ class HouseRobber {
 
     // Approach 2: Recursion
     // Time Complexity: O(N)
-    // Space Complexity: O(1)
+    // Space Complexity: O(N)
     int res;
 
     public int rob2(int[] nums) {
@@ -43,7 +43,7 @@ class HouseRobber {
         }
     }
 
-    // Approach 2: Recursion
+    // Approach 3: Recursion
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     private int[] memo;

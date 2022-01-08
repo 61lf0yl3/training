@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-class Solution {
+class ContainsDuplicate {
     // 217. Contains Duplicate
 
     // Approach 1: Using HashSet
