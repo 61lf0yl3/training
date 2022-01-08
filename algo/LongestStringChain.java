@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -7,8 +8,8 @@ class LongestStringChain {
     // 1048. Longest String Chain
 
     // Approach 1: Recursion + Memoization
-    // Time Complexity: O(N)
-    // Space Complexity: O(D) , where D is a tree diameter.
+    // Time Complexity: O(N*L^2)
+    // Space Complexity: O(N)
     int res;
     Set<String> s;
     Map<String, Integer> m;
@@ -46,5 +47,31 @@ class LongestStringChain {
         m.put(word, maxLength);
         res = Math.max(res, maxLength);
         return maxLength;
+    }
+
+    // Approach 1: Bottom-Up Dynamic Programming wirh Sorting
+    // Time Complexity: O(N*L^2)
+    // Space Complexity: O(N)
+    public int longestStrChain2(String[] words) {
+        Map<String, Integer> m = new HashMap<>();
+        Arrays.sort(words, (a, b) -> a.length() - b.length());
+        int res = 0;
+        for (String word : words) {
+
+            int maxLength = 1;
+            StringBuilder sb = new StringBuilder(word);
+            for (int i = 0; i < word.length(); i++) {
+                sb.deleteCharAt(i);
+                String predecessor = sb.toString();
+                if (m.containsKey(predecessor)) {
+                    int currLength = 1 + m.get(predecessor);
+                    maxLength = Math.max(maxLength, currLength);
+                }
+                sb.insert(i, word.charAt(i));
+            }
+            m.put(word, maxLength);
+            res = Math.max(res, maxLength);
+        }
+        return res;
     }
 }
