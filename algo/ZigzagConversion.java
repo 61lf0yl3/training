@@ -33,7 +33,7 @@ class ZigzagConversion {
         return res.toString();
     }
 
-    // Approach 1: Sort by Row
+    // Approach 2: Sort by Row
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     public String convert2(String s, int numRows) {
@@ -61,7 +61,7 @@ class ZigzagConversion {
         return ret.toString();
     }
 
-    // Approach 1: Visit by Row
+    // Approach 3: Visit by Row
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     public String convert3(String s, int numRows) {
