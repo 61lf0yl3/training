@@ -48,4 +48,44 @@ class DecodeString {
 
         return res.reverse().toString();
     }
+
+    // Approach 2: Using 2 Stacks
+    // Time Complexity: O(maxK * n) where maxK is the maximum value of k, and n is
+    // the maximum length of encoded string.
+    // Space Complexity: O(sum(m * n)) where m is the numbers of letters, and n is
+    // the numbers of digits.
+    public String decodeString2(String s) {
+        Stack<StringBuilder> stringStack = new Stack<>();
+        Stack<Integer> countStack = new Stack<>();
+
+        StringBuilder currWord = new StringBuilder();
+        int repetingNumber = 0;
+
+        for (char c : s.toCharArray()) {
+            if (c >= 'a' && c <= 'z') {
+                currWord.append(c);
+
+            } else if (c >= '0' && c <= '9') {
+                repetingNumber = repetingNumber * 10 + (c - '0');
+
+            } else if (c == '[') {
+                countStack.add(repetingNumber);
+                stringStack.add(currWord);
+
+                repetingNumber = 0;
+                currWord = new StringBuilder();
+
+            } else if (c == ']') {
+                StringBuilder decodedWord = stringStack.pop();
+                int repetingTimes = countStack.pop();
+                for (int i = 0; i < repetingTimes; i++) {
+                    decodedWord.append(currWord);
+                }
+                currWord = decodedWord;
+            }
+
+        }
+
+        return currWord.toString();
+    }
 }
