@@ -15,8 +15,8 @@ class RangeAddition {
         }
         int sum = 0;
         for (int i = 0; i < length; i++) {
-            res[i] += sum;
-            sum = res[i];
+            sum += res[i];
+            res[i] = sum;
         }
         return res;
     }
