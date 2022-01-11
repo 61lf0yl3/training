@@ -4,8 +4,39 @@ class BasicCalculator2 {
 
     // Approach 1: Using Stack
     // Time Complexity: O(N)
-    // Space Complexity: O(N)
+    // Space Complexity: O(1)
     public int calculate(String s) {
+        if (s == null || s.isEmpty())
+            return 0;
+        int length = s.length();
+        int currentNumber = 0, lastNumber = 0, result = 0;
+        char operation = '+';
+        for (int i = 0; i < length; i++) {
+            char currentChar = s.charAt(i);
+            if (Character.isDigit(currentChar)) {
+                currentNumber = (currentNumber * 10) + (currentChar - '0');
+            }
+            if (!Character.isDigit(currentChar) && !Character.isWhitespace(currentChar) || i == length - 1) {
+                if (operation == '+' || operation == '-') {
+                    result += lastNumber;
+                    lastNumber = (operation == '+') ? currentNumber : -currentNumber;
+                } else if (operation == '*') {
+                    lastNumber = lastNumber * currentNumber;
+                } else if (operation == '/') {
+                    lastNumber = lastNumber / currentNumber;
+                }
+                operation = currentChar;
+                currentNumber = 0;
+            }
+        }
+        result += lastNumber;
+        return result;
+    }
+
+    // Approach 2: Using Stack
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    public int calculate2(String s) {
         int numSum = 0;
         Stack<Integer> nums = new Stack<>();
 
@@ -53,10 +84,10 @@ class BasicCalculator2 {
         return nums.pop();
     }
 
-    // Approach 1: Using Stack
+    // Approach 3: Using Stack
     // Time Complexity: O(N)
     // Space Complexity: O(N)
-    public int calculate2(String s) {
+    public int calculate3(String s) {
 
         if (s == null || s.isEmpty())
             return 0;
