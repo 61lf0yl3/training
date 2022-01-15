@@ -4,7 +4,7 @@ import java.util.Map;
 class NthTribonacciNumber {
     // 1137. N-th Tribonacci Number
 
-    // Approach 1: DP Optimal
+    // Approach 1: DP Optimal (Bottom-Up)
     // Time Complexity: O(N)
     // Space Complexity: O(1)
     public int tribonacci(int n) {
@@ -26,7 +26,7 @@ class NthTribonacciNumber {
         return son;
     }
 
-    // Approach 1: DP (Recursion+Memoization)
+    // Approach 1: DP Top-Down (Recursion+Memoization)
     // Time Complexity: O(N)
     // Space Complexity: O(1)
     public int tribonacci2(int n) {
