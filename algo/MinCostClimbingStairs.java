@@ -3,10 +3,24 @@ import java.util.Map;
 
 class MinCostClimbingStairs {
 
-    // Approach 1: DP
+    // Approach 1: DP Optimal
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public int minCostClimbingStairs(int[] cost) {
+        int oneDown = 0;
+        int twoDown = 0;
+        for (int i = 2; i <= cost.length; i++) {
+            int tmp = Math.min(oneDown + cost[i - 1], twoDown + cost[i - 2]);
+            twoDown = oneDown;
+            oneDown = tmp;
+        }
+        return oneDown;
+    }
+
+    // Approach 2: DP
     // Time Complexity: O(N)
     // Space Complexity: O(N)
-    public int minCostClimbingStairs(int[] cost) {
+    public int minCostClimbingStairs1(int[] cost) {
         int[] dp = new int[cost.length + 1];
         for (int i = 2; i < dp.length; i++) {
             dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
@@ -14,7 +28,7 @@ class MinCostClimbingStairs {
         return dp[cost.length];
     }
 
-    // Approach 1: DP
+    // Approach 2: DP
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     public int minCostClimbingStairs2(int[] cost) {
@@ -34,7 +48,7 @@ class MinCostClimbingStairs {
         return dp[cost.length - 1];
     }
 
-    // Approach 1: DP
+    // Approach 3: DP Top-Down (Recursive with memo)
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     int[] cost;
