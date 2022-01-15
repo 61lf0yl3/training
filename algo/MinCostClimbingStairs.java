@@ -7,6 +7,17 @@ class MinCostClimbingStairs {
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     public int minCostClimbingStairs(int[] cost) {
+        int[] dp = new int[cost.length + 1];
+        for (int i = 2; i < dp.length; i++) {
+            dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
+        }
+        return dp[cost.length];
+    }
+
+    // Approach 1: DP
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    public int minCostClimbingStairs2(int[] cost) {
         if (cost.length == 2) {
             return Math.min(cost[0], cost[1]);
         }
@@ -29,7 +40,7 @@ class MinCostClimbingStairs {
     int[] cost;
     Map<Integer, Integer> m;
 
-    public int minCostClimbingStairs2(int[] cost) {
+    public int minCostClimbingStairs3(int[] cost) {
         if (cost.length == 2) {
             return Math.min(cost[0], cost[1]);
         }
