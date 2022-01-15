@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 class HouseRobber {
     // 198. House Robber
@@ -19,6 +21,31 @@ class HouseRobber {
             old = prevRes;
         }
         return res;
+    }
+
+    // Approach 2: Recursion
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    private Map<Integer, Integer> dp;
+    private int[] nums;
+
+    public int rob4(int[] nums) {
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        this.nums = nums;
+        dp = new HashMap<>();
+        dp.put(0, nums[0]);
+        dp.put(1, Math.max(nums[0], nums[1]));
+
+        return robDP(nums.length - 1);
+    }
+
+    private int robDP(int i) {
+        if (!dp.containsKey(i)) {
+            dp.put(i, Math.max(robDP(i - 1), robDP(i - 2) + nums[i]));
+        }
+        return dp.get(i);
     }
 
     // Approach 2: Recursion
