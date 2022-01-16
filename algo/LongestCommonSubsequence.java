@@ -154,8 +154,7 @@ class LongestCommonSubsequence {
     public int longestCommonSubsequence6(String text1, String text2) {
         this.text11 = text1;
         this.text22 = text2;
-        int max = Math.max(text1.length(), text2.length());
-        memo2 = new Integer[max][max];
+        memo2 = new Integer[text1.length()][text2.length()];
         return longestCommonSubsequenceDP(0, 0);
     }
 
