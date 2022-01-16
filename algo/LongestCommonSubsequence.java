@@ -143,4 +143,34 @@ class LongestCommonSubsequence {
         // The original problem's answer is in dp_grid[0][0]. Return it.
         return prev[0];
     }
+
+    // Approach 5: DP Top-Down
+    // Time Complexity: O(N*M)
+    // Space Complexity: O(N*M)
+    String text11;
+    String text22;
+    Integer[][] memo2;
+
+    public int longestCommonSubsequence6(String text1, String text2) {
+        this.text11 = text1;
+        this.text22 = text2;
+        int max = Math.max(text1.length(), text2.length());
+        memo2 = new Integer[max][max];
+        return longestCommonSubsequenceDP(0, 0);
+    }
+
+    private int longestCommonSubsequenceDP(int i, int j) {
+        if (i == text1.length() || j == text2.length()) {
+            return 0;
+        }
+        if (memo2[i][j] == null) {
+            if (text1.charAt(i) == text2.charAt(j)) {
+                memo[i][j] = 1 + longestCommonSubsequenceDP(i + 1, j + 1);
+            } else {
+                memo[i][j] = Math.max(longestCommonSubsequenceDP(i + 1, j),
+                        longestCommonSubsequenceDP(i, j + 1));
+            }
+        }
+        return memo[i][j];
+    }
 }
