@@ -5,6 +5,9 @@ class MaximumScorefromPerformingMultiplicationOperations {
     int n;
     int m;
 
+    // Approach 1: DP Top-Down
+    // Time Complexity: O(M^2)
+    // Space Complexity: O(M^2)
     public int maximumScore(int[] nums, int[] multipliers) {
         n = nums.length;
         m = multipliers.length;
