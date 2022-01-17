@@ -88,4 +88,39 @@ class CoinChange {
         }
         return dp[amount];
     }
+
+    // Approach 2: DP Top-Down
+    // Time Complexity: O(S*N)
+    // Space Complexity: O(N)
+    int[] coins;
+    Integer[] memo4;
+
+    public int coinChange4(int[] coins, int amount) {
+        this.coins = coins;
+        memo = new Integer[amount + 1];
+        return coinChangeDP(amount);
+    }
+
+    private int coinChangeDP(int amount) {
+        if (amount < 0) {
+            return -1;
+        }
+        if (amount == 0) {
+            return 0;
+        }
+        if (memo4[amount] == null) {
+            int best = Integer.MAX_VALUE;
+            for (int coin : coins) {
+                int res = coinChangeDP(amount - coin);
+                if (res != -1) {
+                    best = Math.min(best, 1 + res);
+                }
+            }
+            if (best == Integer.MAX_VALUE) {
+                best = -1;
+            }
+            memo4[amount] = best;
+        }
+        return memo4[amount];
+    }
 }
