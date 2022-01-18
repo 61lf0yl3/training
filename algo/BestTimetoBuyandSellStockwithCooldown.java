@@ -1,6 +1,6 @@
 class BestTimetoBuyandSellStockwithCooldown {
 
-    // Approach 3: DP Top-Down with Memoization
+    // Approach 1: DP Top-Down with Memoization
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     int[] prices;
@@ -29,5 +29,28 @@ class BestTimetoBuyandSellStockwithCooldown {
             memo[i][holding] = Math.max(notBuyOrSell, BuyOrSell);
         }
         return memo[i][holding];
+    }
+
+    // Approach 2: DP Bottom-Up (Tabulation)
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    public int maxProfit2(int[] prices) {
+        int[][] dp = new int[prices.length + 2][2];
+
+        for (int i = prices.length - 1; i >= 0; i--) {
+            for (int j = 0; j < 2; j++) {
+                int notBuyOrSell = dp[i + 1][j];
+                int BuyOrSell;
+                if (j == 1) {
+                    // Sell
+                    BuyOrSell = prices[i] + dp[i + 2][0];
+                } else {
+                    // Buy
+                    BuyOrSell = -prices[i] + dp[i + 1][1];
+                }
+                dp[i][j] = Math.max(notBuyOrSell, BuyOrSell);
+            }
+        }
+        return dp[0][0];
     }
 }
