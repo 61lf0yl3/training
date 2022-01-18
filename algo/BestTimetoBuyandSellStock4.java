@@ -28,4 +28,28 @@ class BestTimetoBuyandSellStock4 {
         }
         return memo[i][k][holding];
     }
+
+    // Approach 3: DP Bottom-Up (Tabulation)
+    // Time Complexity: O(N^3)
+    // Space Complexity: O(N^3)
+    public int maxProfit2(int k, int[] prices) {
+        int[][][] dp = new int[prices.length + 1][k + 1][2];
+
+        for (int i = prices.length - 1; i >= 0; i--) {
+            for (int j = k; j > 0; j--) {
+                for (int h = 0; h <= 1; h++) {
+                    int doNothing = dp[i + 1][j][h];
+                    int sellOrBuy;
+                    if (h == 1) {
+                        sellOrBuy = prices[i] + dp[i + 1][j - 1][0];
+                    } else {
+                        sellOrBuy = -prices[i] + dp[i + 1][j][1];
+                    }
+                    dp[i][j][h] = Math.max(doNothing, sellOrBuy);
+                }
+            }
+        }
+
+        return dp[0][k][0];
+    }
 }
