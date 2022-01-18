@@ -1,8 +1,8 @@
 class BestTimetoBuyandSellStock4 {
 
     // Approach 3: DP Top-Down with Memoization
-    // Time Complexity: O(N^3)
-    // Space Complexity: O(N^3)
+    // Time Complexity: O(N*K)
+    // Space Complexity: O(N*K)
     int[] prices;
     int[][][] memo;
 
@@ -30,8 +30,8 @@ class BestTimetoBuyandSellStock4 {
     }
 
     // Approach 3: DP Bottom-Up (Tabulation)
-    // Time Complexity: O(N^3)
-    // Space Complexity: O(N^3)
+    // Time Complexity: O(N*K)
+    // Space Complexity: O(N*K)
     public int maxProfit2(int k, int[] prices) {
         int[][][] dp = new int[prices.length + 1][k + 1][2];
 
