@@ -1,7 +1,3 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
 import java.util.*;
 
 class WordBreak {
@@ -82,7 +78,7 @@ class WordBreak {
     // Space Complexity: O(N)
     public boolean wordBreak3(String s, List<String> wordDict) {
         Set<String> dict = new HashSet<>(wordDict);
-        Queue<Integer> q = new LinkedList<>();
+        Queue<Integer> q = new ArrayDeque();
         boolean[] seen = new boolean[s.length()];
         q.add(0);
         while (!q.isEmpty()) {
@@ -156,7 +152,7 @@ class WordBreak {
     }
 
     private boolean wordBreakDP(int i) {
-        if (i == s.length()) {
+        if (i == s1.length()) {
             return true;
         }
         if (memo1[i] == null) {
