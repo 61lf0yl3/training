@@ -31,4 +31,29 @@ class PaintFence {
         }
         return dp[n];
     }
+
+    // Approach 3: DP Top-Down with Memoization
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    int[] memo;
+    int k;
+
+    public int numWays3(int n, int k) {
+        this.k = k;
+        memo = new int[n + 1];
+        return numWaysDP(n);
+    }
+
+    public int numWaysDP(int i) {
+        if (i == 1) {
+            return k;
+        }
+        if (i == 2) {
+            return k * k;
+        }
+        if (memo[i] == 0) {
+            memo[i] = (k - 1) * (numWaysDP(i - 1) + numWaysDP(i - 2));
+        }
+        return memo[i];
+    }
 }
