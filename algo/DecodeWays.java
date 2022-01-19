@@ -92,4 +92,32 @@ class DecodeWays {
         }
         return old;
     }
+
+    String s;
+    Integer[] memo1;
+
+    public int numDecodings4(String s) {
+        this.s = s;
+        memo1 = new Integer[s.length()];
+        return numDecodingsDP(0);
+    }
+
+    private int numDecodingsDP(int i) {
+        if (i == s.length()) {
+            return 1;
+        }
+        if (s.charAt(i) == '0') {
+            return 0;
+        }
+        if (i == s.length() - 1) {
+            return 1;
+        }
+        if (memo1[i] == null) {
+            memo1[i] = numDecodingsDP(i + 1);
+            if (Integer.parseInt(s.substring(i, i + 2)) <= 26) {
+                memo1[i] += numDecodingsDP(i + 2);
+            }
+        }
+        return memo1[i];
+    }
 }
