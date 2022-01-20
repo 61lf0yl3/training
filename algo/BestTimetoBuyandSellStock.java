@@ -26,6 +26,19 @@ class BestTimetoBuyandSellStock {
         return res;
     }
 
+    // Approach 1: Kadane's Algorithm
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public int maxProfit1(int[] prices) {
+        int max = 0;
+        int cheapest = Integer.MAX_VALUE;
+        for (int price : prices) {
+            cheapest = Math.min(cheapest, price);
+            max = Math.max(max, price - cheapest);
+        }
+        return max;
+    }
+
     // Approach 1: One Pass (leetcode version)
     // Time Complexity: O(N)
     // Space Complexity: O(1)
