@@ -19,6 +19,19 @@ class MaximumSubarray {
         return max;
     }
 
+    // Approach 1: Kadane's Algorithm
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public int maxSubArray2(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        int curr = 0;
+        for (int num : nums) {
+            curr = Math.max(curr + num, num);
+            max = Math.max(max, curr);
+        }
+        return max;
+    }
+
     // Approach 3: Brute Force
     // Time Complexity: O(N^2)
     // Space Complexity: O(1)
