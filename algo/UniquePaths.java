@@ -48,11 +48,11 @@ class UniquePaths {
         return uniquePaths(m - 1, n) + uniquePaths(m, n - 1);
     }
 
-    int[][] memo;
-
     // Approach 2: DP Top-Down (Recursion with Memoization)
     // Time Complexity: O(M*N)
     // Space Complexity: O(M*N)
+    int[][] memo;
+
     public int uniquePaths4(int m, int n) {
         memo = new int[m][n];
         return uniquePathsDP(m - 1, n - 1);
