@@ -3,7 +3,7 @@ import java.util.Arrays;
 class UniquePaths {
     // 62. Unique Paths
 
-    // Approach 1: DP
+    // Approach 1: DP Bottom-Up
     // Time Complexity: O(M*N)
     // Space Complexity: O(M*N)
     public int uniquePaths(int m, int n) {
@@ -92,4 +92,26 @@ class UniquePaths {
         return d[m - 1][n - 1];
     }
 
+    // Approach 1: DP Bottom-Up
+    // Time Complexity: O(M*N)
+    // Space Complexity: O(min(M,N))
+    public int uniquePaths5(int m, int n) {
+        if (m > n) {
+            int temp = m;
+            m = n;
+            n = temp;
+        }
+        int[] dp = new int[m];
+        int[] prev = new int[m];
+        Arrays.fill(prev, 1);
+        dp[0] = 1;
+        for (int r = 1; r < n; r++) {
+            for (int c = 1; c < m; c++) {
+                dp[c] = prev[c];
+                dp[c] += dp[c - 1];
+            }
+            prev = dp;
+        }
+        return dp[m - 1];
+    }
 }
