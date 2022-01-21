@@ -34,4 +34,32 @@ class MinimumPathSum {
         }
         return memo[r][c];
     }
+
+    // Approach 1: DP Bottom-Up (Recursion with memorazation);
+    // Time Complexity: O(N*M)
+    // Space Complexity: O(N*M)
+    public int minPathSum2(int[][] grid) {
+        int m = grid.length;
+        int n = grid[0].length;
+        int[][] dp = new int[m][n];
+        dp[0][0] = grid[0][0];
+
+        for (int r = 0; r < m; r++) {
+            for (int c = 0; c < n; c++) {
+                int sum1 = Integer.MAX_VALUE;
+                int sum2 = Integer.MAX_VALUE;
+                if (r > 0) {
+                    sum1 = dp[r - 1][c];
+                }
+                if (c > 0) {
+                    sum2 = dp[r][c - 1];
+                }
+                if (r != 0 || c != 0) {
+                    dp[r][c] = grid[r][c] + Math.min(sum1, sum2);
+                }
+            }
+        }
+
+        return dp[m - 1][n - 1];
+    }
 }
