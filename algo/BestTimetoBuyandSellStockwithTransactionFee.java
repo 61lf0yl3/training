@@ -22,6 +22,20 @@ class BestTimetoBuyandSellStockwithTransactionFee {
         return dp[0][0];
     }
 
+    // Approach 1: DP Bottom-Up
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    public int maxProfit1(int[] prices, int fee) {
+        int n = prices.length;
+        int profit = 0;
+        int hold = -prices[0];
+        for (int i = 1; i < n; i++) {
+            profit = Math.max(profit, hold + prices[i] - fee);
+            hold = Math.max(hold, profit - prices[i]);
+        }
+        return profit;
+    }
+
     // Approach 2: DP Top-Down
     // Time Complexity: O(N)
     // Space Complexity: O(N)
