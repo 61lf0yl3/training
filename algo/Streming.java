@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Twitch {
+class Streming {
 
     public static void main(String[] args) {
         String[] streamerInformation = new String[] { "Ninja", "100000", "Fortnite", "Pokimane", "40000", "Valorant" };
