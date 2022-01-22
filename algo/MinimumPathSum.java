@@ -35,7 +35,7 @@ class MinimumPathSum {
         return memo[r][c];
     }
 
-    // Approach 1: DP Bottom-Up (Recursion with memorazation);
+    // Approach 1: DP Bottom-Up ;
     // Time Complexity: O(N*M)
     // Space Complexity: O(N*M)
     public int minPathSum2(int[][] grid) {
@@ -63,7 +63,7 @@ class MinimumPathSum {
         return dp[m - 1][n - 1];
     }
 
-    // Approach 1: DP Bottom-Up (Recursion with memorazation);
+    // Approach 1: DP Bottom-Up
     // Time Complexity: O(N*M)
     // Space Complexity: O(1)
     public int minPathSum3(int[][] grid) {
