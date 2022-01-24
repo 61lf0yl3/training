@@ -29,4 +29,24 @@ public class NumberofDiceRollsWithTargetSum {
         }
         return memo[i][sum];
     }
+
+    // Approach 2: DP Bottom-up
+    // Time Complexity: O(N*K*T)
+    // Space Complexity: O(N*K)
+    public int numRollsToTarget2(int n, int k, int target) {
+        int MOD = (int) 1e9 + 7;
+        int[][] dp = new int[n + 1][target + 1];
+        dp[0][0] = 1;
+        for (int i = 1; i <= n; i++) {
+            for (int sum = target; sum > 0; sum--) {
+                int r = 0;
+                for (int j = 1; j <= Math.min(sum, k); j++) {
+                    r += dp[i - 1][sum - j];
+                    r %= MOD;
+                }
+                dp[i][sum] = r;
+            }
+        }
+        return dp[n][target];
+    }
 }
