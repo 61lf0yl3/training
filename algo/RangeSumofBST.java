@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -52,5 +54,29 @@ class RangeSumofBST {
         if (high > root.val) {
             rangeSumBSTR(root.right);
         }
+    }
+
+    // Approach 1: Iterative Approach
+    // Time Complexity: O(N) where N is the number of nodes
+    // Space Complexity: O(N) recursion stack would be N
+    public int rangeSumBST3(TreeNode root, int low, int high) {
+        int res = 0;
+        Stack<TreeNode> s = new Stack<>();
+        s.add(root);
+        while (!s.isEmpty()) {
+            TreeNode node = s.pop();
+            if (node != null) {
+                if (low <= node.val && node.val <= high) {
+                    res += node.val;
+                }
+                if (low < node.val) {
+                    s.add(node.left);
+                }
+                if (node.val < high) {
+                    s.add(node.right);
+                }
+            }
+        }
+        return res;
     }
 }
