@@ -42,8 +42,8 @@ class InterleavingString {
     }
 
     // Approach 2: DP Bottom-up
-    // Time Complexity: O(N)
-    // Space Complexity: O(n)
+    // Time Complexity: O(N*M)
+    // Space Complexity: O(N*M)
     public boolean isInterleave2(String s1, String s2, String s3) {
         if (s1.length() + s2.length() != s3.length()) {
             return false;
@@ -65,5 +65,31 @@ class InterleavingString {
         }
 
         return dp[s1.length()][s2.length()];
+    }
+
+    // Approach 2: DP Bottom-up with Optimized Space
+    // Time Complexity: O(N*M)
+    // Space Complexity: O(M)
+    public boolean isInterleave3(String s1, String s2, String s3) {
+        if (s1.length() + s2.length() != s3.length()) {
+            return false;
+        }
+        boolean[] dp = new boolean[s2.length() + 1];
+        for (int i = 0; i <= s1.length(); i++) {
+            for (int j = 0; j <= s2.length(); j++) {
+                if (i == 0 && j == 0) {
+                    dp[j] = true;
+                } else if (i == 0) {
+                    dp[j] = s2.charAt(j - 1) == s3.charAt(i + j - 1) && dp[j - 1];
+                } else if (j == 0) {
+                    dp[j] = s1.charAt(i - 1) == s3.charAt(i + j - 1) && dp[j];
+                } else {
+                    dp[j] = (s2.charAt(j - 1) == s3.charAt(i + j - 1) && dp[j - 1])
+                            || (s1.charAt(i - 1) == s3.charAt(i + j - 1) && dp[j]);
+                }
+            }
+        }
+
+        return dp[s2.length()];
     }
 }
