@@ -40,7 +40,7 @@ class MinimumCostForTickets {
         return memo[i];
     }
 
-    // Approach 1: DP Top-Down (Recursion with memorazation);
+    // Approach 2: DP Top-Down (Recursion with memorazation);
     // Time Complexity: O(N) where N is the number of unique days in your travel
     // plan.
     // Space Complexity: O(N)
@@ -76,5 +76,38 @@ class MinimumCostForTickets {
             memo[i] = ret;
         }
         return memo[i];
+    }
+
+    // Approach 2: DP Top-Down (Recursion with memorazation) leetcode version;
+    // Time Complexity: O(N) where N is the number of unique days in your travel
+    // plan.
+    // Space Complexity: O(N)
+    Integer[] memo1;
+    int[] durations = new int[] { 1, 7, 30 };
+
+    public int mincostTickets3(int[] days, int[] costs) {
+        this.days = days;
+        this.costs = costs;
+        memo1 = new Integer[days.length];
+
+        return dp(0);
+    }
+
+    public int dp(int i) {
+        if (i >= days.length)
+            return 0;
+        if (memo1[i] != null)
+            return memo[i];
+
+        int ans = Integer.MAX_VALUE;
+        int j = i;
+        for (int k = 0; k < 3; ++k) {
+            while (j < days.length && days[j] < days[i] + durations[k])
+                j++;
+            ans = Math.min(ans, dp(j) + costs[k]);
+        }
+
+        memo[i] = ans;
+        return ans;
     }
 }
