@@ -18,20 +18,20 @@ class LowestCommonAncestorofaBinaryTree {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         this.p = p;
         this.q = q;
-        lowestCommonAncestor(root);
+        lowestCommonAncestorR(root);
         return res;
     }
 
-    private boolean lowestCommonAncestor(TreeNode root) {
+    private boolean lowestCommonAncestorR(TreeNode root) {
         if (root == null) {
             return false;
         }
         int left = 0;
-        if (lowestCommonAncestor(root.left)) {
+        if (lowestCommonAncestorR(root.left)) {
             left = 1;
         }
         int right = 0;
-        if (lowestCommonAncestor(root.right)) {
+        if (lowestCommonAncestorR(root.right)) {
             right = 1;
         }
         int mid = 0;
