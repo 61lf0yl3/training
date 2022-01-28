@@ -38,4 +38,19 @@ class RangeSumofBST {
         rangeSumBSTR(root.left);
         rangeSumBSTR(root.right);
     }
+
+    private void rangeSumBSTR2(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        if (low <= root.val && root.val <= high) {
+            res += root.val;
+        }
+        if (low < root.val) {
+            rangeSumBSTR(root.left);
+        }
+        if (high > root.val) {
+            rangeSumBSTR(root.right);
+        }
+    }
 }
