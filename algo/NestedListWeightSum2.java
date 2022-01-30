@@ -55,10 +55,43 @@ class NestedListWeightSum2 {
         }
     }
 
+    private int depthR2(List<NestedInteger> nestedList) {
+        int depth = 1;
+        for (NestedInteger n : nestedList) {
+            if (!n.isInteger()) {
+                depth = Math.max(depth, 1 + depthR2(n.getList()));
+            }
+        }
+        return depth;
+    }
+
     private void depthSumR(List<NestedInteger> nestedList, int depth) {
         for (NestedInteger n : nestedList) {
             if (n.isInteger()) {
                 res += (maxDepth - depth + 1) * n.getInteger();
+            } else {
+                depthSumR(n.getList(), depth + 1);
+            }
+        }
+    }
+
+    // Approach 1: Single Pass Depth-first Search
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    int sumOfElements = 0;
+    int sumOfProducts = 0;
+
+    public int depthSumInverse2(List<NestedInteger> nestedList) {
+        depthSumR2(nestedList, 0);
+        return (maxDepth + 1) * sumOfElements - sumOfProducts;
+    }
+
+    private void depthSumR2(List<NestedInteger> nestedList, int depth) {
+        for (NestedInteger n : nestedList) {
+            if (n.isInteger()) {
+                maxDepth = Math.max(maxDepth, depth);
+                sumOfElements += n.getInteger();
+                sumOfProducts += depth * n.getInteger();
             } else {
                 depthSumR(n.getList(), depth + 1);
             }
