@@ -87,9 +87,7 @@ class NestedListWeightSum2 {
         int sumOfElements = 0;
         int sumOfProducts = 0;
 
-        Queue<NestedInteger> q = new ArrayDeque<>() {
-            
-        };<>();
+        Queue<NestedInteger> q = new ArrayDeque<>();
         q.addAll(nestedList);
 
         while (!q.isEmpty()) {
