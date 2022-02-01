@@ -8,7 +8,7 @@
  * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
+class ReorderList {
     // Approach 1: Reverse the Second Part of the List and Merge Two Sorted Lists
     // Time Complexity: O(N)
     // Space Complexity: O(1)
