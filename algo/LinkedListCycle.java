@@ -13,7 +13,7 @@ import java.util.Set;
  * }
  */
 public class LinkedListCycle {
-    /// Approach 2: Using HashSet
+    // Approach 2: Using HashSet
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     public boolean hasCycle(ListNode head) {
@@ -28,5 +28,24 @@ public class LinkedListCycle {
             }
         }
         return false;
+    }
+
+    /// Approach 2: Floyd's Cycle Finding Algorithm
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    public boolean hasCycle2(ListNode head) {
+        if (head == null) {
+            return false;
+        }
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while (slow != fast) {
+            if (fast == null || fast.next == null) {
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return true;
     }
 }
