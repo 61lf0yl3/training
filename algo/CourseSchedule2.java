@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-class Solution {
+class CourseSchedule2 {
     // Approach 2: Using Node Indegree
     // Time Complexity: O(V+E)
     // Space Complexity: O(V+E)
@@ -20,7 +20,7 @@ class Solution {
             int dest = prerequisites[i][0];
             int src = prerequisites[i][1];
             if (!adjList.containsKey(src)) {
-                adjList.put(src, new ArrayList());
+                adjList.put(src, new ArrayList<>());
             }
             adjList.get(src).add(dest);
 
