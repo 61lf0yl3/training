@@ -1,4 +1,19 @@
 class SumofTwoIntegers {
+
+    // Approach 2: Bit Manipulation: Short Language-Specific Solution
+    // Time Complexity: O(1)
+    // Space Complexity: O(1)
+    public int getSum2(int a, int b) {
+        while (b != 0) {
+            int answer = a ^ b;
+            int carry = (a & b) << 1;
+            a = answer;
+            b = carry;
+        }
+
+        return a;
+    }
+
     // Approach 1: Bit Manipulation: Easy and Language-Independent
     // Time Complexity: O(1)
     // Space Complexity: O(1)
