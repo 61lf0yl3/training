@@ -59,4 +59,20 @@ public class SameTree {
         }
         return true;
     }
+
+    // Approach 2: Recursion
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public boolean isSameTree2(TreeNode p, TreeNode q) {
+        if (p == null && q == null) {
+            return true;
+        }
+        if (p == null || q == null) {
+            return false;
+        }
+        if (p.val != q.val) {
+            return false;
+        }
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    }
 }
