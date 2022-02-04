@@ -19,10 +19,10 @@ import java.util.Set;
  * }
  */
 
-class Solution {
+class MaximumDepthofBinaryTree {
     // Approach 1: BFS
     // Time Complexity: O(N)
-    // Space Complexity: O(1) fro decode, O(N) for decode
+    // Space Complexity: O(N)
     public int maxDepth(TreeNode root) {
         if (root == null) {
             return 0;
@@ -44,5 +44,27 @@ class Solution {
             depth++;
         }
         return depth;
+    }
+
+    // Approach 2: DFS
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    int maxDepth = 0;
+
+    public int maxDepth2(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        dfs(root, 1);
+        return maxDepth;
+    }
+
+    private void dfs(TreeNode root, int depth) {
+        if (root == null) {
+            return;
+        }
+        maxDepth = Math.max(maxDepth, depth);
+        dfs(root.left, depth + 1);
+        dfs(root.right, depth + 1);
     }
 }
