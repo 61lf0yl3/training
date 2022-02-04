@@ -45,4 +45,18 @@ public class InvertBinaryTree {
         }
         return root;
     }
+
+    // Approach 1: Recursive
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    public TreeNode invertTree3(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        TreeNode right = invertTree3(root.right);
+        TreeNode left = invertTree3(root.left);
+        root.left = right;
+        root.right = left;
+        return root;
+    }
 }
