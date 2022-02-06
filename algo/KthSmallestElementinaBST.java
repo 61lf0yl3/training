@@ -2,6 +2,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.LinkedList;
 
 public class KthSmallestElementinaBST {
     // Approach 1: Recursive Inorder Traversal
@@ -23,6 +24,27 @@ public class KthSmallestElementinaBST {
         dfs(root.right);
     }
 
+    // Approach 1: Iterative Inorder Traversal
+    // Time Complexity: O(H+k) where H is tree height;
+    // Space Complexity: O(h)
+    public int kthSmallest2(TreeNode root, int k) {
+        LinkedList<TreeNode> stack = new LinkedList<>();
+
+        while (true) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            if (--k == 0)
+                return root.val;
+            root = root.right;
+        }
+    }
+
+    // Approach 1: Iterative Inorder Traversal with Queue;
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
     public int kthSmallest3(TreeNode root, int k) {
         PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
         Queue<TreeNode> q = new ArrayDeque<>();
