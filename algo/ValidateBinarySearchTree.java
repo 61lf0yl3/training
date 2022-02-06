@@ -35,4 +35,24 @@ class ValidateBinarySearchTree {
         return dfs(root.left, start, root.val) && dfs(root.right, root.val, end);
     }
 
+    // Approach 2: Recursive Inorder Traversal
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    Integer prev = null;
+
+    public boolean isValidBST2(TreeNode root) {
+        return dfs(root);
+    }
+
+    private boolean dfs(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        if (!dfs(root.left))
+            return false;
+        if (prev != null && prev >= root.val)
+            return false;
+        prev = root.val;
+        return dfs(root.right);
+    }
 }
