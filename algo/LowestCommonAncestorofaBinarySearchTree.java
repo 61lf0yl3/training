@@ -11,7 +11,7 @@ import java.util.LinkedList;
  * }
  */
 
-class Solution {
+class LowestCommonAncestorofaBinarySearchTree {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
