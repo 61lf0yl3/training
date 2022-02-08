@@ -12,6 +12,9 @@ import java.util.LinkedList;
  */
 
 class LowestCommonAncestorofaBinarySearchTree {
+    // Approach 1: Iterative Approach
+    // Time Complexity: O(H+k) where H is tree height;
+    // Space Complexity: O(h)
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
@@ -30,5 +33,18 @@ class LowestCommonAncestorofaBinarySearchTree {
             }
         }
         return null;
+    }
+
+    // Approach 1: Recursive Approach
+    // Time Complexity: O(H+k) where H is tree height;
+    // Space Complexity: O(h)
+    public TreeNode lowestCommonAncestor2(TreeNode node, TreeNode p, TreeNode q) {
+        if (p.val < node.val && q.val < node.val) {
+            return lowestCommonAncestor(node.left, p, q);
+        } else if (p.val > node.val && q.val > node.val) {
+            return lowestCommonAncestor(node.right, p, q);
+        } else {
+            return node;
+        }
     }
 }
