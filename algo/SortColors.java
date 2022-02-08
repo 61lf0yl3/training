@@ -1,4 +1,6 @@
-class Solution {
+import java.util.Arrays;
+
+class SortColors {
     // Approach 1: Buble Sort
     // Time Complexity: O(N^2)
     // Space Complexity: O(N)
@@ -12,5 +14,12 @@ class Solution {
                 }
             }
         }
+    }
+
+    // Approach 1: Sort
+    // Time Complexity: O(NlogN)
+    // Space Complexity: O(N)
+    public void sortColors2(int[] nums) {
+        Arrays.sort(nums);
     }
 }
