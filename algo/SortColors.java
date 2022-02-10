@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 class SortColors {
-    // Approach 1: Buble Sort
+    // Approach 3: Buble Sort
     // Time Complexity: O(N^2)
     // Space Complexity: O(N)
     public void sortColors(int[] nums) {
@@ -16,7 +16,7 @@ class SortColors {
         }
     }
 
-    // Approach 1: Sort
+    // Approach 2: Sort
     // Time Complexity: O(NlogN)
     // Space Complexity: O(N)
     public void sortColors2(int[] nums) {
