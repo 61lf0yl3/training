@@ -1,5 +1,7 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 class MajorityElement {
     // Approach 1: Iterative Using HashMap
@@ -18,4 +20,14 @@ class MajorityElement {
         }
         return max;
     }
+
+    // Approach 1: Using Sorting
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    public int majorityElement2(int[] nums) {
+        int n = nums.length;
+        Arrays.sort(nums);
+        return nums[n / 2];
+    }
+
 }
