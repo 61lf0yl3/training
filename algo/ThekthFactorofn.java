@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.PriorityQueue;
 
@@ -40,5 +41,34 @@ class ThekthFactorofn {
             return -1;
         }
         return heap.peek();
+    }
+
+    // Approach 3: Iterative Using Math
+    // Time Complexity: O(sqrt(N))
+    // Space Complexity: O(min(sqrt(N), K))
+    public int kthFactor3(int n, int k) {
+        ArrayList<Integer> divisors = new ArrayList<>();
+        int sqrtN = 1;
+        for (int i = 1; i * i <= n; i++) {
+            if (n % i == 0) {
+                divisors.add(i);
+                k--;
+                if (k == 0) {
+                    return i;
+                }
+            }
+            sqrtN = i;
+        }
+        // If n is a perfect square
+        // we have to skip the duplicate
+        // in the divisor list
+        if (sqrtN * sqrtN == n) {
+            k++;
+        }
+        int nDiv = divisors.size();
+        if (k <= nDiv) {
+            return n / divisors.get(nDiv - k);
+        }
+        return -1;
     }
 }
