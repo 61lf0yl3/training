@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Random;
 
 class MajorityElement {
+
     // Approach 1: Iterative Using HashMap
     // Time Complexity: O(N)
     // Space Complexity: O(N)
