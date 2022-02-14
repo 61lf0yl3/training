@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Stack;
 
 // Approach 1: Using Two Stack
@@ -33,6 +34,42 @@ class BrowserHistory {
             f.add(b.pop());
         }
         return f.peek();
+    }
+}
+
+// Approach 2: Using List
+// Time Complexity: O(N)
+// Space Complexity: O(N)
+class BrowserHistory2 {
+    ArrayList<String> history;
+    int curr;
+    int total;
+
+    public BrowserHistory2(String homepage) {
+        history = new ArrayList<>();
+        history.add(homepage);
+        curr = 1;
+        total = 1;
+    }
+
+    public void visit(String url) {
+        if (history.size() > curr) {
+            history.set(curr, url);
+        } else {
+            history.add(url);
+        }
+        curr++;
+        total = curr;
+    }
+
+    public String back(int steps) {
+        curr = Math.max(1, curr - steps);
+        return history.get(curr - 1);
+    }
+
+    public String forward(int steps) {
+        curr = Math.min(total, curr + steps);
+        return history.get(curr - 1);
     }
 }
 
