@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class FibonacciNumber {
     // Approach 4: Iterative Bottom-Up Approach
     // Time Complexity: O(N)
@@ -14,6 +17,20 @@ public class FibonacciNumber {
             old = temp;
         }
         return old;
+    }
+
+    // Approach 4: Top-Down Approach
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    // Creating a hash map with 0 -> 0 and 1 -> 1 pairs
+    private Map<Integer, Integer> cache = new HashMap<>(Map.of(0, 0, 1, 1));
+
+    public int fib3(int N) {
+        if (cache.containsKey(N)) {
+            return cache.get(N);
+        }
+        cache.put(N, fib(N - 1) + fib(N - 2));
+        return cache.get(N);
     }
 
     // Approach 6: Math
