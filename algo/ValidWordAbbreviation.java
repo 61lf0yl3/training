@@ -1,7 +1,7 @@
 public class ValidWordAbbreviation {
     // Approach 1: Iterative
     // Time Complexity: O(N)
-    // Space Complexity: O(N)
+    // Space Complexity: O(1)
     public boolean validWordAbbreviation(String word, String abbr) {
         int m = abbr.length();
         int n = word.length();
