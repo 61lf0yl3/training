@@ -20,4 +20,26 @@ public class FizzBuzz {
         }
         return res;
     }
+
+    // Approach 1: String Concatenation
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public List<String> fizzBuzz2(int n) {
+        List<String> res = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            StringBuilder temp = new StringBuilder();
+            if (i % 3 != 0 && i % 5 != 0) {
+                temp.append(String.valueOf(i));
+            } else {
+                if (i % 3 == 0) {
+                    temp.append("Fizz");
+                }
+                if (i % 5 == 0) {
+                    temp.append("Buzz");
+                }
+            }
+            res.add(temp.toString());
+        }
+        return res;
+    }
 }
