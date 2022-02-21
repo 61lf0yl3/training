@@ -25,4 +25,18 @@ public class FindAllDuplicatesinanArray {
         }
         return res.subList(0, count);
     }
+
+    // Approach 1: Mark Visited Elements in the Input Array itself
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public List<Integer> findDuplicates2(int[] nums) {
+        List<Integer> res = new ArrayList<>();
+        for (int num : nums) {
+            nums[Math.abs(num) - 1] *= -1;
+            if (nums[Math.abs(num) - 1] > 0) {
+                res.add(Math.abs(num));
+            }
+        }
+        return res;
+    }
 }
