@@ -49,4 +49,43 @@ class ValidSudoku {
         return true;
     }
 
+    // Approach 1: Array of Fixed Length
+    // Time Complexity: O(N^2)
+    // Space Complexity: O(N^2)
+    public boolean isValidSudoku2(char[][] board) {
+        int n = 9;
+        boolean[][] rows = new boolean[n][n];
+        boolean[][] cols = new boolean[n][n];
+        boolean[][] boxes = new boolean[n][n];
+
+        for (int r = 0; r < n; r++) {
+            for (int c = 0; c < n; c++) {
+                char ch = board[r][c];
+                // Check if the position is filled with number
+                if (ch == '.') {
+                    continue;
+                }
+
+                int j = (ch - '0') - 1;
+                // Check the row
+                if (rows[r][j]) {
+                    return false;
+                }
+                rows[r][j] = true;
+
+                if (cols[c][j]) {
+                    return false;
+                }
+                cols[c][j] = true;
+
+                int i = (r / 3) * 3 + c / 3;
+                if (boxes[i][j]) {
+                    return false;
+                }
+                boxes[i][j] = true;
+            }
+        }
+        return true;
+    }
+
 }
