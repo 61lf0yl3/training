@@ -6,7 +6,7 @@ public class DesignTicTacToe {
 
 // Approach 1: Optimized Brute Force
 // Time Complexity: O(N)
-// Space Complexity: O(N)
+// Space Complexity: O(N^2)
 class TicTacToe {
 
     private int n;
@@ -63,6 +63,47 @@ class TicTacToe {
             }
         }
         return true;
+    }
+}
+
+// Approach 1: Optimised Approach
+// Time Complexity: O(1)
+// Space Complexity: O(N)
+class TicTacToe2 {
+
+    private int[] rows;
+    private int[] cols;
+    private int diagonal;
+    private int antiDdiagonal;
+    private int n;
+
+    public TicTacToe2(int n) {
+        this.n = n;
+        rows = new int[n];
+        cols = new int[n];
+        diagonal = 0;
+        antiDdiagonal = 0;
+    }
+
+    public int move(int row, int col, int player) {
+        int curr = (player == 1) ? 1 : -1;
+        rows[row] += curr;
+        cols[col] += curr;
+
+        if (row == col) {
+            diagonal += curr;
+        }
+        if (col == n - 1 - row) {
+            antiDdiagonal += curr;
+        }
+
+        if (Math.abs(rows[row]) == n ||
+                Math.abs(cols[col]) == n ||
+                Math.abs(diagonal) == n ||
+                Math.abs(antiDdiagonal) == n) {
+            return player;
+        }
+        return 0;
     }
 }
 
