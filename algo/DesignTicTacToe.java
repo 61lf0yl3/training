@@ -21,7 +21,7 @@ class TicTacToe {
     public int move(int row, int col, int player) {
         board[row][col] = player;
         if (checkRow(row, player) ||
-                checkCol(row, col, player) ||
+                checkCol(col, player) ||
                 (row == col && checkDiagonal(player)) ||
                 (col == n - row - 1 && checkAntiDiagonal(player))) {
             return player;
@@ -38,7 +38,7 @@ class TicTacToe {
         return true;
     }
 
-    private boolean checkCol(int row, int col, int player) {
+    private boolean checkCol(int col, int player) {
         for (int r = 0; r < n; r++) {
             if (board[r][col] != player) {
                 return false;
