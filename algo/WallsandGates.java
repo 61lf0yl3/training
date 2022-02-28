@@ -2,6 +2,9 @@ import java.util.Queue;
 import java.util.LinkedList;
 
 public class WallsandGates {
+    // Approach#2(Breadth-first Search)
+    // Time Complexity: O(NM)
+    // Space Complexity: O(NM)
     private final int GATE = 0;
     private final int EMPTY = Integer.MAX_VALUE;
     private final int[][] DIRECTIONS = new int[][] { { 0, -1 }, { -1, 0 }, { 0, 1 }, { 1, 0 } };
