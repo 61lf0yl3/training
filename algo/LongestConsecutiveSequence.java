@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,6 +24,31 @@ public class LongestConsecutiveSequence {
                 res = Math.max(res, substring);
             }
         }
+        return res;
+    }
+
+    // Approach 1: Sorting
+    // Time Complexity: O(NlogN)
+    // Space Complexity: O(1)
+    public int longestConsecutive2(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        Arrays.sort(nums);
+
+        int res = 1;
+        int consecutive = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i - 1] != nums[i]) {
+                if (nums[i] == nums[i - 1] + 1) {
+                    consecutive++;
+                } else {
+                    res = Math.max(res, consecutive);
+                    consecutive = 1;
+                }
+            }
+        }
+        res = Math.max(res, consecutive);
         return res;
     }
 
