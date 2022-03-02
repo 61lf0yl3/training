@@ -19,4 +19,20 @@ public class RemoveAllAdjacentDuplicatesInString {
         }
         return res.reverse().toString();
     }
+
+    // Approach 1: Using Stack;
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    public String removeDuplicates2(String s) {
+        StringBuilder res = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            if (res.length() > 0 && res.charAt(res.length() - 1) == c) {
+                res.deleteCharAt(res.length() - 1);
+            } else {
+                res.append(c);
+            }
+        }
+
+        return res.toString();
+    }
 }
