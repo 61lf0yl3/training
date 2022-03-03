@@ -30,3 +30,39 @@ public class MinStack {
         return s.peek()[1];
     }
 }
+
+// Approach 1: Two Stacks
+// Time Complexity: O(1)
+// Space Complexity: O(N)
+class MinStack2 {
+
+    Stack<Integer> s;
+    Stack<Integer> min;
+
+    public MinStack2() {
+        s = new Stack<>();
+        min = new Stack<>();
+    }
+
+    public void push(int val) {
+        s.add(val);
+        if (min.isEmpty() || val <= min.peek()) {
+            min.add(val);
+        }
+    }
+
+    public void pop() {
+        if (s.peek() <= min.peek()) {
+            min.pop();
+        }
+        s.pop();
+    }
+
+    public int top() {
+        return s.peek();
+    }
+
+    public int getMin() {
+        return min.peek();
+    }
+}
