@@ -1,4 +1,8 @@
 public class StringtoInteger {
+
+    // Approach 1: Follow the Rules
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
     public int myAtoi(String s) {
         int SIGN = 1;
         int res = 0;
