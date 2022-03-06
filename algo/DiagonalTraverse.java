@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class DiagonalTraverse {
-    // Approach 1: Using Two HashSet
-    // Time Complexity: O(N+M)
-    // Space Complexity: O(N+M)
+    // Approach 1: Diagonal Iteration and Reversal
+    // Time Complexity: O(N*M)
+    // Space Complexity: O(N*M)
     public int[] findDiagonalOrder(int[][] mat) {
         int n = mat.length;
         int m = mat[0].length;
