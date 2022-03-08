@@ -2,6 +2,9 @@ import java.util.Queue;
 import java.util.LinkedList;
 
 class MovingAverage {
+    // Approach 2: Iterative
+    // Time Complexity: O(1)
+    // Space Complexity: O(N)
     private int size;
     private int sum;
     private Queue<Integer> last;
