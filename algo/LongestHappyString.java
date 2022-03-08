@@ -4,6 +4,9 @@ import java.util.Map;
 import java.util.PriorityQueue;
 
 public class LongestHappyString {
+    // Approach 1: Using Greedy with PriorityQueue
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
     public String longestDiverseString(int a, int b, int c) {
         Map<Character, Integer> m = new HashMap<>();
         if (a > 0)
