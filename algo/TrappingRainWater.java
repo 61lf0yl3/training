@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class TrappingRainWater {
     // Approach 1: DP
     // Time Complexity: O(N)
@@ -18,6 +20,25 @@ public class TrappingRainWater {
         }
         for (int i = 0; i < n; i++) {
             res += Math.min(leftMax[i], rightMax[i]) - height[i];
+        }
+        return res;
+    }
+
+    // Approach 1: Using Stack
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    public int trap2(int[] height) {
+        int n = height.length;
+        int res = 0;
+        Stack<Integer> s = new Stack<>();
+        s.add(height[n - 1]);
+        for (int i = n - 2; i >= 0; i--) {
+            s.add(Math.max(height[i], s.peek()));
+        }
+        int leftMax = 0;
+        for (int i = 0; i < n; i++) {
+            leftMax = Math.max(leftMax, height[i]);
+            res += Math.min(leftMax, s.pop()) - height[i];
         }
         return res;
     }
