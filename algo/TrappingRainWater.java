@@ -24,10 +24,42 @@ public class TrappingRainWater {
         return res;
     }
 
-    // Approach 1: Using Stack
+    // Approach 2: Two Pointer
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public int trap2(int[] height) {
+        int n = height.length;
+        int res = 0;
+        int left = 0;
+        int leftMax = 0;
+
+        int right = n - 1;
+        int rightMax = 0;
+
+        while (left < right) {
+            if (height[left] < height[right]) {
+                if (height[left] >= leftMax) {
+                    leftMax = height[left];
+                } else {
+                    res += leftMax - height[left];
+                }
+                left++;
+            } else {
+                if (height[right] >= rightMax) {
+                    rightMax = height[right];
+                } else {
+                    res += rightMax - height[right];
+                }
+                right--;
+            }
+        }
+        return res;
+    }
+
+    // Approach 3: Using Stack
     // Time Complexity: O(N)
     // Space Complexity: O(N)
-    public int trap2(int[] height) {
+    public int trap3(int[] height) {
         int n = height.length;
         int res = 0;
         Stack<Integer> s = new Stack<>();
@@ -43,10 +75,10 @@ public class TrappingRainWater {
         return res;
     }
 
-    // Approach 3: Brute Force
+    // Approach 4: Brute Force
     // Time Complexity: O(N^2)
     // Space Complexity: O(1)
-    public int trap3(int[] height) {
+    public int trap4(int[] height) {
         int res = 0;
         for (int i = 0; i < height.length; i++) {
             int leftMax = 0;
