@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
-// Approach 1: Top-Down Dynamic Programming+Binary Search
-// Time Complexity: O(NlogN)
-// Space Complexity: O(N)
 public class MaximumEarningsFromTaxi {
+    // Approach 1: Top-Down Dynamic Programming+Binary Search
+    // Time Complexity: O(NlogN)
+    // Space Complexity: O(N)
     int[][] rides;
     long[] memo;
     int n;
@@ -49,6 +52,43 @@ public class MaximumEarningsFromTaxi {
             }
         }
         return nextIndex;
+    }
+
+    // Approach 2: Bottom-Up Dynamic Programming+Binary Search
+    // Time Complexity: O(NlogN)
+    // Space Complexity: O(N)
+    public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
+        List<List<Integer>> jobs = new ArrayList<>();
+        Arrays.fill(memo, -1);
+
+        int length = profit.length;
+
+        for (int i = 0; i < length; i++) {
+            ArrayList<Integer> currJob = new ArrayList<>();
+            currJob.add(startTime[i]);
+            currJob.add(endTime[i]);
+            currJob.add(profit[i]);
+            jobs.add(currJob);
+        }
+        jobs.sort(Comparator.comparingInt(a -> a.get(0)));
+
+        for (int i = 0; i < length; i++) {
+            startTime[i] = jobs.get(i).get(0);
+        }
+
+        int[] dp = new int[length + 1];
+
+        for (int i = length - 1; i >= 0; i--) {
+            int nextIndex = findNextJob(jobs.get(i).get(1));
+            int nextIndexProfit = 0;
+            if (nextIndex <= length) {
+                nextIndexProfit = dp[nextIndex];
+            }
+            int maxProfit = Math.max(jobs.get(i).get(2) + nextIndexProfit, dp[i + 1]);
+            dp[i] = maxProfit;
+        }
+
+        return dp[0];
     }
 
 }
