@@ -7,7 +7,8 @@ import java.util.Set;
 
 class WordLadder {
     // Approach 1: Breadth First Search
-    // Time Complexity: O(M^2*N)
+    // Time Complexity: O(M^2*N) where M is length of beginWord and N is length of
+    // wordList
     // Space Complexity: O(M*N)
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         Queue<String> q = new LinkedList<>();
