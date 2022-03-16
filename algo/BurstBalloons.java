@@ -12,22 +12,31 @@ class BurstBalloons {
         newNums[0] = 1;
         newNums[n - 1] = 1;
 
+        // cache the results of dp
         memo = new int[n][n];
 
+        // we can not burst the first one and the last one
+        // since they are both fake balloons added by ourselves
         return dp(1, n - 2);
     }
 
     private int dp(int left, int right) {
+        // return maximum if we burst all nums[left]...nums[right], inclusive
         if (right - left < 0) {
             return 0;
         }
+        // we've not seen this, write for cache
         if (memo[left][right] == 0) {
+            // find the last burst one in nums[left]...nums[right]
             int res = 0;
             for (int i = left; i <= right; i++) {
+                // nums[i] is the last burst one
                 int gain = newNums[left - 1] * newNums[i] * newNums[right + 1];
+                // nums[i] is fixed, recursively call left side and right side
                 int remaining = dp(left, i - 1) + dp(i + 1, right);
                 res = Math.max(res, remaining + gain);
             }
+            // add to the cache
             memo[left][right] = res;
         }
         return memo[left][right];
