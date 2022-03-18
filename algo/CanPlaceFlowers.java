@@ -22,4 +22,31 @@ class CanPlaceFlowers {
         }
         return n <= 0;
     }
+
+    // Approach 2: Single Scan Optimized
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public boolean canPlaceFlowers2(int[] flowerbed, int n) {
+        int m = flowerbed.length;
+        for (int i = 0; i < m; i++) {
+            if (flowerbed[i] == 0) {
+                boolean emptyLeftPlot = false;
+                if (i == 0 || flowerbed[i - 1] == 0) {
+                    emptyLeftPlot = true;
+                }
+                boolean emptyRightPlot = false;
+                if (i == m - 1 || flowerbed[i + 1] == 0) {
+                    emptyRightPlot = true;
+                }
+                if (emptyLeftPlot && emptyRightPlot) {
+                    flowerbed[i] = 1;
+                    n--;
+                    if (n <= 0) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return n <= 0;
+    }
 }
