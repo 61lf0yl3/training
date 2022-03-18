@@ -14,16 +14,12 @@ class MovingAverage {
     }
 
     public double next(int val) {
-        if (size > last.size()) {
-            sum += val;
-            last.add(val);
-            return sum * 1.0 / last.size();
-        } else {
+        if (size <= last.size()) {
             sum -= last.poll();
-            last.add(val);
-            sum += val;
-            return sum * 1.0 / last.size();
         }
+        sum += val;
+        last.add(val);
+        return sum * 1.0 / last.size();
     }
 }
 
