@@ -31,6 +31,25 @@ class ValidParentheses {
         return stck.isEmpty();
     }
 
+    public boolean isValid1(String str) {
+        Stack<Character> s = new Stack<>();
+        for (char c : str.toCharArray()) {
+            if (c == '(' || c == '{' || c == '[') {
+                s.push(c);
+            } else {
+                if (!s.isEmpty() &&
+                        ((c == ')' && s.peek() == '(') ||
+                                (c == '}' && s.peek() == '{') ||
+                                (c == ']' && s.peek() == '['))) {
+                    s.pop();
+                } else {
+                    return false;
+                }
+            }
+        }
+        return s.isEmpty();
+    }
+
     public boolean isValid2(String s) {
         Map<Character, Integer> m = new HashMap<>();
         m.put('(', 0);
