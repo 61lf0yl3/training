@@ -23,13 +23,13 @@ class MaximumSubarray {
     // Time Complexity: O(N)
     // Space Complexity: O(1)
     public int maxSubArray2(int[] nums) {
-        int max = Integer.MIN_VALUE;
-        int curr = 0;
-        for (int num : nums) {
-            curr = Math.max(curr + num, num);
-            max = Math.max(max, curr);
+        int res = Integer.MIN_VALUE;
+        int currSum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            currSum = Math.max(currSum + nums[i], nums[i]);
+            res = Math.max(res, currSum);
         }
-        return max;
+        return res;
     }
 
     // Approach 3: Brute Force
