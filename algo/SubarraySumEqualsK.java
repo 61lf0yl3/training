@@ -4,7 +4,7 @@ import java.util.Map;
 public class SubarraySumEqualsK {
     // 560. Subarray Sum Equals K
 
-    // Approach #1: Using Hashmap
+    // Approach 1: Using Hashmap
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     public int subarraySum(int[] nums, int k) {
@@ -22,10 +22,10 @@ public class SubarraySumEqualsK {
         return res;
     }
 
-    // Approach #2: Without Space
+    // Approach 2: Without Space
     // Time Complexity: O(N^2)
     // Space Complexity: O(1)
-    public int subarraySum1(int[] nums, int k) {
+    public int subarraySum2(int[] nums, int k) {
         int res = 0;
         for (int start = 0; start < nums.length; start++) {
             int sum = 0;
@@ -39,10 +39,10 @@ public class SubarraySumEqualsK {
         return res;
     }
 
-    // Approach #2: Using Cumulative Sum
+    // Approach 3: Using Cumulative Sum
     // Time Complexity: O(N^2)
     // Space Complexity: O(N)
-    public int subarraySum2(int[] nums, int k) {
+    public int subarraySum3(int[] nums, int k) {
         int res = 0;
         int[] sum = new int[nums.length + 1];
         for (int i = 1; i < sum.length; i++) {
