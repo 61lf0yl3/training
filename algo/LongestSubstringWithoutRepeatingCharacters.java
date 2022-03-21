@@ -32,24 +32,20 @@ class LongestSubstringWithoutRepeatingCharacters {
     // Space Complexity: O(min(m))
     public int lengthOfLongestSubstring2(String s) {
         int[] chars = new int[128];
-
-        int left = 0;
-        int right = 0;
-
+        int low = 0;
+        int high = 0;
         int res = 0;
-        while (right < s.length()) {
-            char r = s.charAt(right);
-            chars[r]++;
-
-            while (chars[r] > 1) {
-                char l = s.charAt(left);
+        while (high < s.length()) {
+            char h = s.charAt(high);
+            chars[h]++;
+            while (chars[h] > 1) {
+                char l = s.charAt(low);
                 chars[l]--;
-                left++;
+                low++;
             }
 
-            res = Math.max(res, right - left + 1);
-
-            right++;
+            res = Math.max(res, high - low + 1);
+            high++;
         }
         return res;
     }
