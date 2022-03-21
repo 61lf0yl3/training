@@ -27,7 +27,7 @@ class LongestSubstringWithoutRepeatingCharacters {
         return max;
     }
 
-    // Approach 1: Sliding Window
+    // Approach 2: Sliding Window
     // Time Complexity: O(N)
     // Space Complexity: O(min(m))
     public int lengthOfLongestSubstring2(String s) {
@@ -54,20 +54,22 @@ class LongestSubstringWithoutRepeatingCharacters {
         return res;
     }
 
-    // Approach 1: One Pass (leetcode version)
+    // Approach 3: One Pass (leetcode version)
     // Time Complexity: O(N)
     // Space Complexity: O(1)
     public int lengthOfLongestSubstring3(String s) {
-        int n = s.length(), ans = 0;
-        Map<Character, Integer> map = new HashMap<>(); // current index of character
+        int res = 0;
+        Map<Character, Integer> m = new HashMap<>(); // current index of character
         // try to extend the range [i, j]
-        for (int j = 0, i = 0; j < n; j++) {
-            if (map.containsKey(s.charAt(j))) {
-                i = Math.max(map.get(s.charAt(j)), i);
+        for (int high = 0, low = 0; high < s.length(); high++) {
+            char c = s.charAt(high);
+            if (m.containsKey(c)) {
+                low = Math.max(low, m.get(c));
             }
-            ans = Math.max(ans, j - i + 1);
-            map.put(s.charAt(j), j + 1);
+            res = Math.max(res, high - low + 1);
+            m.put(c, high + 1);
+
         }
-        return ans;
+        return res;
     }
 }
