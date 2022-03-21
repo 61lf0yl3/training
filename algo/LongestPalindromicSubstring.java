@@ -36,24 +36,24 @@ class LongestPalindromicSubstring {
     // Time Complexity: O(N^2)
     // Space Complexity: O(N^2)
     public String longestPalindrome2(String s) {
-        String res = ""+s.charAt(0);
+        String res = "" + s.charAt(0);
         boolean[][] isPalindrome = new boolean[s.length()][s.length()];
-        
-        for (int r = s.length()-1; r >=0; r--) {
+
+        for (int r = s.length() - 1; r >= 0; r--) {
             for (int c = r; c < s.length(); c++) {
-                if (s.charAt(r)==s.charAt(c)) {
-                    if (r==c) {
+                if (s.charAt(r) == s.charAt(c)) {
+                    if (r == c) {
                         isPalindrome[r][c] = true;
-                    } else if (c-r+1==3 || c-r+1==2) {
+                    } else if (c - r + 1 == 3 || c - r + 1 == 2) {
                         isPalindrome[r][c] = true;
-                        if (c-r+1>res.length()) {
-                            res = s.substring(r,c+1);
+                        if (c - r + 1 > res.length()) {
+                            res = s.substring(r, c + 1);
                         }
                     } else {
-                        if(isPalindrome[r+1][c-1]) {
+                        if (isPalindrome[r + 1][c - 1]) {
                             isPalindrome[r][c] = true;
-                            if (c-r+1>res.length()) {
-                                res = s.substring(r,c+1);
+                            if (c - r + 1 > res.length()) {
+                                res = s.substring(r, c + 1);
                             }
                         }
                     }
@@ -66,33 +66,35 @@ class LongestPalindromicSubstring {
     // Approach 4: Expand Around Center
     // Time Complexity: O(N^2)
     // Space Complexity: O(N^2)
-    public String longestPalindrome3(String s) {
-        if (s == null || s.length() < 1) return "";
-        int start = 0, end = 0;
-        for (int i = 0; i < s.length(); i++) {
-            int len1 = expandAroundCenter(s, i, i);
-            int len2 = expandAroundCenter(s, i, i + 1);
+    public String longestPalindrome4(String s) {
+        int max = 0;
+        int start = 0;
+        int end = 0;
+        for (int center = 0; center < s.length(); center++) {
+            int len1 = expandAroundCenter(s, center, center);
+            int len2 = expandAroundCenter(s, center, center + 1);
             int len = Math.max(len1, len2);
-            if (len > end - start) {
-                start = i - (len - 1) / 2;
-                end = i + len / 2;
+            if (max < len) {
+                max = len;
+                start = center - (len - 1) / 2;
+                end = center + len / 2;
             }
         }
         return s.substring(start, end + 1);
     }
-    
+
     private int expandAroundCenter(String s, int left, int right) {
-        int L = left, R = right;
-        while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
-            L--;
-            R++;
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
         }
-        return R - L - 1;
+        return right - left - 1;
     }
 
-    // Approach 5:  Manacher's Algorithm
+    // Approach 5: Manacher's Algorithm
     // Time Complexity: O(N)
     // Space Complexity: O(1)
-    // here is detaild :https://en.wikipedia.org/wiki/Longest_palindromic_substring#Manacher's_algorithm
+    // here is detaild
+    // :https://en.wikipedia.org/wiki/Longest_palindromic_substring#Manacher's_algorithm
 
 }
