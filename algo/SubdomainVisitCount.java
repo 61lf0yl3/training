@@ -10,23 +10,20 @@ class SubdomainVisitCount {
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     public List<String> subdomainVisits(String[] cpdomains) {
-        Map<String, Integer> m = new HashMap<>();
-        for (String domain : cpdomains) {
-            String[] cpinfo = domain.split("\\s+");
-            String[] levels = cpinfo[1].split("\\.");
-            int value = Integer.parseInt(cpinfo[0]);
-            String cur = "";
-            for (int i = levels.length - 1; i >= 0; i--) {
-                if (i == levels.length - 1) {
-                    cur = levels[i];
-                } else {
-                    cur = levels[i] + "." + cur;
-                }
-                m.put(cur, m.getOrDefault(cur, 0) + value);
+        HashMap<String, Integer> m = new HashMap<>();
+        for (String cpdomain : cpdomains) {
+
+            String[] parts = cpdomain.split(" ");
+            int visitedNumber = Integer.parseInt(parts[0]);
+            String[] domains = parts[1].split("\\.");
+
+            String domain = new String();
+            for (int i = domains.length - 1; i >= 0; i--) {
+                domain = domains[i] + (i < domains.length - 1 ? "." : "") + domain;
+                m.put(domain, m.getOrDefault(domain, 0) + visitedNumber);
             }
         }
-
-        List<String> res = new ArrayList();
+        List<String> res = new ArrayList<>();
         for (String domain : m.keySet()) {
             res.add(m.get(domain) + " " + domain);
         }
