@@ -32,4 +32,31 @@ public class NextPermutation {
         nums[i] = nums[j];
         nums[j] = temp;
     }
+
+    // Approach 1: Single Pass Approach
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public void nextPermutation2(int[] nums) {
+        int start = nums.length - 2;
+        while (start >= 0 && nums[start] >= nums[start + 1]) {
+            start--;
+        }
+
+        if (start >= 0) {
+            int j = nums.length - 1;
+            while (nums[start] >= nums[j]) {
+                j--;
+            }
+            swap(nums, start, j);
+        }
+
+        start++;
+        int end = nums.length - 1;
+        while (start < end) {
+            swap(nums, start, end);
+            start++;
+            end--;
+        }
+    }
+
 }
