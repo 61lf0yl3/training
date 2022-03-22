@@ -55,37 +55,33 @@ class DecodeString {
     // Space Complexity: O(sum(m * n)) where m is the numbers of letters, and n is
     // the numbers of digits.
     public String decodeString2(String s) {
-        Stack<StringBuilder> stringStack = new Stack<>();
-        Stack<Integer> countStack = new Stack<>();
+        Stack<StringBuilder> words = new Stack<>();
+        Stack<Integer> repetitions = new Stack<>();
 
+        int times = 0;
         StringBuilder currWord = new StringBuilder();
-        int repetingNumber = 0;
 
         for (char c : s.toCharArray()) {
-            if (c >= 'a' && c <= 'z') {
+            if (Character.isAlphabetic(c)) {
                 currWord.append(c);
-
-            } else if (c >= '0' && c <= '9') {
-                repetingNumber = repetingNumber * 10 + (c - '0');
-
+            } else if (Character.isDigit(c)) {
+                times = times * 10 + (c - '0');
             } else if (c == '[') {
-                countStack.add(repetingNumber);
-                stringStack.add(currWord);
-
-                repetingNumber = 0;
+                words.add(currWord);
                 currWord = new StringBuilder();
 
+                repetitions.add(times);
+                times = 0;
+
             } else if (c == ']') {
-                StringBuilder decodedWord = stringStack.pop();
-                int repetingTimes = countStack.pop();
-                for (int i = 0; i < repetingTimes; i++) {
+                StringBuilder decodedWord = words.pop();
+                for (int i = repetitions.pop(); i > 0; i--) {
                     decodedWord.append(currWord);
                 }
                 currWord = decodedWord;
             }
-
         }
-
         return currWord.toString();
     }
+
 }
