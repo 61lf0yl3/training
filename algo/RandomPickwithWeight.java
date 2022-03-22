@@ -60,6 +60,26 @@ class RandomPickwithWeight {
         return index;
     }
 
+    // Approach 1: Prefix Sums with Binary Search
+    // Time complexity : RandomPickwithWeight() O(N)
+    // pickIndex() O(logN)
+    // Space complexity : RandomPickwithWeight() O(N)
+    // pickIndex() O(1)
+    public int pickIndex3() {
+        int target = r.nextInt(prefixSum) + 1;
+        int low = 0;
+        int high = prefixSums.length;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (target > prefixSums[mid]) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+        return low;
+    }
+
 }
 
 /**
