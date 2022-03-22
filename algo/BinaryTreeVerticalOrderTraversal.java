@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.LinkedList;
 
 /**
  * Definition for a binary tree node.
@@ -81,5 +82,40 @@ class BinaryTreeVerticalOrderTraversal {
                 q.add(new Pair(node.right, column + 1));
             }
         }
+    }
+
+    public List<List<Integer>> verticalOrder3(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+
+        Map<Integer, ArrayList> m = new HashMap<>();
+        Queue<Pair<TreeNode, Integer>> q = new LinkedList<>();
+        q.add(new Pair(root, 0));
+        int minColumn = 0;
+        int maxColumn = 0;
+        while (!q.isEmpty()) {
+            Pair<TreeNode, Integer> pair = q.poll();
+            TreeNode node = pair.getKey();
+            int level = pair.getValue();
+            if (!m.containsKey(level)) {
+                m.put(level, new ArrayList<>());
+            }
+            m.get(level).add(node.val);
+            if (node.left != null) {
+                q.add(new Pair(node.left, level - 1));
+                minColumn = Math.min(minColumn, level - 1);
+            }
+            if (node.right != null) {
+                q.add(new Pair(node.right, level + 1));
+                maxColumn = Math.max(maxColumn, level + 1);
+            }
+        }
+
+        for (int i = minColumn; i <= maxColumn; i++) {
+            res.add(m.get(i));
+        }
+        return res;
     }
 }
