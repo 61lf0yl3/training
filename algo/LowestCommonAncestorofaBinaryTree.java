@@ -1,3 +1,7 @@
+import java.util.HashMap;
+import java.util.Queue;
+import java.util.LinkedList;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -42,5 +46,42 @@ class LowestCommonAncestorofaBinaryTree {
             res = root;
         }
         return left + right + mid > 0;
+    }
+
+    // Approach 2: Iterative using parent pointers
+    // Time Complexity: O(N) where N is the number of nodes
+    // Space Complexity: O(N) recursion stack would be N
+    public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
+
+        HashMap<TreeNode, TreeNode> parents = new HashMap<>();
+        parents.put(root, null);
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!parents.containsKey(p) || !parents.containsKey(q)) {
+            TreeNode node = queue.poll();
+
+            if (node.left != null) {
+                parents.put(node.left, node);
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                parents.put(node.right, node);
+                queue.add(node.right);
+            }
+        }
+
+        Set<TreeNode> path = new HashSet<>();
+
+        while (p != null) {
+            path.add(p);
+            p = parents.get(p);
+        }
+
+        while (!path.contains(q)) {
+            q = parents.get(q);
+        }
+        return q;
     }
 }
