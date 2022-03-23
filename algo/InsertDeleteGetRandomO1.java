@@ -1,12 +1,11 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 // Approach 1: HashMap + ArrayList
 // Time Complexity: O(1)
 // Space Complexity: O(N)
-class InsertDeleteGetRandomO1 {
+class RandomizedSet {
     HashMap<Integer, Integer> m;
     ArrayList<Integer> list;
     Random r;
