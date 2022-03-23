@@ -11,8 +11,8 @@ import java.util.PriorityQueue;
  * }
  */
 class MergekSortedLists {
-    // Approach 1: Optimize Approach 2 by Priority Queue
-    // Time Complexity: O(NlogK)
+    // Approach 1: Priority Queue
+    // Time Complexity: O(NlogN*K)
     // Space Complexity: O(N)
     public ListNode mergeKLists(ListNode[] lists) {
         PriorityQueue<Integer> q = new PriorityQueue<>();
@@ -34,9 +34,25 @@ class MergekSortedLists {
         return res.next;
     }
 
-    // Approach 2: Optimize Approach 2 by Priority Queue
+    // Approach 2: Divide And Conquer
     // Time Complexity: O(NlogK)
     // Space Complexity: O(1)
+    public ListNode mergeKLists2(ListNode[] lists) {
+        if (lists.length == 0) {
+            return null;
+        }
+        int interval = 1;
+        while (interval < lists.length) {
+            System.out.println(lists.length);
+            for (int i = 0; i + interval < lists.length; i = i + interval * 2) {
+                lists[i] = mergeTwoLists(lists[i], lists[i + interval]);
+            }
+            interval *= 2;
+        }
+
+        return lists[0];
+    }
+
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode h = new ListNode(0);
         ListNode ans = h;
@@ -60,19 +76,36 @@ class MergekSortedLists {
         return ans.next;
     }
 
-    public ListNode mergeKLists2(ListNode[] lists) {
-        if (lists.length == 0) {
+    // Approach 2: Optimize Approach 2 by Priority Queue
+    // Time Complexity: O(NlogK)
+    // Space Complexity: O(K)
+    public ListNode mergeKLists3(ListNode[] lists) {
+        if (lists == null || lists.length == 0) {
             return null;
         }
-        int interval = 1;
-        while (interval < lists.length) {
-            System.out.println(lists.length);
-            for (int i = 0; i + interval < lists.length; i = i + interval * 2) {
-                lists[i] = mergeTwoLists(lists[i], lists[i + interval]);
+        ListNode res = new ListNode(-1);
+        ListNode p = res;
+
+        PriorityQueue<ListNode> pq = new PriorityQueue<>((a, b) -> a.val - b.val);
+
+        for (ListNode list : lists) {
+            if (list != null) {
+                pq.offer(list);
             }
-            interval *= 2;
         }
 
-        return lists[0];
+        while (!pq.isEmpty()) {
+            ListNode node = pq.poll();
+            p.next = node;
+            p = p.next;
+
+            // you don't need to set curr.next as null since the last node is always be one
+            // of the last node of each list. Its next must be null.
+            if (node.next != null) {
+                pq.offer(node.next);
+            }
+        }
+
+        return res.next;
     }
 }
