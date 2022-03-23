@@ -7,43 +7,42 @@ import java.util.Random;
 // Time Complexity: O(1)
 // Space Complexity: O(N)
 class InsertDeleteGetRandomO1 {
-    Map<Integer, Integer> m;
-    ArrayList<Integer> a;
+    HashMap<Integer, Integer> m;
+    ArrayList<Integer> list;
     Random r;
 
-    public InsertDeleteGetRandomO1() {
+    public RandomizedSet() {
         m = new HashMap<>();
-        a = new ArrayList<>();
+        list = new ArrayList<>();
         r = new Random();
     }
 
     public boolean insert(int val) {
-        if (m.containsKey(val)) {
-            return false;
+        if (!m.containsKey(val)) {
+            m.put(val, list.size());
+            list.add(val);
+            return true;
         }
-        m.put(val, a.size());
-        a.add(val);
-        return true;
+        return false;
     }
 
     public boolean remove(int val) {
         if (m.containsKey(val)) {
-            int indexRemove = m.get(val);
-            if (m.size() > 1) {
-                int lastNb = a.get(a.size() - 1);
-                a.set(indexRemove, lastNb);
-                m.put(lastNb, indexRemove);
-            }
-            a.remove(a.size() - 1);
+            int valIndex = m.get(val);
+            int switchingVal = list.get(list.size() - 1);
+            m.put(switchingVal, valIndex);
+            list.set(valIndex, switchingVal);
+
             m.remove(val);
+            list.remove(list.size() - 1);
+
             return true;
         }
         return false;
     }
 
     public int getRandom() {
-        int i = r.nextInt(a.size());
-        return a.get(i);
+        return list.get(r.nextInt(list.size()));
     }
 }
 
