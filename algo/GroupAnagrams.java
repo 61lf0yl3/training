@@ -38,7 +38,7 @@ class GroupAnagrams {
     }
 
     // Approach 2: Categorize by Count
-    // Time Complexity: O(M*NlogN)
+    // Time Complexity: O(M*N)
     // Space Complexity: O(M*N)
     public List<List<String>> groupAnagrams2(String[] strs) {
         Map<String, List<String>> m = new HashMap<>();
@@ -64,5 +64,34 @@ class GroupAnagrams {
             anagrams.add(s);
         }
         return new ArrayList(m.values());
+    }
+
+    // Approach 2: Categorize by Count
+    // Time Complexity: O(M*N)
+    // Space Complexity: O(M*N)
+    public List<List<String>> groupAnagrams3(String[] strs) {
+        List<List<String>> res = new ArrayList<>();
+        HashMap<Integer, ArrayList> m = new HashMap<>();
+
+        for (String str : strs) {
+            int key = hashCode(str);
+            if (!m.containsKey(key)) {
+                m.put(key, new ArrayList<>());
+            }
+            m.get(key).add(str);
+        }
+
+        for (ArrayList<String> value : m.values()) {
+            res.add(value);
+        }
+        return res;
+    }
+
+    private int hashCode(String str) {
+        int[] chars = new int[26];
+        for (char c : str.toCharArray()) {
+            chars[c - 'a']++;
+        }
+        return Arrays.hashCode(chars);
     }
 }
