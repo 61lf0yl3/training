@@ -20,23 +20,35 @@ class Powxn {
     // Approach 2: Recursion
     // Time complexity : O(N)
     // Space complexity : O(1)
-    public double myPow2(double x, int n) {
-        if (n < 0) {
-            x = 1 / x;
-            n = -n;
+    public double myPow(double x, int n) {
+        if (n == 0) {
+            return 1;
         }
-        return fastPow(x, n);
+        if (x == 1) {
+            return 1;
+        }
+        long N = n;
+        if (N < 0) {
+            x = 1 / x;
+            N = -N;
+        }
+
+        return myPowR(x, N);
     }
 
-    public double fastPow(double x, int n) {
-        if (n == 0) {
-            return 1.0;
+    private double myPowR(double x, long n) {
+        if (n < 0) {
+            return 1;
         }
-        double half = fastPow(x, n / 2);
+        if (n == 1) {
+            return x;
+        }
         if (n % 2 == 0) {
-            return half * half;
+            double res = myPowR(x, n / 2);
+            return res * res;
         } else {
-            return half * half * x;
+            double res = myPowR(x, n / 2);
+            return x * res * res;
         }
     }
 
