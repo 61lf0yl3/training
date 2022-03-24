@@ -15,27 +15,31 @@ class DotProductofTwoSparseVectors {
 // Space complexity : O(L) for creating the Hash Map, as we only store elements
 // that are non-zero, O(1) for calculating the dot product.
 class SparseVector {
-    Map<Integer, Integer> m;
+    private HashMap<Integer, Integer> m1;
 
     SparseVector(int[] nums) {
-        m = new HashMap<>();
+        m1 = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != 0) {
-                m.put(i, nums[i]);
+                m1.put(i, nums[i]);
             }
         }
     }
 
+    public HashMap<Integer, Integer> getHashMap() {
+        return m1;
+    }
+
     // Return the dotProduct of two sparse vectors
     public int dotProduct(SparseVector vec) {
-        int ret = 0;
-        for (Integer key : m.keySet()) {
-            if (vec.m.containsKey(key)) {
-                int prod = m.get(key) * vec.m.get(key);
-                ret += prod;
+        int res = 0;
+        HashMap<Integer, Integer> m2 = vec.getHashMap();
+        for (int key : m1.keySet()) {
+            if (m2.containsKey(key)) {
+                res += m1.get(key) * m2.get(key);
             }
         }
-        return ret;
+        return res;
     }
 }
 
