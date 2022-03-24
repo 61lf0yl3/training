@@ -3,11 +3,22 @@ class WordSearch {
   // Time Complexity: O(N*3^L)
   // Space Complexity: O(L)
   // L is the length of the word to be matched
+  char[][] board;
+  String word;
+  boolean[][] memo;
+  int n;
+  int m;
+
   public boolean exist(char[][] board, String word) {
-    for (int row = 0; row < board.length; row++) {
-      for (int col = 0; col < board[0].length; col++) {
-        if (board[row][col] == word.charAt(0)) {
-          if (dfs(board, word, row, col, 0)) {
+    this.board = board;
+    this.word = word;
+    this.n = board.length;
+    this.m = board[0].length;
+    this.memo = new boolean[n][m];
+    for (int r = 0; r < n; r++) {
+      for (int c = 0; c < m; c++) {
+        if (board[r][c] == word.charAt(0)) {
+          if (dfs(r, c, 0)) {
             return true;
           }
         }
@@ -16,21 +27,17 @@ class WordSearch {
     return false;
   }
 
-  public boolean dfs(char[][] board, String word, int row, int col, int index) {
-    if (index >= word.length()) {
+  private boolean dfs(int r, int c, int i) {
+    if (i >= word.length()) {
       return true;
     }
-    if (row >= board.length || col >= board[0].length || row < 0 || col < 0
-        || board[row][col] != word.charAt(index)) {
+    if (r >= n || c >= m || r < 0 || c < 0 || memo[r][c] || board[r][c] != word.charAt(i)) {
       return false;
     }
-    board[row][col] = '1';
-    boolean ret = dfs(board, word, row - 1, col, index + 1)
-        || dfs(board, word, row, col + 1, index + 1)
-        || dfs(board, word, row + 1, col, index + 1)
-        || dfs(board, word, row, col - 1, index + 1);
-    board[row][col] = word.charAt(index);
-    return ret;
+    memo[r][c] = true;
+    boolean res = dfs(r - 1, c, i + 1) || dfs(r, c - 1, i + 1) || dfs(r + 1, c, i + 1) || dfs(r, c + 1, i + 1);
+    memo[r][c] = false;
+    return res;
   }
 }
 
