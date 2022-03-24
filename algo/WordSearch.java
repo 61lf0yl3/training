@@ -5,7 +5,6 @@ class WordSearch {
   // L is the length of the word to be matched
   char[][] board;
   String word;
-  boolean[][] memo;
   int n;
   int m;
 
@@ -14,7 +13,6 @@ class WordSearch {
     this.word = word;
     this.n = board.length;
     this.m = board[0].length;
-    this.memo = new boolean[n][m];
     for (int r = 0; r < n; r++) {
       for (int c = 0; c < m; c++) {
         if (board[r][c] == word.charAt(0)) {
@@ -31,12 +29,12 @@ class WordSearch {
     if (i >= word.length()) {
       return true;
     }
-    if (r >= n || c >= m || r < 0 || c < 0 || memo[r][c] || board[r][c] != word.charAt(i)) {
+    if (r >= n || c >= m || r < 0 || c < 0 || board[r][c] != word.charAt(i)) {
       return false;
     }
-    memo[r][c] = true;
+    board[r][c] = '#';
     boolean res = dfs(r - 1, c, i + 1) || dfs(r, c - 1, i + 1) || dfs(r + 1, c, i + 1) || dfs(r, c + 1, i + 1);
-    memo[r][c] = false;
+    board[r][c] = word.charAt(i);
     return res;
   }
 }
