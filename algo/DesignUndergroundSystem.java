@@ -61,3 +61,37 @@ class DesignUndergroundSystem {
         return startStation + "->" + endStation;
     }
 }
+
+class UndergroundSystem2 {
+
+    HashMap<Integer, Pair<String, Integer>> ids;
+    HashMap<String, Pair<Integer, Double>> travel;
+
+    public UndergroundSystem2() {
+        ids = new HashMap<>();
+        travel = new HashMap<>();
+
+    }
+
+    public void checkIn(int id, String stationName, int t) {
+
+        ids.put(id, new Pair<>(stationName + "-", t));
+    }
+
+    public void checkOut(int id, String stationName, int t) {
+        Pair<String, Integer> start = ids.get(id);
+        if (!travel.containsKey(start.getKey() + stationName)) {
+            Pair<Integer, Double> newpair = new Pair<>(t - start.getValue(), 1.0);
+            travel.put(start.getKey() + stationName, newpair);
+        } else {
+            Pair<Integer, Double> oldpair = travel.get(start.getKey() + stationName);
+            Pair<Integer, Double> newpair = new Pair<>(oldpair.getKey() + t - start.getValue(), oldpair.getValue() + 1);
+            travel.put(start.getKey() + stationName, newpair);
+        }
+    }
+
+    public double getAverageTime(String startStation, String endStation) {
+        Pair<Integer, Double> pair = travel.get(startStation + '-' + endStation);
+        return pair.getKey() / pair.getValue();
+    }
+}
