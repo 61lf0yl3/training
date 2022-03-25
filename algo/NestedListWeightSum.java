@@ -75,11 +75,12 @@ class NestedListWeightSum {
     // Time complexity : O(N)
     // Space complexity : O(N)
     private void dfs(List<NestedInteger> nestedList, int depth) {
-        for (NestedInteger n : nestedList) {
-            if (n.isInteger()) {
-                res += n.getInteger() * depth;
+
+        for (NestedInteger nested : nestedList) {
+            if (nested.isInteger()) {
+                res += (depth * nested.getInteger());
             } else {
-                dfs(n.getList(), depth + 1);
+                dfs(nested.getList(), depth + 1);
             }
         }
     }
