@@ -1,5 +1,6 @@
 import java.util.ArrayDeque;
 import java.util.List;
+import java.util.LinkedList;
 import java.util.Queue;
 
 // This is the interface that allows for creating nested lists.
@@ -88,21 +89,28 @@ class NestedListWeightSum {
     // Approach 3: BFS
     // Time complexity : O(N)
     // Space complexity : O(N)
-    private void bfs(List<NestedInteger> nestedList) {
-        int depth = 1;
-        Queue<NestedInteger> q = new ArrayDeque();
-        q.addAll(nestedList);
+    private int bfs(List<NestedInteger> nestedList) {
+        Queue<NestedInteger> q = new LinkedList<>();
+
+        for (NestedInteger nested : nestedList) {
+            q.add(nested);
+        }
+        int res = 0;
+        int depth = 0;
         while (!q.isEmpty()) {
             int size = q.size();
+            depth++;
             for (int i = 0; i < size; i++) {
-                NestedInteger n = q.poll();
-                if (n.isInteger()) {
-                    res += n.getInteger() * depth;
+                NestedInteger temp = q.poll();
+                if (temp.isInteger()) {
+                    res += (depth * temp.getInteger());
                 } else {
-                    q.addAll(n.getList());
+                    for (NestedInteger nested : temp.getList()) {
+                        q.add(nested);
+                    }
                 }
             }
-            depth++;
         }
+        return res;
     }
 }

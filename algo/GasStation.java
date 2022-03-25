@@ -22,6 +22,21 @@ class GasStation {
         return totalTank >= 0 ? startingStaton : -1;
     }
 
+    public int canCompleteCircuit1(int[] gas, int[] cost) {
+        int totalTank = 0;
+        int currentTank = 0;
+        int res = 0;
+        for (int i = 0; i < gas.length; i++) {
+            totalTank += (gas[i] - cost[i]);
+            currentTank += (gas[i] - cost[i]);
+            if (currentTank < 0) {
+                currentTank = 0;
+                res = i + 1;
+            }
+        }
+        return totalTank < 0 ? -1 : res;
+    }
+
     // Approach 2: Brute Force (TLE)
     // Time complexity : O(N^2)
     // Space complexity : O(1)
