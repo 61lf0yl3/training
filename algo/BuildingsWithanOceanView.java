@@ -5,19 +5,22 @@ import java.util.Stack;
 class BuildingsWithanOceanView {
     // Approach 1: Monotonic Stack Space Optimization
     // Time complexity : O(N)
-    // Space complexity : O(1)
+    // Space complexity : O(N)
     public int[] findBuildings(int[] heights) {
-        ArrayList<Integer> indices = new ArrayList<>();
-        int prev = 0;
-        for (int i = heights.length - 1; i >= 0; i--) {
-            if (heights[i] > prev) {
-                indices.add(i);
-                prev = heights[i];
+        ArrayList<Integer> tempRes = new ArrayList<>();
+        int n = heights.length;
+        int highestSoFar = heights[n - 1];
+        tempRes.add(n - 1);
+        for (int i = n - 2; i >= 0; i--) {
+            if (heights[i] > highestSoFar) {
+                tempRes.add(i);
+                highestSoFar = heights[i];
             }
         }
-        int[] res = new int[indices.size()];
-        for (int i = indices.size() - 1; i >= 0; i--) {
-            res[(indices.size() - 1) - i] = indices.get(i);
+        int m = tempRes.size();
+        int[] res = new int[m];
+        for (int i = 0; i < m; i++) {
+            res[i] = tempRes.get(m - 1 - i);
         }
         return res;
     }
