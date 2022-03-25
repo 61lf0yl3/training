@@ -14,19 +14,18 @@ class Node {
 // Space Complexity: O(N)
 class LowestCommonAncestorofaBinaryTree3 {
     public Node lowestCommonAncestor(Node p, Node q) {
-        Set<Node> path = new HashSet<>();
-
+        Set<Node> set = new HashSet<>();
         while (p != null) {
-            path.add(p);
+            set.add(p);
             p = p.parent;
         }
 
         while (q != null) {
-            if (path.contains(q)) {
+            if (set.contains(q)) {
                 return q;
             }
             q = q.parent;
         }
-        return q;
+        return null;
     }
 }
