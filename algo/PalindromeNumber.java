@@ -16,4 +16,17 @@ class PalindromeNumber {
 
         return x == revertedNumber || x == revertedNumber / 10;
     }
+
+    public boolean isPalindrome2(int x) {
+        if (x < 0) {
+            return false;
+        }
+        int newX = x;
+        int res = 0;
+        while (newX > 0) {
+            res = res * 10 + newX % 10;
+            newX /= 10;
+        }
+        return res == x;
+    }
 }
