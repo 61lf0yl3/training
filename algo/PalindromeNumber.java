@@ -8,13 +8,12 @@ class PalindromeNumber {
         if (x < 0 || (x % 10 == 0 && x != 0)) {
             return false;
         }
-        int revertedNumber = 0;
-        while (x > revertedNumber) {
-            revertedNumber = revertedNumber * 10 + x % 10;
+        int res = 0;
+        while (x > res) {
+            res = res * 10 + x % 10;
             x /= 10;
         }
-
-        return x == revertedNumber || x == revertedNumber / 10;
+        return x == res || x == res / 10;
     }
 
     public boolean isPalindrome2(int x) {
