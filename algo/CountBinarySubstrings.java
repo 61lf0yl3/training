@@ -66,16 +66,19 @@ class CountBinarySubstrings {
     // Time Complexity: O(N)
     // Space Complexity: O(1)
     public int countBinarySubstrings3(String s) {
-        int ans = 0, prev = 0, cur = 1;
+        int res = 0;
+        int prev = 0;
+        int curr = 1;
         for (int i = 1; i < s.length(); i++) {
-            if (s.charAt(i - 1) != s.charAt(i)) {
-                ans += Math.min(prev, cur);
-                prev = cur;
-                cur = 1;
+            if (s.charAt(i - 1) == s.charAt(i)) {
+                curr++;
             } else {
-                cur++;
+                res += Math.min(prev, curr);
+                prev = curr;
+                curr = 1;
             }
         }
-        return ans + Math.min(prev, cur);
+        res += Math.min(prev, curr);
+        return res;
     }
 }
