@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class CountBinarySubstrings {
     // 696. Count Binary Substrings
 
@@ -42,22 +44,22 @@ class CountBinarySubstrings {
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     public int countBinarySubstrings2(String s) {
-        int[] groups = new int[s.length()];
-        int t = 0;
-        groups[0] = 1;
+        ArrayList<Integer> groups = new ArrayList<>();
+        groups.add(1);
         for (int i = 1; i < s.length(); i++) {
-            if (s.charAt(i - 1) != s.charAt(i)) {
-                groups[++t] = 1;
+            if (s.charAt(i - 1) == s.charAt(i)) {
+                int index = groups.size() - 1;
+                int num = groups.get(index) + 1;
+                groups.set(index, num);
             } else {
-                groups[t]++;
+                groups.add(1);
             }
         }
-
-        int ans = 0;
-        for (int i = 1; i <= t; i++) {
-            ans += Math.min(groups[i - 1], groups[i]);
+        int res = 0;
+        for (int i = 1; i < groups.size(); i++) {
+            res += Math.min(groups.get(i - 1), groups.get(i));
         }
-        return ans;
+        return res;
     }
 
     // Approach 1: Linear Scan
