@@ -48,17 +48,17 @@ class PairsofSongsWithTotalDurationsDivisibleby60 {
     // Approach 3: Use an Array to Store Frequencies
     // Time complexity : O(N)
     // Space complexity : O(N)
-    public int numPairsDivisibleBy603(int[] time) {
-        int[] remainder = new int[60];
+    public int numPairsDivisibleBy603(int[] times) {
+        int[] freq = new int[60];
         int res = 0;
-        for (int t : time) {
-            if (t % 60 == 0) {
-                res += remainder[t % 60];
+        for (int time : times) {
+            int num = time % 60;
+            if (num == 0) {
+                res += freq[num];
             } else {
-                res += remainder[60 - t % 60];
+                res += freq[60 - num];
             }
-
-            remainder[t % 60]++;
+            freq[num]++;
         }
         return res;
     }
