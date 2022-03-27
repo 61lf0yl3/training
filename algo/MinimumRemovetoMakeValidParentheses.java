@@ -1,3 +1,5 @@
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 
 class MinimumRemovetoMakeValidParentheses {
@@ -63,5 +65,36 @@ class MinimumRemovetoMakeValidParentheses {
             sb.append(c);
         }
         return sb;
+    }
+
+    // Approach 1: Using a Stack and String Builder
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    public String minRemoveToMakeValid3(String s) {
+        Stack<Integer> stack = new Stack<>();
+        Set<Integer> set = new HashSet<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                stack.add(i);
+            } else if (s.charAt(i) == ')') {
+                if (stack.isEmpty()) {
+                    set.add(i);
+                } else {
+                    stack.pop();
+                }
+            }
+        }
+        while (!stack.isEmpty()) {
+            set.add(stack.pop());
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (!set.contains(i)) {
+                sb.append(s.charAt(i));
+            }
+        }
+
+        return sb.toString();
     }
 }
