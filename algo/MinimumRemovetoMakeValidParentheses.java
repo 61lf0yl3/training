@@ -67,7 +67,7 @@ class MinimumRemovetoMakeValidParentheses {
         return sb;
     }
 
-    // Approach 1: Using a Stack and String Builder
+    // Approach 3: Using a Stack and String Builder
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     public String minRemoveToMakeValid3(String s) {
@@ -96,5 +96,44 @@ class MinimumRemovetoMakeValidParentheses {
         }
 
         return sb.toString();
+    }
+
+    // Approach 4: Shortened Two Pass String Builder
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    public String minRemoveToMakeValid4(String s) {
+
+        // Pass 1: Remove all invalid ")"
+        StringBuilder sb = new StringBuilder();
+        int openSeen = 0;
+        int balance = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(') {
+                openSeen++;
+                balance++;
+            }
+            if (c == ')') {
+                if (balance == 0)
+                    continue;
+                balance--;
+            }
+            sb.append(c);
+        }
+
+        // Pass 2: Remove the rightmost "("
+        StringBuilder result = new StringBuilder();
+        int openToKeep = openSeen - balance;
+        for (int i = 0; i < sb.length(); i++) {
+            char c = sb.charAt(i);
+            if (c == '(') {
+                openToKeep--;
+                if (openToKeep < 0)
+                    continue;
+            }
+            result.append(c);
+        }
+
+        return result.toString();
     }
 }
