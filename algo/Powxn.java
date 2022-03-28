@@ -20,7 +20,7 @@ class Powxn {
     // Approach 2: Recursion
     // Time complexity : O(N)
     // Space complexity : O(1)
-    public double myPow(double x, int n) {
+    public double myPow2(double x, int n) {
         if (n == 0) {
             return 1;
         }

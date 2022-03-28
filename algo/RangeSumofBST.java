@@ -1,4 +1,6 @@
+import java.util.Queue;
 import java.util.Stack;
+import java.util.LinkedList;
 
 /**
  * Definition for a binary tree node.
@@ -61,19 +63,19 @@ class RangeSumofBST {
     // Space Complexity: O(N) recursion stack would be N
     public int rangeSumBST3(TreeNode root, int low, int high) {
         int res = 0;
-        Stack<TreeNode> s = new Stack<>();
-        s.add(root);
-        while (!s.isEmpty()) {
-            TreeNode node = s.pop();
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            TreeNode node = q.poll();
             if (node != null) {
                 if (low <= node.val && node.val <= high) {
                     res += node.val;
                 }
                 if (low < node.val) {
-                    s.add(node.left);
+                    q.add(node.left);
                 }
                 if (node.val < high) {
-                    s.add(node.right);
+                    q.add(node.right);
                 }
             }
         }
