@@ -12,34 +12,33 @@ class TopKFrequentElements {
     // Time complexity : O(N)
     // Space complexity : O(N)
     public int[] topKFrequent(int[] nums, int k) {
-        int max = Integer.MIN_VALUE;
-        HashMap<Integer, Integer> map = new HashMap<>();
+        if (k == nums.length) {
+            return nums;
+        }
+        HashMap<Integer, Integer> m = new HashMap<>();
+        int maxFreq = 0;
         for (int num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
-            max = Math.max(max, map.get(num));
+            m.put(num, m.getOrDefault(num, 0) + 1);
+            maxFreq = Math.max(maxFreq, m.get(num));
+        }
+        ArrayList<ArrayList<Integer>> backet = new ArrayList<>();
+        for (int i = 0; i <= maxFreq; i++) {
+            backet.add(new ArrayList<>());
         }
 
-        List<List<Integer>> buckets = new ArrayList<>();
-        for (int i = 0; i <= max; ++i) {
-            buckets.add(new ArrayList<>());
-        }
-
-        for (Integer key : map.keySet()) {
-            int freq = map.get(key);
-            buckets.get(freq).add(key);
+        for (int key : m.keySet()) {
+            backet.get(m.get(key)).add(key);
         }
 
         int[] res = new int[k];
         int index = 0;
-        for (int i = buckets.size() - 1; i >= 0; i--) {
-            List<Integer> listNums = buckets.get(i);
-            for (int n : listNums) {
+        for (int i = maxFreq; i >= 0; i--) {
+            for (int num : backet.get(i)) {
                 if (index < res.length) {
-                    res[index++] = n;
+                    res[index++] = num;
                 }
             }
         }
-
         return res;
     }
 
