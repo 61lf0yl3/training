@@ -54,26 +54,26 @@ class TopKFrequentElements {
 
         // 1. build hash map : character and how often it appears
         // O(N) time
-        HashMap<Integer, Integer> map = new HashMap<>();
+        HashMap<Integer, Integer> m = new HashMap<>();
         for (int num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
+            m.put(num, m.getOrDefault(num, 0) + 1);
         }
         // init heap 'the less frequent element first'
-        Queue<Integer> heap = new PriorityQueue<>(
-                (n1, n2) -> map.get(n1) - map.get(n2));
+        PriorityQueue<Integer> pq = new PriorityQueue((a, b) -> m.get(a) - m.get(b));
 
         // 2. keep k top frequent elements in the heap
         // O(N log k) < O(N log N) time
-        for (int key : map.keySet()) {
-            heap.add(key);
-            if (heap.size() > k) {
-                heap.poll();
+        for (int num : m.keySet()) {
+            pq.add(num);
+            if (pq.size() > k) {
+                pq.poll();
             }
         }
 
         int[] res = new int[k];
-        for (int i = 0; i < k; i++) {
-            res[i] = heap.poll();
+        int i = 0;
+        while (!pq.isEmpty()) {
+            res[i++] = pq.poll();
         }
         return res;
     }
