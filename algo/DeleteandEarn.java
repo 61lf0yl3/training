@@ -34,7 +34,7 @@ class DeleteandEarn {
         return Math.max(lastIncluded, latsNotIncluded);
     }
 
-    // Approach 1: DP Bottom-Up (leetcode version)
+    // Approach 2: DP Bottom-Up (leetcode version)
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     public int deleteAndEarn2(int[] nums) {
@@ -58,9 +58,32 @@ class DeleteandEarn {
         return Math.max(avoid, using);
     }
 
-    // Approach 1: DP Top-Down (leetcode version)
-    // Time Complexity: O(N)
-    // Space Complexity: O(N)
+    // Approach 3: DP Bottom-Up
+    // Time Complexity: O(N+k)
+    // Space Complexity: O(N+k)
+    public int deleteAndEarn4(int[] input) {
+        HashMap<Integer, Integer> nums = new HashMap<>();
+
+        int max = 0;
+        for (int num : input) {
+            nums.put(num, nums.getOrDefault(num, 0) + num);
+            max = Math.max(max, num);
+        }
+
+        int[] dp = new int[max + 1];
+        dp[1] = nums.getOrDefault(1, 0);
+
+        for (int num = 2; num < dp.length; num++) {
+            int points = nums.getOrDefault(num, 0);
+            dp[num] = Math.max(dp[num - 1], dp[num - 2] + points);
+        }
+
+        return dp[max];
+    }
+
+    // Approach 3: DP Top-Down (leetcode version)
+    // Time Complexity: O(N+k)
+    // Space Complexity: O(N+k)
     HashMap<Integer, Integer> nums;
     HashMap<Integer, Integer> memo;
 
