@@ -19,4 +19,20 @@ class FindPeakElement {
         }
         return low;
     }
+
+    // Approach 1: Recursive Binary Search
+    // Time Complexity:O(logN)
+    // Space Complexity: O(1)
+    public int findPeakElement2(int[] nums) {
+        return search(nums, 0, nums.length - 1);
+    }
+
+    public int search(int[] nums, int l, int r) {
+        if (l == r)
+            return l;
+        int mid = (l + r) / 2;
+        if (nums[mid] > nums[mid + 1])
+            return search(nums, l, mid);
+        return search(nums, mid + 1, r);
+    }
 }
