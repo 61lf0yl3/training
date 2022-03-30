@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -5,33 +7,34 @@ class DeleteandEarn {
     // 740. Delete and Earn
 
     // Approach 1: DP (Bottom-Up)
-    // Time Complexity: O(N)
+    // Time Complexity: O(NlogN)
     // Space Complexity: O(N)
-    public int deleteAndEarn(int[] nums) {
-        Map<Integer, Integer> count = new HashMap<>();
-        int min = Integer.MAX_VALUE;
-        int max = 0;
-        for (int num : nums) {
-            min = Math.min(min, num);
-            max = Math.max(max, num);
-            count.put(num, count.getOrDefault(num, 0) + 1);
+    public int deleteAndEarn(int[] input) {
+        HashMap<Integer, Integer> nums = new HashMap<>();
+
+        for (int num : input) {
+            nums.put(num, nums.getOrDefault(num, 0) + num);
         }
-        int latsNotIncluded = 0, lastIncluded = 0, prev = -1;
 
-        for (int i = min; i <= max; i++)
-            if (count.containsKey(i)) {
-                int temp = Math.max(latsNotIncluded, lastIncluded);
-                if (i - 1 == prev) {
-                    lastIncluded = i * count.get(i) + latsNotIncluded;
-                    latsNotIncluded = temp;
-                } else {
-                    latsNotIncluded = temp;
-                    lastIncluded = i * count.get(i) + temp;
-                }
-                prev = i;
+        ArrayList<Integer> elements = new ArrayList<>(nums.keySet());
+        Collections.sort(elements);
+
+        // Base cases
+        int twoBack = 0;
+        int oneBack = nums.get(elements.get(0));
+
+        for (int i = 1; i < elements.size(); i++) {
+            int num = elements.get(i);
+            int temp = oneBack;
+            if (num == elements.get(i - 1) + 1) {
+                oneBack = Math.max(temp, twoBack + nums.get(num));
+            } else {
+                oneBack += nums.get(num);
             }
+            twoBack = temp;
+        }
 
-        return Math.max(lastIncluded, latsNotIncluded);
+        return oneBack;
     }
 
     // Approach 2: DP Bottom-Up (leetcode version)
