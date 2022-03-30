@@ -5,26 +5,28 @@ class StringCompression {
     // Time complexity : O(N)
     // Space complexity : O(1)
     public int compress(char[] chars) {
-        int compressIndex = 0;
-        int charCount = 1;
+        int res = 0;
+        int count = 1;
         char currChar = chars[0];
+
         for (int i = 1; i <= chars.length; i++) {
             if (i == chars.length || chars[i] != chars[i - 1]) {
-                chars[compressIndex++] = currChar;
-                if (charCount > 1) {
-                    String count = Integer.toString(charCount);
-                    for (char digit : count.toCharArray()) {
-                        chars[compressIndex++] = digit;
+                chars[res++] = currChar;
+                if (count > 1) {
+                    String countString = String.valueOf(count);
+                    for (char c : countString.toCharArray()) {
+                        chars[res++] = c;
                     }
                 }
                 if (i < chars.length) {
-                    charCount = 1;
+                    count = 1;
                     currChar = chars[i];
                 }
             } else {
-                charCount++;
+                count++;
             }
         }
-        return compressIndex;
+
+        return res;
     }
 }
