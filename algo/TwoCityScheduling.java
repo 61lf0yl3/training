@@ -1,10 +1,10 @@
 import java.util.Arrays;
 
-class Solution {
+class TwoCityScheduling {
 
     // Approach 1: Greedy
     // Time Complexity: O(NlogN)
-    // Space Complexity: O(N)
+    // Space Complexity: O(logN)
     public int twoCitySchedCost(int[][] costs) {
         Arrays.sort(costs, (a, b) -> a[0] - a[1] - b[0] + b[1]);
 
