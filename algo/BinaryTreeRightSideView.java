@@ -131,4 +131,34 @@ class BinaryTreeRightSideView {
         }
         return rightside;
     }
+
+    // Approach 3: BFS: One Queue + Sentinel
+    // Time Complexity: O(N)
+    // Space Complexity: O(D) , where D is a tree diameter.
+    public List<Integer> rightSideView4(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            int size = q.size();
+            int last = -101;
+            for (int i = 0; i < size; i++) {
+                TreeNode node = q.poll();
+                if (node.left != null) {
+                    q.add(node.left);
+                }
+                if (node.right != null) {
+                    q.add(node.right);
+                }
+                last = node.val;
+            }
+            if (last != -101) {
+                res.add(last);
+            }
+        }
+        return res;
+    }
 }
