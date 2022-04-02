@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Comparator;
 
-class Solution {
+class ReorderDatainLogFiles {
     public String[] reorderLogFiles(String[] logs) {
         Arrays.sort(logs, new SortLogs());
         return logs;
