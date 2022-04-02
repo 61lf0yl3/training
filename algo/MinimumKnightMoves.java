@@ -1,7 +1,6 @@
 import java.util.Queue;
 import java.util.ArrayDeque;
 import java.util.HashMap;
-import java.util.Map;
 
 class MinimumKnightMoves {
 

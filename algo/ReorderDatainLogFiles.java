@@ -3,7 +3,7 @@ import java.util.Comparator;
 
 class Solution {
     public String[] reorderLogFiles(String[] logs) {
-        Arrays.sort(logs, new CompareLogs());
+        Arrays.sort(logs, new SortLogs());
         return logs;
     }
 }
@@ -12,27 +12,25 @@ class Solution {
 // Time complexity : O(MNlogN) Let N be the number of logs in the list and M be
 // the maximum length of a single log.
 // Space complexity : O(MlogN)
-class CompareLogs implements Comparator<String> {
+class SortLogs implements Comparator<String> {
     public int compare(String a, String b) {
-        String[] log1 = a.split(" ", 2);
-        String[] log2 = b.split(" ", 2);
+        String[] aArr = a.split(" ", 2);
+        String[] bArr = b.split(" ", 2);
 
-        boolean isDigit1 = Character.isDigit(log1[1].charAt(0));
-        boolean isDigit2 = Character.isDigit(log2[1].charAt(0));
+        boolean aDigit = Character.isDigit(aArr[1].charAt(0));
+        boolean bDigit = Character.isDigit(bArr[1].charAt(0));
 
-        // both string
-        if (!isDigit1 && !isDigit2) {
-            int compareByIdentifier = log1[1].compareTo(log2[1]);
-            if (compareByIdentifier != 0) {
-                return compareByIdentifier;
+        if (!aDigit && !bDigit) {
+            int compare = aArr[1].compareTo(bArr[1]);
+            if (compare != 0) {
+                return compare;
             }
-            return log1[0].compareTo(log2[0]);
-        } else if (!isDigit1 && isDigit2) {
+            return aArr[0].compareTo(bArr[0]);
+        } else if (!aDigit && bDigit) {
             return -1;
-        } else if (isDigit1 && !isDigit2) {
+        } else if (aDigit && !bDigit) {
             return 1;
-        } else {
-            return 0;
         }
+        return 0;
     }
 }
