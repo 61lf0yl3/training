@@ -1,5 +1,10 @@
 class RobotBoundedInCircle {
 
+    // 1041. Robot Bounded In Circle
+
+    // Approach 1: One Pass
+    // Time complexity : O(N)
+    // Space complexity : O(1)
     public boolean isRobotBounded(String instructions) {
         int x = 0;
         int y = 0;
