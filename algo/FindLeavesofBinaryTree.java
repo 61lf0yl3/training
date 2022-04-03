@@ -17,16 +17,15 @@ class FindLeavesofBinaryTree {
         if (node == null) {
             return -1;
         }
+        int leftHight = getHeight(node.left);
+        int rightHight = getHeight(node.right);
 
-        int leftHeight = getHeight(node.left);
-        int rightHeight = getHeight(node.right);
+        int currHight = Math.max(leftHight, rightHight) + 1;
 
-        int currHeight = Math.max(leftHeight, rightHeight) + 1;
-        if (res.size() == currHeight) {
+        if (res.size() <= currHight) {
             res.add(new ArrayList<>());
         }
-        res.get(currHeight).add(node.val);
-
-        return currHeight;
+        res.get(currHight).add(node.val);
+        return currHight;
     }
 }
