@@ -31,18 +31,21 @@ class ProductofArrayExceptSelf {
     // Time complexity : O(N)
     // Space complexity : O(1)
     public int[] productExceptSelf2(int[] nums) {
-        int[] res = new int[nums.length];
+        int n = nums.length;
+        int[] res = new int[n];
         res[0] = 1;
 
-        for (int i = 1; i < nums.length; i++) {
+        for (int i = 1; i < n; i++) {
             res[i] = res[i - 1] * nums[i - 1];
         }
 
         int right = 1;
-        for (int i = nums.length - 1; i >= 0; i--) {
+
+        for (int i = n - 2; i >= 0; i--) {
+            right *= nums[i + 1];
             res[i] *= right;
-            right *= nums[i];
         }
+
         return res;
     }
 }
