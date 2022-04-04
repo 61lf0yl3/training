@@ -46,15 +46,17 @@ class WordDistance {
     // Time complexity : O(N) for WordDistance; O(N) for shortest
     // Space complexity : O(N) for WordDistance; O(1) for shortest
     public int shortest2(String word1, String word2) {
-        Map<String, ArrayList<Integer>> temp = m;
-        ArrayList<Integer> l1 = m.get(word1);
-        ArrayList<Integer> l2 = m.get(word2);
-        int res = Integer.MAX_VALUE;
+        ArrayList<Integer> list1 = m.get(word1);
+        ArrayList<Integer> list2 = m.get(word2);
+
         int i = 0;
         int j = 0;
-        while (i < l1.size() && j < l2.size()) {
-            res = Math.min(res, Math.abs(l1.get(i) - l2.get(j)));
-            if (l1.get(i) > l2.get(j)) {
+
+        int res = Integer.MAX_VALUE;
+        while (i < list1.size() && j < list2.size()) {
+            res = Math.min(res, Math.abs(list1.get(i) - list2.get(j)));
+
+            if (list1.get(i) > list2.get(j)) {
                 j++;
             } else {
                 i++;
