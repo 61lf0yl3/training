@@ -6,7 +6,10 @@ class DesignHitCounter {
     public static void main(String[] args) {
 
     }
+
 }
+
+// 362. Design Hit Counter
 
 // Approach 1: Using Queue
 // Time complexity : O(1)
@@ -37,7 +40,7 @@ class HitCounter {
         while (!q.isEmpty()) {
             int diff = timestamp - q.peek();
             if (diff >= 300) {
-                q.remove();
+                q.poll();
             } else {
                 break;
             }
