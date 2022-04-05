@@ -11,22 +11,22 @@ class RotateImage {
 
     public void transpose(int[][] matrix) {
         int n = matrix.length;
-        for (int r = 0; r < n; r++) {
-            for (int c = r + 1; c < n; c++) {
-                int temp = matrix[r][c];
-                matrix[r][c] = matrix[c][r];
-                matrix[c][r] = temp;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
             }
         }
     }
 
     public void reflect(int[][] matrix) {
         int n = matrix.length;
-        for (int r = 0; r < n; r++) {
-            for (int c = 0; c < n / 2; c++) {
-                int temp = matrix[r][c];
-                matrix[r][c] = matrix[r][n - 1 - c];
-                matrix[r][n - 1 - c] = temp;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n / 2; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[i][n - j - 1];
+                matrix[i][n - j - 1] = temp;
             }
         }
     }
