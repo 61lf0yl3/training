@@ -8,7 +8,13 @@
  * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
 class MergeTwoSortedLists {
+    // 21. Merge Two Sorted Lists
+
+    // Approach 1: Iterative
+    // Time Complexity: O(Max(N,M))
+    // Space Complexity: O(Max(N,M))
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode res = new ListNode();
         ListNode p = res;
