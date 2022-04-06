@@ -86,6 +86,9 @@ class TimeMap {
         return "";
     }
 
+    // Approach 1: Using Hash
+    // Time complexity : O(N) for set; O(logN) for get
+    // Space complexity : O(N) for set; O(N) for get
     public String get3(String key, int timestamp) {
         if (m.containsKey(key)) {
             ArrayList<Pair<String, Integer>> list = m.get(key);
