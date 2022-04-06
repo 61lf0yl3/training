@@ -33,7 +33,7 @@ class MinimumAddtoMakeParenthesesValid {
             } else {
                 balance--;
             }
-            if (balance == -1) {
+            if (balance < 0) {
                 res++;
                 balance++;
             }
