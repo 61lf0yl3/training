@@ -3,23 +3,24 @@ public class ValidWordAbbreviation {
     // Time Complexity: O(N)
     // Space Complexity: O(1)
     public boolean validWordAbbreviation(String word, String abbr) {
-        int m = abbr.length();
         int n = word.length();
+        int m = abbr.length();
         int i = 0;
         int j = 0;
-        while (i < m && j < n) {
-            int temp = 0;
-            if (abbr.charAt(i) == '0') {
+        while (i < n && j < m) {
+            if (abbr.charAt(j) == '0') {
                 return false;
             }
-            while (i < m && Character.isDigit(abbr.charAt(i))) {
-                temp = temp * 10 + (abbr.charAt(i++) - '0');
+            int num = 0;
+            while (j < m && Character.isDigit(abbr.charAt(j))) {
+                num = num * 10 + (abbr.charAt(j) - '0');
+                j++;
             }
-            j += temp;
-            if (i < m && j < n && abbr.charAt(i++) != word.charAt(j++)) {
+            i += num;
+            if (i < n && j < m && word.charAt(i++) != abbr.charAt(j++)) {
                 return false;
             }
         }
-        return i == m && j == n;
+        return i == n && j == m;
     }
 }
