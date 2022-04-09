@@ -38,8 +38,8 @@ class DeleteandEarn {
     }
 
     // Approach 2: DP Bottom-Up (leetcode version)
-    // Time Complexity: O(N)
-    // Space Complexity: O(N)
+    // Time Complexity: O(N+k)
+    // Space Complexity: O(N+k)
     public int deleteAndEarn2(int[] nums) {
         int[] count = new int[10001];
         for (int x : nums)

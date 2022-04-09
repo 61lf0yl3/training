@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
+import java.util.LinkedList;
 
 /**
  * Definition for a binary tree node.
@@ -25,7 +26,7 @@ class AllNodesDistanceKinBinaryTree {
 
     public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
         m = new HashMap<>();
-        Map<TreeNode, TreeNode> temp = m;
+        // Map<TreeNode, TreeNode> temp = m;
         dfs(root, null);
 
         Queue<Pair<TreeNode, Integer>> q = new LinkedList<>();
@@ -69,6 +70,43 @@ class AllNodesDistanceKinBinaryTree {
         m.put(child, parent);
         dfs(child.left, child);
         dfs(child.right, child);
+    }
+
+    public List<Integer> distanceK2(TreeNode root, TreeNode target, int k) {
+        m = new HashMap<>();
+        dfs(root, null);
+
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(target);
+
+        List<Integer> res = new ArrayList<>();
+
+        int depth = 0;
+        while (!q.isEmpty()) {
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = q.poll();
+                if (node != null) {
+                    if (depth == k) {
+                        res.add(node.val);
+                    } else {
+                        if (node.left != null) {
+                            q.add(node.left);
+                        }
+                        if (node.right != null) {
+                            q.add(node.right);
+                        }
+                        if (m.containsKey(node)) {
+                            if (m.get(node).val != target.val) {
+                                q.add(m.get(node));
+                            }
+                        }
+                    }
+                }
+            }
+            depth++;
+        }
+        return res;
     }
 }
 
@@ -122,4 +160,5 @@ class AllNodesDistanceKinBinaryTree2 {
             subtree_add(node.right, dist + 1);
         }
     }
+
 }
