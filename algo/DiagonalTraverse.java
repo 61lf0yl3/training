@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class DiagonalTraverse {
+    // 498. Diagonal Traverse
+
     // Approach 1: Diagonal Iteration and Reversal
     // Time Complexity: O(N*M)
     // Space Complexity: O(N*M)
