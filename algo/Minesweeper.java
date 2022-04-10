@@ -1,5 +1,5 @@
-import java.util.ArrayDeque;
 import java.util.Queue;
+import java.util.LinkedList;
 
 class Minesweeper {
     // 529. Minesweeper
@@ -7,11 +7,11 @@ class Minesweeper {
     // Approach 1: BFS
     // Time complexity : O(N*K)
     // Space complexity : O(N*K)
-    int[][] neighbor = new int[][] { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, -1 }, { 0, 1 }, { 1, -1 }, { 1, 0 },
+    int[][] neighbors = new int[][] { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, -1 }, { 0, 1 }, { 1, -1 }, { 1, 0 },
             { 1, 1 } };
 
     public char[][] updateBoard(char[][] board, int[] click) {
-        Queue<int[]> q = new ArrayDeque<>();
+        Queue<int[]> q = new LinkedList<>();
         q.add(click);
         while (!q.isEmpty()) {
             bfs(board, q);
@@ -19,41 +19,37 @@ class Minesweeper {
         return board;
     }
 
-    public void bfs(char[][] board, Queue<int[]> q) {
+    private void bfs(char[][] board, Queue<int[]> q) {
         int[] point = q.poll();
         int x = point[0];
         int y = point[1];
-        int numMine = 0;
         if (board[x][y] == 'M') {
             board[x][y] = 'X';
             return;
         }
-        for (int i = 0; i < neighbor.length; i++) {
-            int newX = x + neighbor[i][0];
-            int newY = y + neighbor[i][1];
-            if (newX < 0 || newY < 0 || newX >= board.length || newY >= board[0].length ||
-                    board[newX][newY] == 'B') {
-                continue;
-            }
-            if (board[newX][newY] == 'M' || board[newX][newY] == 'X') {
-                numMine++;
+        int numMines = 0;
+        for (int[] neighbor : neighbors) {
+            int newX = x + neighbor[0];
+            int newY = y + neighbor[1];
+            if (newX >= 0 && newY >= 0 && newX < board.length && newY < board[0].length) {
+                if (board[newX][newY] == 'M' || board[newX][newY] == 'X') {
+                    numMines++;
+                }
             }
         }
-        if (numMine > 0) {
-            board[x][y] = Integer.toString(numMine).charAt(0);
+        if (numMines > 0) {
+            board[x][y] = (char) (numMines + '0');
         } else {
             board[x][y] = 'B';
-            for (int i = 0; i < neighbor.length; i++) {
-                int newX = x + neighbor[i][0];
-                int newY = y + neighbor[i][1];
-                if (newX < 0 || newY < 0 || newX >= board.length || newY >= board[0].length ||
-                        board[newX][newY] == 'B') {
-                    continue;
+            for (int[] neighbor : neighbors) {
+                int newX = x + neighbor[0];
+                int newY = y + neighbor[1];
+                if (newX >= 0 && newY >= 0 && newX < board.length && newY < board[0].length) {
+                    if (board[newX][newY] == 'E') {
+                        board[newX][newY] = 'B';
+                        q.add(new int[] { newX, newY });
+                    }
                 }
-                if (board[newX][newY] == 'E') {
-                    board[newX][newY] = 'B';
-                }
-                q.add(new int[] { newX, newY });
             }
         }
     }
