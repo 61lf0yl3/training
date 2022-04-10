@@ -7,20 +7,16 @@ public class ContiguousArray {
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     public int findMaxLength(int[] nums) {
-        Map<Integer, Integer> m = new HashMap<>();
-        int balance = 0;
+        HashMap<Integer, Integer> m = new HashMap<>();
+        m.put(0, -1);
         int res = 0;
-        m.put(balance, -1);
+        int count = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == 1) {
-                balance++;
+            count += nums[i] == 0 ? -1 : 1;
+            if (m.containsKey(count)) {
+                res = Math.max(res, i - m.get(count));
             } else {
-                balance--;
-            }
-            if (!m.containsKey(balance)) {
-                m.put(balance, i);
-            } else {
-                res = Math.max(res, i - m.get(balance));
+                m.put(count, i);
             }
         }
         return res;
