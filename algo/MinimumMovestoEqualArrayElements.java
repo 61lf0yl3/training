@@ -35,8 +35,9 @@ class MinimumMovestoEqualArrayElements {
     public int minMoves3(int[] nums) {
         Arrays.sort(nums);
         int res = 0;
-        for (int i = nums.length - 1; i >= 1; i--) {
-            res += nums[i] - nums[0];
+        int min = nums[0];
+        for (int num : nums) {
+            res += (num - min);
         }
         return res;
     }
