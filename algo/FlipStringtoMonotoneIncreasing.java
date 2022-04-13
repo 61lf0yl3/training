@@ -17,4 +17,20 @@ class FlipStringtoMonotoneIncreasing {
 
         return ans;
     }
+
+    // Approach 1: Prefix Sums
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public int minFlipsMonoIncr2(String S) {
+        int one = 0;
+        int flip = 0;
+        for (int i = 0; i < S.length(); i++) {
+            if (S.charAt(i) == '1')
+                one++;
+            else
+                flip++;
+            flip = Math.min(one, flip);
+        }
+        return flip;
+    }
 }
