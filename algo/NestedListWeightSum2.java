@@ -2,6 +2,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.List;
 import java.util.Queue;
+import java.util.LinkedList;
 
 /**
  * // This is the interface that allows for creating nested lists.
@@ -84,21 +85,18 @@ class NestedListWeightSum2 {
     public int depthSumInverse3s(List<NestedInteger> nestedList) {
         int maxDepth = 0;
         int depth = 1;
-        int sumOfElements = 0;
-        int sumOfProducts = 0;
+        int sumInteger = 0;
+        int sumDepthInteger = 0;
 
-        Queue<NestedInteger> q = new ArrayDeque<>();
+        Queue<NestedInteger> q = new LinkedList<>();
         q.addAll(nestedList);
-
         while (!q.isEmpty()) {
             int size = q.size();
-            maxDepth = Math.max(maxDepth, depth);
-
             for (int i = 0; i < size; i++) {
                 NestedInteger n = q.poll();
                 if (n.isInteger()) {
-                    sumOfElements += n.getInteger();
-                    sumOfProducts += depth * n.getInteger();
+                    sumInteger += n.getInteger();
+                    sumDepthInteger += n.getInteger() * depth;
                 } else {
                     q.addAll(n.getList());
                 }
@@ -106,7 +104,7 @@ class NestedListWeightSum2 {
             depth++;
         }
 
-        return (maxDepth + 1) * sumOfElements - sumOfProducts;
+        return depth * sumInteger - sumDepthInteger;
     }
 
     // Approach 1: Single Pass Depth-first Search
