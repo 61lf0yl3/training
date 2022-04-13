@@ -32,9 +32,7 @@ class BinaryTreeMaximumPathSum {
         int left = Math.max(dfs(node.left), 0);
         int right = Math.max(dfs(node.right), 0);
 
-        int price_newpath = node.val + left + right;
-
-        maxSum = Math.max(maxSum, price_newpath);
+        maxSum = Math.max(maxSum, left + right + node.val);
         return node.val + Math.max(left, right);
     }
 }
