@@ -43,26 +43,23 @@ class HouseRobber {
     // Approach 2: Recursion
     // Time Complexity: O(N)
     // Space Complexity: O(N)
-    private Map<Integer, Integer> dp;
     private int[] nums;
+    private Integer[] memo1;
 
     public int rob4(int[] nums) {
-        if (nums.length == 1) {
-            return nums[0];
-        }
         this.nums = nums;
-        dp = new HashMap<>();
-        dp.put(0, nums[0]);
-        dp.put(1, Math.max(nums[0], nums[1]));
-
-        return robDP(nums.length - 1);
+        memo1 = new Integer[nums.length];
+        return dp(nums.length - 1);
     }
 
-    private int robDP(int i) {
-        if (!dp.containsKey(i)) {
-            dp.put(i, Math.max(robDP(i - 1), robDP(i - 2) + nums[i]));
+    private int dp(int i) {
+        if (i < 0) {
+            return 0;
         }
-        return dp.get(i);
+        if (memo1[i] == null) {
+            memo1[i] = Math.max(dp(i - 1), dp(i - 2) + nums[i]);
+        }
+        return memo[i];
     }
 
     // Approach 2: Recursion
