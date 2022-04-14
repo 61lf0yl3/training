@@ -140,29 +140,31 @@ class WordBreak {
     // Approach 4: DP
     // Time Complexity: O(N^3)
     // Space Complexity: O(N)
-    String s1;
-    Set<String> set;
-    Boolean[] memo1;
+    String s;
+    HashSet<String> set;
+    Boolean[] memo;
 
     public boolean wordBreak7(String s, List<String> wordDict) {
-        this.s1 = s;
-        set = new HashSet<>(wordDict);
-        memo1 = new Boolean[s.length()];
-        return wordBreakDP(0);
+        this.s = s;
+        set = new HashSet<>();
+        set.addAll(wordDict);
+        memo = new Boolean[s.length()];
+        return DP(0);
     }
 
-    private boolean wordBreakDP(int i) {
-        if (i == s1.length()) {
+    private boolean DP(int i) {
+        if (i >= s.length()) {
             return true;
         }
-        if (memo1[i] == null) {
-            memo1[i] = false;
-            for (int j = i; j < s1.length(); j++) {
-                if (set.contains(s1.substring(i, j + 1)) && wordBreakDP(j + 1)) {
-                    memo1[i] = true;
+        if (memo[i] == null) {
+            memo[i] = false;
+            for (int j = i; j < s.length(); j++) {
+                String sub = s.substring(i, j + 1);
+                if (set.contains(sub) && DP(j + 1)) {
+                    memo[i] = true;
                 }
             }
         }
-        return memo1[i];
+        return memo[i];
     }
 }
