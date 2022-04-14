@@ -3,6 +3,9 @@ import java.util.HashSet;
 import java.util.List;
 
 class EvaluateDivision {
+    // Approach 1: Path Search in Graph
+    // Time Complexity: O(N*M)
+    // Space Complexity: O(N)
     HashMap<String, HashMap<String, Double>> graph;
 
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
