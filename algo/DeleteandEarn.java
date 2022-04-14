@@ -57,4 +57,35 @@ class DeleteandEarn {
             }
         return Math.max(avoid, using);
     }
+
+    // Approach 1: DP Top-Down (leetcode version)
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    HashMap<Integer, Integer> nums;
+    HashMap<Integer, Integer> memo;
+
+    public int deleteAndEarn3(int[] nums) {
+        this.nums = new HashMap<>();
+        memo = new HashMap<>();
+        int max = 0;
+        for (int num : nums) {
+            this.nums.put(num, this.nums.getOrDefault(num, 0) + num);
+            max = Math.max(max, num);
+        }
+        return dp(max);
+    }
+
+    private int dp(int num) {
+        if (num == 0) {
+            return 0;
+        }
+        if (num == 1) {
+            return nums.getOrDefault(1, 0);
+        }
+        if (!memo.containsKey(num)) {
+            int points = nums.getOrDefault(num, 0);
+            memo.put(num, Math.max(dp(num - 1), dp(num - 2) + points));
+        }
+        return memo.get(num);
+    }
 }
