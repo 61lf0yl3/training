@@ -49,18 +49,17 @@ class EvaluateDivision {
     }
 
     private double dfs(HashSet<String> seen, String numerator, String denominator, double value) {
+        HashMap<String, Double> neighbors = graph.get(numerator);
+        if (neighbors.containsKey(denominator)) {
+            return value * neighbors.get(denominator);
+        }
+
         // mark the visit
         seen.add(numerator);
         double ret = -1.0;
 
-        HashMap<String, Double> neighbors = graph.get(numerator);
-        if (neighbors.containsKey(denominator)) {
-            ret = value * neighbors.get(denominator);
-        } else {
-            for (String neighbor : neighbors.keySet()) {
-                if (seen.contains(neighbor)) {
-                    continue;
-                }
+        for (String neighbor : neighbors.keySet()) {
+            if (!seen.contains(neighbor)) {
                 ret = dfs(seen, neighbor, denominator, value * neighbors.get(neighbor));
                 if (ret != -1.0) {
                     break;
