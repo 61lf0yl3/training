@@ -6,14 +6,14 @@ class CarPooling {
     // Time Complexity: O(N)
     // Space Complexity: O(N)
     public boolean carPooling(int[][] trips, int capacity) {
-        int[] timestamp = new int[1001];
+        int[] m = new int[1001];
         for (int[] trip : trips) {
-            timestamp[trip[1]] += trip[0];
-            timestamp[trip[2]] -= trip[0];
+            m[trip[1]]+=trip[0];
+            m[trip[2]]-=trip[0];
         }
-
-        for (int currCapacity : timestamp) {
-            capacity -= currCapacity;
+        
+        for (int key : m) {
+            capacity -= key;
             if (capacity < 0) {
                 return false;
             }
