@@ -73,20 +73,17 @@ class CoinChange {
         int[] dp = new int[amount + 1];
         Arrays.fill(dp, amount + 1);
         dp[0] = 0;
-        for (int m = 1; m < dp.length; m++) {
-            for (int c = 0; c < coins.length; c++) {
-                int index = m - coins[c];
+        for (int i = 1; i < dp.length; i++) {
+            for (int coin : coins) {
+                int index = i - coin;
                 if (index < 0) {
                     continue;
                 } else {
-                    dp[m] = Math.min(dp[m], dp[index] + 1);
+                    dp[i] = Math.min(dp[i], dp[index] + 1);
                 }
             }
         }
-        if (dp[amount] == amount + 1) {
-            dp[amount] = -1;
-        }
-        return dp[amount];
+        return dp[amount] != amount + 1 ? dp[amount] : -1;
     }
 
     // Approach 2: DP Top-Down
