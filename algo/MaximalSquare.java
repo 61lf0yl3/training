@@ -23,22 +23,21 @@ class MaximalSquare {
     // Time Complexity: O(N*M)
     // Space Complexity: O(M)
     public int maximalSquare2(char[][] matrix) {
-        int rows = matrix.length;
-        int cols = matrix[0].length;
-        int[] dp = new int[cols + 1];
-        int maxsqlen = 0, prev = 0;
-        for (int i = 1; i <= rows; i++) {
-            for (int j = 1; j <= cols; j++) {
-                int temp = dp[j];
-                if (matrix[i - 1][j - 1] == '1') {
-                    dp[j] = Math.min(Math.min(dp[j - 1], prev), dp[j]) + 1;
-                    maxsqlen = Math.max(maxsqlen, dp[j]);
+        int res = 0;
+        int[] dp = new int[matrix[0].length + 1];
+        int prev = 0;
+        for (int r = 1; r <= matrix.length; r++) {
+            for (int c = 1; c <= matrix[0].length; c++) {
+                int temp = dp[c];
+                if (matrix[r - 1][c - 1] == '1') {
+                    dp[c] = 1 + Math.min(dp[c - 1], Math.min(dp[c], prev));
+                    res = Math.max(res, dp[c]);
                 } else {
-                    dp[j] = 0;
+                    dp[c] = 0;
                 }
                 prev = temp;
             }
         }
-        return maxsqlen * maxsqlen;
+        return res * res;
     }
 }
