@@ -60,7 +60,7 @@ class AlertUsingSameKeyCardThreeorMoreTimesinaOneHourPeriod {
             if (!m.containsKey(keyName[i])) {
                 m.put(keyName[i], new ArrayList<>());
             }
-            String timeString = keyTime[i];
+            // String timeString = keyTime[i];
             int time = parse(keyTime[i]);
 
             m.get(keyName[i]).add(time);
