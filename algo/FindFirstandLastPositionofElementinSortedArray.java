@@ -9,12 +9,9 @@ class FindFirstandLastPositionofElementinSortedArray {
         int high = nums.length - 1;
         while (low <= high) {
             int mid = low + (high - low) / 2;
-            if (nums[mid] == target) {
-                if (mid == low || nums[mid - 1] < target) {
-                    res[0] = mid;
-                    break;
-                }
-                high = mid - 1;
+            if (nums[mid] == target && (mid == low || nums[mid - 1] < target)) {
+                res[0] = mid;
+                break;
             } else if (nums[mid] < target) {
                 low = mid + 1;
             } else {
@@ -26,12 +23,9 @@ class FindFirstandLastPositionofElementinSortedArray {
         high = nums.length - 1;
         while (low <= high) {
             int mid = low + (high - low) / 2;
-            if (nums[mid] == target) {
-                if (mid == high || target < nums[mid + 1]) {
-                    res[1] = mid;
-                    break;
-                }
-                low = mid + 1;
+            if (nums[mid] == target && (mid == high || target < nums[mid + 1])) {
+                res[1] = mid;
+                break;
             } else if (nums[mid] > target) {
                 high = mid - 1;
             } else {
