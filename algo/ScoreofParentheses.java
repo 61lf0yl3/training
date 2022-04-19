@@ -19,4 +19,24 @@ class ScoreofParentheses {
         }
         return stack.pop();
     }
+
+    // Approach 1: Count Cores
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public int scoreOfParentheses2(String s) {
+        int res = 0;
+        int balance = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(') {
+                balance++;
+            } else {
+                balance--;
+                if (s.charAt(i - 1) == '(') {
+                    res += 1 << balance;
+                }
+            }
+        }
+        return res;
+    }
 }
