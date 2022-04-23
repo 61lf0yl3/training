@@ -7,34 +7,25 @@ class SimplifyPath {
     // Time complexity : O(N)
     // Space complexity : O(N)
     public String simplifyPath(String path) {
-        Stack<String> s = new Stack<>();
-        StringBuilder folder = new StringBuilder();
-        path += "/";
-        for (char c : path.toCharArray()) {
-            if (c == '/') {
-                if (folder.length() > 0) {
-                    if (folder.toString().equals("..")) {
-                        if (!s.isEmpty()) {
-                            s.pop();
-                        }
-                    } else if (!folder.toString().equals(".")) {
-                        s.add(folder.toString());
-                    }
-                    folder = new StringBuilder();
+        String[] dirs = path.split("/");
+        Stack<String> canonicalPath = new Stack<>();
+        for (String dir : dirs) {
+            if (dir.equals("..")) {
+                if (!canonicalPath.isEmpty()) {
+                    canonicalPath.pop();
                 }
-            } else if (c != '/') {
-                folder.append(c);
+            } else if (dir.equals(".") || dir.equals("")) {
+                continue;
+            } else {
+                canonicalPath.add(dir);
             }
         }
-        String res = "";
-        while (!s.isEmpty()) {
-            String top = s.pop();
-            res = "/" + top + res;
+        StringBuilder res = new StringBuilder();
+        for (String dir : canonicalPath) {
+            res.append('/');
+            res.append(dir);
         }
-        if (res.length() == 0) {
-            res = "/";
-        }
-        return res.toString();
+        return res.length() > 0 ? res.toString() : "/";
     }
 
     // Approach 1: Using Stacks
