@@ -1,7 +1,7 @@
 import java.util.Queue;
 import java.util.LinkedList;
 
-class Solution {
+class RottingOranges {
 
     // Approach 1: BFS
     // Time Complexity: O(N*M)
