@@ -1,4 +1,5 @@
 class Searcha2DMatrix {
+    // 74. Search a 2D Matrix
 
     // Approach : Binary Search
     // Time Complexity:O(logN+logM)
