@@ -4,26 +4,22 @@ class Searcha2DMatrix {
     // Time Complexity:O(logN+logM)
     // Space Complexity: O(1)
     public boolean searchMatrix2(int[][] matrix, int target) {
-        int m = matrix.length;
-        if (m == 0)
+        int n = matrix.length;
+        if (n == 0)
             return false;
-        int n = matrix[0].length;
+        int m = matrix[0].length;
 
-        // binary search
-        int left = 0, right = m * n - 1;
-        int pivotIdx, pivotElement;
-        while (left <= right) {
-            pivotIdx = (left + right) / 2;
-            int row = pivotIdx / n;
-            int col = pivotIdx % n;
-            pivotElement = matrix[row][col];
-            if (target == pivotElement)
+        int low = 0;
+        int high = n * m - 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            int temp = matrix[mid / m][mid % m];
+            if (temp == target) {
                 return true;
-            else {
-                if (target < pivotElement)
-                    right = pivotIdx - 1;
-                else
-                    left = pivotIdx + 1;
+            } else if (temp > target) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
             }
         }
         return false;
