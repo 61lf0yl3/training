@@ -3,11 +3,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 class Combinations {
+    // 77. Combinations
 
     // Approach 1: Backtracking
     // Time Complexity: O(Combination of K and N)
     // Space Complexity: O(Combination of K and N)
-    List<List<Integer>> res;
+    List<List<Integer>> res;s
     int n;
     int k;
 
