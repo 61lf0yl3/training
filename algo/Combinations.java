@@ -2,7 +2,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-class Solution {
+class Combinations {
+
+    // Approach 1: Backtracking
+    // Time Complexity: O(Combination of K and N)
+    // Space Complexity: O(Combination of K and N)
     List<List<Integer>> res;
     int n;
     int k;
