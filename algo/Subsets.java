@@ -11,10 +11,13 @@ class Subsets {
     public List<List<Integer>> subsets(int[] nums) {
         res = new ArrayList<>();
         this.nums = nums;
+
         for (int i = 0; i <= nums.length; i++) {
             backtrack(i, 0, new LinkedList<>());
         }
+
         return res;
+
     }
 
     // Appraoch #1: Backtraking
