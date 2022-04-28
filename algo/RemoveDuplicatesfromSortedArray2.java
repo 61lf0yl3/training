@@ -22,6 +22,9 @@ class RemoveDuplicatesfromSortedArray2 {
         return pointer;
     }
 
+    // Approach 1: Overwriting unwanted duplicates
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
     public int removeDuplicates2(int[] nums) {
 
         // Initialize the counter and the second pointer.
