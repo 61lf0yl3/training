@@ -12,7 +12,7 @@ class Subsets {
         res = new ArrayList<>();
         this.nums = nums;
         for (int i = 0; i <= nums.length; i++) {
-            backtrack(new LinkedList<>(), 0, i);
+            backtrack(i, 0, new LinkedList<>());
         }
         return res;
     }
@@ -20,13 +20,13 @@ class Subsets {
     // Appraoch #1: Backtraking
     // Time Complexity: O(N*N^2)
     // Space Complexity: O(N*N^2)
-    private void backtrack(LinkedList<Integer> comb, int start, int len) {
-        if (start == len) {
-            res.add(new ArrayList<>(comb));
+    private void backtrack(int size, int start, LinkedList<Integer> comb) {
+        if (comb.size() == size) {
+            res.add(new LinkedList<>(comb));
         } else {
-            for (int j = start; j < nums.length; j++) {
-                comb.add(nums[j]);
-                backtrack(comb, j + 1, len);
+            for (int i = start; i < nums.length; i++) {
+                comb.add(nums[i]);
+                backtrack(size, i + 1, comb);
                 comb.removeLast();
             }
         }
