@@ -1,5 +1,8 @@
 class RemoveDuplicatesfromSortedArray2 {
 
+    // Approach 1: Overwriting unwanted duplicates
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
     public int removeDuplicates(int[] nums) {
         int curr = nums[0];
         int count = 0;

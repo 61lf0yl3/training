@@ -8,7 +8,7 @@ class Combinations {
     // Approach 1: Backtracking
     // Time Complexity: O(Combination of K and N)
     // Space Complexity: O(Combination of K and N)
-    List<List<Integer>> res;s
+    List<List<Integer>> res;
     int n;
     int k;
 
