@@ -2,6 +2,10 @@ import java.util.List;
 import java.util.Stack;
 
 class ExclusiveTimeofFunctions {
+
+    // Approach 1: Using Stack
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
     public int[] exclusiveTime(int n, List<String> logs) {
         int[] res = new int[n];
         int currID = -1;
