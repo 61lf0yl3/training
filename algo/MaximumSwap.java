@@ -1,6 +1,6 @@
 public class MaximumSwap {
     // Approach 1: Iterative
-    // Time Complexity: O(N)
+    // Time Complexity: O(N^2)
     // Space Complexity: O(N)
     public int maximumSwap(int num) {
         char[] digits = String.valueOf(num).toCharArray();
@@ -27,6 +27,9 @@ public class MaximumSwap {
         return num;
     }
 
+    // Approach 1: Iterative
+    // Time Complexity: O(N^2)
+    // Space Complexity: O(N)
     public int maximumSwap2(int num) {
         char[] digits = String.valueOf(num).toCharArray();
         int n = digits.length;
