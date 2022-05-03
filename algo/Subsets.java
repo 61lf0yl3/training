@@ -35,13 +35,16 @@ class Subsets {
     // Appraoch #1: Cascading
     // Time Complexity: O(N*N^2)
     // Space Complexity: O(N*N^2)
-    public List<List<Integer>> cascading(int[] nums, List<List<Integer>> res) {
+    public List<List<Integer>> subsets2(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        res.add(new ArrayList<>());
+
         for (int num : nums) {
             int size = res.size();
             for (int i = 0; i < size; i++) {
-                List<Integer> temp = new LinkedList(res.get(i));
+                ArrayList<Integer> temp = new ArrayList<>(res.get(i));
                 temp.add(num);
-                res.add(new ArrayList(temp));
+                res.add(temp);
             }
         }
         return res;
@@ -50,7 +53,7 @@ class Subsets {
     // Appraoch #1: Lexicographic (Binary Sorted) Subsets
     // Time Complexity: O(N*N^2)
     // Space Complexity: O(N*N^2)
-    public List<List<Integer>> subsets2(int[] nums) {
+    public List<List<Integer>> subsets3(int[] nums) {
         List<List<Integer>> output = new ArrayList();
         int n = nums.length;
 
