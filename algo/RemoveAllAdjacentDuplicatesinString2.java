@@ -97,6 +97,9 @@ class RemoveAllAdjacentDuplicatesinString2 {
         return res.toString();
     }
 
+    // Approach 3: Using Stack
+    // Time complexity : O(N)
+    // Space complexity : O(N)
     public String removeDuplicates5(String s, int k) {
         Stack<Pair<Character, Integer>> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {
