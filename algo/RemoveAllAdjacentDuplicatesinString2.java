@@ -108,14 +108,12 @@ class RemoveAllAdjacentDuplicatesinString2 {
             char curr = s.charAt(i);
 
             if (!stack.isEmpty() && curr == stack.peek().getKey()) {
-                Pair<Character, Integer> newPair = new Pair<>(curr, stack.peek().getValue() + 1);
-                stack.pop();
-                stack.add(newPair);
+                int repeat = stack.pop().getValue() + 1;
+                if (repeat < k) {
+                    stack.add(new Pair<>(curr, repeat));
+                }
             } else {
                 stack.add(new Pair<>(curr, 1));
-            }
-            if (stack.peek().getValue() == k) {
-                stack.pop();
             }
         }
         StringBuilder res = new StringBuilder();
