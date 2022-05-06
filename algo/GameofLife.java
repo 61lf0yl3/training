@@ -49,41 +49,43 @@ class GameofLife2 {
             { 1, 1 } };
 
     public void gameOfLife(int[][] board) {
-        int[][] copy = new int[board.length][board[0].length];
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[0].length; c++) {
-                dfs(board, r, c);
+                bfs(board, r, c);
             }
         }
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[0].length; c++) {
-                if (board[r][c] == -1) {
-                    board[r][c] = 0;
-                } else if (board[r][c] == 2) {
+                if (board[r][c] == 2) {
                     board[r][c] = 1;
+                } else if (board[r][c] == -1) {
+                    board[r][c] = 0;
                 }
             }
         }
     }
 
-    public void dfs(int[][] board, int row, int col) {
-        int liveCell = 0;
-        for (int i = 0; i < neighbors.length; i++) {
-            int newRow = row + neighbors[i][0];
-            int newCol = col + neighbors[i][1];
-            if (newRow >= 0 && newRow < board.length && newCol >= 0 && newCol < board[0].length
-                    && Math.abs(board[newRow][newCol]) % 2 == 1) {
-                liveCell++;
+    public void bfs(int[][] board, int r, int c) {
+        int livecell = 0;
+        for (int[] neighbor : neighbors) {
+            int newR = r + neighbor[0];
+            int newC = c + neighbor[1];
+            if (newR >= 0 && newC >= 0 && newR < board.length && newC < board[0].length
+                    && Math.abs(board[newR][newC]) % 2 == 1) {
+                livecell++;
             }
         }
-        if (Math.abs(board[row][col]) % 2 == 1) {
-            // lives on to the next generation
-            if (liveCell < 2 || liveCell > 3) {
-                board[row][col] = -1;
+        if (Math.abs(board[r][c]) % 2 == 1) {
+            if (livecell < 2) {
+                board[r][c] = -1;
+            } else if (livecell == 2 || livecell == 3) {
+                board[r][c] = 1;
+            } else {
+                board[r][c] = -1;
             }
         } else {
-            if (liveCell == 3) {
-                board[row][col] = 2;
+            if (livecell == 3) {
+                board[r][c] = 2;
             }
         }
     }
