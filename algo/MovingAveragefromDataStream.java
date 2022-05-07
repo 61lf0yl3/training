@@ -2,6 +2,8 @@ import java.util.Queue;
 import java.util.LinkedList;
 
 class MovingAverage {
+    // 346. Moving Average from Data Stream
+
     // Approach 2: Iterative
     // Time Complexity: O(1)
     // Space Complexity: O(N)
