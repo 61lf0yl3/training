@@ -7,23 +7,23 @@ class MovingAverage {
     // Space Complexity: O(N)
     private int size;
     private int sum;
-    private Queue<Integer> last;
+    private Queue<Integer> queue;
 
     public MovingAverage(int size) {
         this.size = size;
         sum = 0;
-        size = 0;
-        last = new LinkedList<>();
+        queue = new LinkedList<>();
     }
 
     public double next(int val) {
-        if (size <= last.size()) {
-            sum -= last.poll();
+        if (queue.size() == size) {
+            sum -= queue.poll();
         }
         sum += val;
-        last.add(val);
-        return sum * 1.0 / last.size();
+        queue.add(val);
+        return sum / (double) queue.size();
     }
+
 }
 
 /**
