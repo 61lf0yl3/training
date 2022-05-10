@@ -45,6 +45,9 @@ class SequentialDigits {
         return nums;
     }
 
+    // Approach 2: Precomputation
+    // Time Complexity: O(1)
+    // Space Complexity: O(1)
     public static Seq s = new Seq();
 
     public List<Integer> sequentialDigits3(int low, int high) {
