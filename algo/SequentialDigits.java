@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 class SequentialDigits {
+    // 1291. Sequential Digits
+
+    // Approach 1: Sliding Window
+    // Time Complexity: O(1)
+    // Space Complexity: O(1)
     public List<Integer> sequentialDigits(int low, int high) {
         ArrayList<Integer> res = new ArrayList<>();
 
