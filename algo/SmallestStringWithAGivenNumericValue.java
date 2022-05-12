@@ -19,6 +19,9 @@ class SmallestStringWithAGivenNumericValue {
         return String.valueOf(chars);
     }
 
+    // Approach 1: Build number from left to right
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
     public String getSmallestString2(int n, int k) {
         char[] result = new char[n];
         for (int position = 0; position < n; position++) {
@@ -35,6 +38,9 @@ class SmallestStringWithAGivenNumericValue {
         return new String(result);
     }
 
+    // Approach 2: Build number from right
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
     public String getSmallestString3(int n, int k) {
         char[] result = new char[n];
         Arrays.fill(result, 'a');
@@ -47,6 +53,9 @@ class SmallestStringWithAGivenNumericValue {
         return new String(result);
     }
 
+    // Approach 2: Build number from right - Optimised solution
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
     public String getSmallestString4(int n, int k) {
         char[] result = new char[n];
         for (int position = n - 1; position >= 0; position--) {
