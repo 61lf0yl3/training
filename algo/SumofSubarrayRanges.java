@@ -1,4 +1,8 @@
 class SumofSubarrayRanges {
+
+    // Approach 1: Brute Force
+    // Time Complexity: O(N^2)
+    // Space Complexity: O(1)
     public long subArrayRanges(int[] nums) {
         long res = 0;
         for (int i = 0; i < nums.length; i++) {
