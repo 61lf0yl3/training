@@ -36,6 +36,9 @@ class FindPeakElement {
         return search(nums, mid + 1, r);
     }
 
+    // Approach 1: Binary Search
+    // Time Complexity:O(logN)
+    // Space Complexity: O(1)
     public int findPeakElement3(int[] nums) {
         int low = 0;
         int high = nums.length - 1;
