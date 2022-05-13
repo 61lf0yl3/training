@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class SmallestStringWithAGivenNumericValue {
     // 1663. Smallest String With A Given Numeric Value
 
