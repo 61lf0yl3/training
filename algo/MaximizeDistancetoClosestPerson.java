@@ -35,4 +35,27 @@ public class MaximizeDistancetoClosestPerson {
         }
         return res;
     }
+
+    // Approach 2: Two pointer
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    public int maxDistToClosest2(int[] seats) {
+        int n = seats.length;
+        int res = 0;
+        int prev = -1;
+        int future = 0;
+        for (int i = 0; i < n; i++) {
+            if (seats[i] == 1) {
+                prev = i;
+            } else {
+                while (future < n && seats[future] == 0 || future < i) {
+                    future++;
+                }
+                int left = prev == -1 ? n : i - prev;
+                int right = future == n ? n : future - i;
+                res = Math.max(res, Math.min(left, right));
+            }
+        }
+        return res;
+    }
 }
