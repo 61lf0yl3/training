@@ -59,6 +59,9 @@ public class MaximizeDistancetoClosestPerson {
         return res;
     }
 
+    // Approach 3: Group by Zero
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
     public int maxDistToClosest3(int[] seats) {
         int N = seats.length;
         int K = 0; // current longest group of empty seats
@@ -87,4 +90,5 @@ public class MaximizeDistancetoClosestPerson {
 
         return ans;
     }
+
 }
