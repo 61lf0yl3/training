@@ -22,6 +22,9 @@ class ValidPalindrome {
         return true;
     }
 
+    // Approach 1: Compare with Reverse
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
     public boolean isPalindrome2(String s) {
         StringBuilder builder = new StringBuilder();
 
