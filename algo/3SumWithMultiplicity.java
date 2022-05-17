@@ -1,5 +1,8 @@
 import java.util.Arrays;
 
+// Approach 1: Tree Pointer based on Two Pointer
+// Time Complexity: O(N^2)
+// Space Complexity: O(1)
 class ThreeSumWithMultiplicity {
     public int threeSumMulti(int[] arr, int target) {
         int MOD = 1000000007;
