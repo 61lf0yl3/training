@@ -44,6 +44,9 @@ class ThreeSumWithMultiplicity {
         return res;
     }
 
+    // Approach 2: Counting with Cases
+    // Time Complexity: O(N+W^2)
+    // Space Complexity: O(W)
     public int threeSumMulti2(int[] A, int target) {
         int MOD = 1_000_000_007;
         long[] count = new long[101];
@@ -94,6 +97,9 @@ class ThreeSumWithMultiplicity {
         return (int) ans;
     }
 
+    // Approach 2: Adapt from Three Sum
+    // Time Complexity: O(N^2)
+    // Space Complexity: O(N)
     public int threeSumMulti3(int[] A, int target) {
         int MOD = 1_000_000_007;
 
