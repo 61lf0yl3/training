@@ -3,6 +3,11 @@ import java.util.HashMap;
 import java.util.List;
 
 class GroupShiftedStrings {
+    // 249. Group Shifted Strings
+
+    // Approach 1: Using HashMap
+    // Time Complexity: O(N*K)
+    // Space Complexity: O(N*K)
     public List<List<String>> groupStrings(String[] strings) {
         HashMap<String, ArrayList<String>> m = new HashMap<>();
 
