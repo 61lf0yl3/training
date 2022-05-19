@@ -32,9 +32,7 @@ class BSTIterator {
     }
 
     private void DFS(TreeNode root) {
-        if (root == null) {
-            return;
-        } else {
+        if (root != null) {
             DFS(root.left);
             list.add(root.val);
             DFS(root.right);
