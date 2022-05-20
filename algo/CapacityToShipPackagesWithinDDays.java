@@ -32,6 +32,9 @@ public class CapacityToShipPackagesWithinDDays {
         return res;
     }
 
+    // Approach 2: Iterative Using Binary
+    // Time Complexity: O(DlogN)
+    // Space Complexity: O(D)
     public int shipWithinDays2(int[] weights, int days) {
         int res = 0;
         int sum = 0;
