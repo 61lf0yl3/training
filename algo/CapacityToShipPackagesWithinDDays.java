@@ -31,4 +31,39 @@ public class CapacityToShipPackagesWithinDDays {
         }
         return res;
     }
+
+    public int shipWithinDays2(int[] weights, int days) {
+        int res = 0;
+        int sum = 0;
+        int max = 0;
+        for (int weight : weights) {
+            sum += weight;
+            max = Math.max(max, weight);
+        }
+
+        while (max <= sum) {
+            int mid = max + (sum - max) / 2;
+            int days2 = 0;
+            int sum2 = 0;
+            for (int weight : weights) {
+                if (sum2 + weight > mid) {
+                    days2++;
+                    sum2 = weight;
+                } else {
+                    sum2 += weight;
+                }
+            }
+            if (sum2 > 0) {
+                days2++;
+                sum2 = 0;
+            }
+            if (days2 > days) {
+                max = mid + 1;
+            } else {
+                res = mid;
+                sum = mid - 1;
+            }
+        }
+        return res;
+    }
 }
