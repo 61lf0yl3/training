@@ -20,4 +20,27 @@ public class PalindromeLinkedList {
         }
         return true;
     }
+
+    // Approach 2: Recursive
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
+    ListNode front;
+
+    public boolean isPalindrome2(ListNode head) {
+        front = head;
+        return recursivelyCheck(head);
+    }
+
+    private boolean recursivelyCheck(ListNode node) {
+        if (node != null) {
+            if (!recursivelyCheck(node.next)) {
+                return false;
+            }
+            if (node.val != front.val) {
+                return false;
+            }
+            front = front.next;
+        }
+        return true;
+    }
 }
