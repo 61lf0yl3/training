@@ -1,5 +1,7 @@
-class Solution {
-
+class BinarySearch {
+    // Approach 2: Iterative
+    // Time Complexity: O(logN)
+    // Space Complexity: O(1)
     public int search(int[] nums, int target) {
         int low = 0;
         int high = nums.length;
