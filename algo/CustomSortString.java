@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 class CustomSortString {
+    // Approach 1: Sort
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
     public String customSortString(String order, String s) {
         ArrayList<Character> aAL = new ArrayList<>();
         for (char c : s.toCharArray()) {
@@ -20,6 +23,9 @@ class CustomSortString {
         return res.toString();
     }
 
+    // Approach 2: Count and Write
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
     public String customSortString2(String S, String T) {
         // count[char] = the number of occurrences of 'char' in T.
         // This is offset so that count[0] = occurrences of 'a', etc.
