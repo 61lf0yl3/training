@@ -5,37 +5,43 @@ class DominoandTrominoTiling {
     // Approach 1: DP Top-Down (Recursion with memorazation);
     // Time Complexity: O(N)
     // Space Complexity: O(N)
-    int MOD = 1000000007;
-    Map<Integer, Long> fullMap = new HashMap<>();
-    Map<Integer, Long> partiallyMap = new HashMap<>();
+    int MOD = 1_000_000_007;
+    Map<Integer, Long> f_cache = new HashMap<>();
+    Map<Integer, Long> p_cache = new HashMap<>();
+
+    public long p(int n) {
+        if (p_cache.containsKey(n)) {
+            return p_cache.get(n);
+        }
+        long val;
+        if (n == 2) {
+            val = 1L;
+        } else {
+            val = (p(n - 1) + f(n - 2)) % MOD;
+        }
+        p_cache.put(n, val);
+        return val;
+
+    }
+
+    public long f(int n) {
+        if (f_cache.containsKey(n)) {
+            return f_cache.get(n);
+        }
+        long val;
+        if (n == 1) {
+            val = 1L;
+        } else if (n == 2) {
+            val = 2L;
+        } else {
+            val = (f(n - 1) + f(n - 2) + 2 * p(n - 1)) % MOD;
+        }
+        f_cache.put(n, val);
+        return val;
+    }
 
     public int numTilings(int n) {
-        return (int) fullCovered(n) % MOD;
-    }
-
-    private long fullCovered(int n) {
-        if (n == 1) {
-            return 1;
-        }
-        if (n == 2) {
-            return 2;
-        }
-        if (!fullMap.containsKey(n)) {
-            long val = fullCovered(n - 1) + fullCovered(n - 2) + 2 * partiallyCovered(n - 1);
-            fullMap.put(n, val % MOD);
-        }
-        return fullMap.get(n);
-    }
-
-    private long partiallyCovered(int n) {
-        if (n == 2) {
-            return 1;
-        }
-        if (!partiallyMap.containsKey(n)) {
-            long val = partiallyCovered(n - 1) + fullCovered(n - 2);
-            partiallyMap.put(n, val % MOD);
-        }
-        return partiallyMap.get(n);
+        return (int) (f(n));
     }
 
     // Approach 2: DP Bottom-up
