@@ -1,4 +1,7 @@
 class SearchinRotatedSortedArray2 {
+    // Approach 1: Binary Search
+    // Time Complexity: O(logN)
+    // Space Complexity: O(1)
     public boolean search(int[] nums, int target) {
         int low = 0;
         int high = nums.length - 1;
@@ -25,6 +28,9 @@ class SearchinRotatedSortedArray2 {
         return false;
     }
 
+    // Approach 1: Binary Search
+    // Time Complexity: O(logN)
+    // Space Complexity: O(1)
     public boolean search2(int[] nums, int target) {
         int n = nums.length;
         if (n == 0)
