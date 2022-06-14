@@ -35,6 +35,12 @@ public class WallsandGates {
                 }
                 rooms[newR][newC] = rooms[r][c] + 1;
                 q.add(new int[] { newR, newC });
+
+                // if (newR >= 0 && newC >= 0 && newR < n && newC < m && rooms[newR][newC] ==
+                // Integer.MAX_VALUE) {
+                // rooms[newR][newC] = rooms[r][c] + 1;
+                // q.add(new int[] { newR, newC });
+                // }
             }
         }
     }
