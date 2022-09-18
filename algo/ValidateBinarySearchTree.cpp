@@ -16,15 +16,15 @@ public:
     }
     
 private: 
-    bool dfs(TreeNode* root, int start, int end) {
+    bool dfs(TreeNode* root, TreeNode* start, TreeNode* end) {
         if (root == NULL) {
             return true;
         }
-        if ((start != NULL && root->val <= start) ||
-            (end != NULL && root->val >= end)) {
+        if ((start != NULL && root->val <= start->val) ||
+            (end != NULL && root->val >= end->val)) {
             return false;
         }
-        return dfs(root->left, start, root->val)
-            && dfs(root->right, root->val, end);
+        return dfs(root->left, start, root)
+            && dfs(root->right, root, end);
     }
 };
