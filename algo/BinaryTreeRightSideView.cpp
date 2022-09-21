@@ -36,4 +36,25 @@ public:
         }
         return res;
     }
+
+    vector<int> rightSideView2(TreeNode* root) {
+        if (root == NULL) {
+            return res;
+        }
+        dfs(root, 0);
+        return res;
+    }
+
+private:
+    vector<int> res;
+    void dfs(TreeNode* node, int depth) {
+        if (node == NULL) {
+            return;
+        }
+        if (res.size() == depth) {
+            res.push_back(node->val);
+        }
+        dfs(node->right, depth+1);
+        dfs(node->left, depth+1);
+    }
 };
