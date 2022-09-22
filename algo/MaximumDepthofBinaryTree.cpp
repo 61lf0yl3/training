@@ -41,4 +41,21 @@ public:
         }
         return res;
     }
+
+    int maxDepth2(TreeNode *root)
+    {
+        return dfs(root, 0);
+    }
+
+    int dfs(TreeNode *root, int depth)
+    {
+        if (root == NULL)
+        {
+            return depth;
+        }
+        else
+        {
+            return max(dfs(root->left, depth + 1), dfs(root->right, depth + 1));
+        }
+    }
 };
