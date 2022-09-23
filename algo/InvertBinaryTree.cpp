@@ -39,4 +39,19 @@ public:
             return root;
         }
     }
+
+    TreeNode *invertTree(TreeNode *root)
+    {
+        if (root == NULL)
+        {
+            return root;
+        }
+        else
+        {
+            swap(root->left, root->right);
+            invertTree(root->left);
+            invertTree(root->right);
+            return root;
+        }
+    }
 };
