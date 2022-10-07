@@ -46,5 +46,20 @@ public:
         
         return prev;
     }
+public:
+    ListNode* reverseList(ListNode* head) {
+        return helper(head, NULL);
+    }
+private:
+    ListNode* helper(ListNode* node, ListNode* prev) {
+        if (node == NULL) {
+            return prev;
+        } else {
+            ListNode* temp = new ListNode(node->val);
+            temp->next = prev;
+            prev = temp;
+            return helper(node->next, prev);
+        }
+    }
 }
 ;
