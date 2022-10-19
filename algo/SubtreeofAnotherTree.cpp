@@ -24,6 +24,16 @@ public:
         }
         return res || isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
     }
+
+    bool isSubtree2(TreeNode* root, TreeNode* subRoot) {
+        if (root == NULL) {
+            return false;
+        }
+        if (dfs(root, subRoot)) {
+            return true;
+        }
+        return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
+    }
     
 private:
     bool dfs(TreeNode* root, TreeNode* subRoot) {
@@ -38,4 +48,6 @@ private:
         }
         return dfs(root->left, subRoot->left) && dfs(root->right, subRoot->right);
     }
+
+
 };
